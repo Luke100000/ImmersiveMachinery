@@ -1,0 +1,28 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+issueTrackerURL = "https://github.com/Luke100000/ImmersiveMachinery/issues"
+license = "GPL-3.0-only"
+
+[[mods]]
+modId = "immersive_machinery"
+version = "${version}"
+displayName = "Immersive Machinery"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/immersive-machinery"
+authors = "Luke100000"
+description = "A bunch of rustic machinery to transport, mine, and automate things, while staying close to the vanilla style."
+logoFile = "icon.png"
+itemIcon = "immersive_machinery:tunnel_digger"
+
+[[dependencies.immersive_machinery]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.immersive_machinery]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"

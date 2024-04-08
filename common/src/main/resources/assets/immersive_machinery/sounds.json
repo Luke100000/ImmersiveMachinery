@@ -1,0 +1,42 @@
+{
+  "engine_start": {
+    "sounds": [
+      "immersive_machinery:engine_start"
+    ]
+  },
+  "propeller": {
+    "sounds": [
+      "immersive_machinery:propeller"
+    ]
+  },
+  "propeller_small": {
+    "sounds": [
+      "immersive_machinery:propeller_small"
+    ]
+  },
+  "propeller_tiny": {
+    "sounds": [
+      "immersive_machinery:propeller_tiny"
+    ]
+  },
+  "woosh": {
+    "sounds": [
+      "immersive_machinery:woosh"
+    ]
+  },
+  "cannon": {
+    "sounds": [
+      "immersive_machinery:cannon"
+    ]
+  },
+  "repair": {
+    "sounds": [
+      "immersive_machinery:repair_0",
+      "immersive_machinery:repair_1",
+      "immersive_machinery:repair_2",
+      "immersive_machinery:repair_3",
+      "immersive_machinery:repair_4",
+      "immersive_machinery:repair_5"
+    ]
+  }
+}

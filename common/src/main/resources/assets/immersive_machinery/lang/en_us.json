@@ -1,0 +1,9 @@
+{
+  "itemGroup.immersive_machinery.immersive_machinery_tab": "Immersive Machinery",
+
+  "entity.immersive_machinery.tunnel_digger": "Tunnel Digger",
+
+  "item.immersive_machinery.tunnel_digger": "Tunnel Digger",
+
+  "immersive_machinery.upgrade.drillingSpeed": "%s%% engine power"
+}

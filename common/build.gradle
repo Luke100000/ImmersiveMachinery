@@ -1,0 +1,28 @@
+architectury {
+    common(rootProject.enabled_platforms.split(","))
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/immersive_machinery.accessWidener")
+}
+
+dependencies {
+    // We depend on fabric loader here to use the fabric @Environment annotations
+    // Do NOT use other classes from fabric loader
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+
+    modApi "com.terraformersmc:modmenu:${mod_menu_version}"
+
+    modImplementation("net.conczin:immersive_aircraft:${immersive_aircraft_version}+common")
+}
+
+publishing {
+    publications {
+        mavenCommon(MavenPublication) {
+            artifactId = rootProject.archives_base_name
+            groupId = rootProject.group_id
+            version = version + "+common"
+            from components.java
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "immersive_machinery",
+  "version": "${version}",
+  "name": "Immersive Machinery",
+  "description": "A bunch of rustic machinery to transport, mine, and automate things, while staying close to the vanilla style.",
+  "authors": [
+    "Luke100000"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/immersive-machinery",
+    "sources": "https://github.com/Luke100000/ImmersiveMachinery",
+    "issues": "https://github.com/Luke100000/ImmersiveMachinery/issues"
+  },
+  "license": "GPL-3.0-only",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "immersive_machinery.fabric.CommonFabric"
+    ],
+    "client": [
+      "immersive_machinery.fabric.ClientFabric"
+    ],
+    "modmenu": [
+      "immersive_machinery.config.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "immersive_machinery.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "java": ">=8",
+    "fabric-api-base": ">=0.1.0"
+  }
+}
