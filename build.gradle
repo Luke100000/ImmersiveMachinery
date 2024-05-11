@@ -90,4 +90,8 @@ allprojects {
             }
         }
     }
+
+    processResources {
+        exclude('*.aup3')
+    }
 }

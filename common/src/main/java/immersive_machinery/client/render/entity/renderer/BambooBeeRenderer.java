@@ -2,12 +2,12 @@ package immersive_machinery.client.render.entity.renderer;
 
 import immersive_aircraft.client.render.entity.renderer.utils.ModelPartRenderHandler;
 import immersive_machinery.Common;
-import immersive_machinery.entity.TunnelDiggerEntity;
+import immersive_machinery.entity.BambooBee;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
-public class TunnelDiggerEntityRenderer<T extends TunnelDiggerEntity> extends MachineryEntityRenderer<T> {
-    private static final ResourceLocation ID = Common.locate("tunnel_digger");
+public class BambooBeeRenderer <T extends BambooBee> extends MachineryRenderer<T> {
+    private static final ResourceLocation ID = Common.locate("bamboo_bee");
 
     protected ResourceLocation getModelId() {
         return ID;
@@ -15,10 +15,10 @@ public class TunnelDiggerEntityRenderer<T extends TunnelDiggerEntity> extends Ma
 
     private final ModelPartRenderHandler<T> model = new ModelPartRenderHandler<>();
 
-    public TunnelDiggerEntityRenderer(EntityRendererProvider.Context context) {
+    public BambooBeeRenderer(EntityRendererProvider.Context context) {
         super(context);
 
-        this.shadowRadius = 1.5f;
+        this.shadowRadius = 0.5f;
     }
 
     @Override
@@ -26,3 +26,4 @@ public class TunnelDiggerEntityRenderer<T extends TunnelDiggerEntity> extends Ma
         return model;
     }
 }
+

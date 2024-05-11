@@ -2,8 +2,24 @@
   "itemGroup.immersive_machinery.immersive_machinery_tab": "Immersive Machinery",
 
   "entity.immersive_machinery.tunnel_digger": "Tunnel Digger",
+  "entity.immersive_machinery.bamboo_bee": "Bamboo Bee",
+  "entity.immersive_machinery.redstone_sheep": "Redstone Sheep",
 
   "item.immersive_machinery.tunnel_digger": "Tunnel Digger",
+  "item.immersive_machinery.tunnel_digger.description": "A machine that can dig tunnels with ease.",
 
-  "immersive_machinery.upgrade.drillingSpeed": "%s%% engine power"
+  "item.immersive_machinery.bamboo_bee": "Bamboo Bee",
+  "item.immersive_machinery.bamboo_bee.description": "A small, programmable drone moving around items.",
+
+  "item.immersive_machinery.redstone_sheep": "Redstone Sheep",
+  "item.immersive_machinery.redstone_sheep.description": "Harvests crops in its vicinity and returns to its spawn when full or idle.",
+
+  "item.immersive_machinery.redstone_mechanism": "Redstone Mechanism",
+
+  "immersive_aircraft.slot.im:shards": "Amethyst Shards for improving drill",
+  "immersive_aircraft.slot.im:filter": "Item Filter",
+
+  "immersive_machinery.upgrade.drillingSpeed": "%s%% engine power",
+
+  "gui.immersive_machinery.bamboo_bee.filter": "Configure filter"
 }

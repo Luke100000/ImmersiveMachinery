@@ -1,24 +1,34 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "SSS",
-    "SSS",
-    "HHE"
+    "CBC",
+    "IEN",
+    "TTT"
   ],
   "key": {
-    "S": [
+    "I": [
       {
-        "item": "immersive_aircraft:sail"
+        "item": "minecraft:iron_block"
       }
     ],
-    "H": [
+    "N": [
       {
-        "item": "immersive_aircraft:hull"
+        "item": "minecraft:iron_ingot"
+      }
+    ],
+    "C": [
+      {
+        "item": "minecraft:copper_ingot"
       }
     ],
     "E": [
       {
         "item": "immersive_aircraft:engine"
+      }
+    ],
+    "R": [
+      {
+        "item": "minecraft:rail"
       }
     ]
   },

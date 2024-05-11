@@ -26,3 +26,10 @@ mandatory = true
 versionRange = "[@LOADER_MAJOR@,)"
 ordering = "NONE"
 side = "BOTH"
+
+[[dependencies.immersive_machinery]]
+modId = "immersive_aircraft"
+mandatory = true
+versionRange = "[0.8.0,)"
+ordering = "NONE"
+side = "BOTH"

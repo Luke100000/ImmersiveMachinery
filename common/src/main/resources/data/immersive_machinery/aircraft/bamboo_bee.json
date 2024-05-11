@@ -1,0 +1,23 @@
+{
+  "properties": {
+  },
+  "inventorySlots": [
+    {"type": "boiler", "x": 11, "y": 25},
+    {"type": "upgrade", "x": 11, "y": 45},
+    {"type": "im:filter", "x": 30, "y": 20},
+    {"type": "im:filter", "x": 30, "y": 40},
+    {"type": "im:filter", "x": 30, "y": 60},
+    {"type": "im:filter", "x": 30, "y": 80},
+    {"type": "im:filter", "x": 70, "y": 20, "cols": 4},
+    {"type": "im:filter", "x": 70, "y": 40, "cols": 4},
+    {"type": "im:filter", "x": 70, "y": 60, "cols": 4},
+    {"type": "im:filter", "x": 70, "y": 80, "cols": 4},
+    {"type": "inventory", "x": 11, "y": 60}
+  ],
+  "weaponMounts": [
+  ],
+  "passengerPositions": [
+  ],
+  "boundingBoxes": [
+  ]
+}

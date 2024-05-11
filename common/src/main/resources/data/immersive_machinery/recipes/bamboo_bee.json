@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "R  ",
+    "Q  ",
+    "   "
+  ],
+  "key": {
+    "R": [
+      {
+        "item": "immersive_machinery:redstone_mechanism"
+      }
+    ],
+    "Q": [
+      {
+        "item": "immersive_aircraft:quadrocopter"
+      }
+    ]
+  },
+  "result": {
+    "item": "immersive_machinery:bamboo_bee"
+  }
+}

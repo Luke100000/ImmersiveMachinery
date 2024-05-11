@@ -1,51 +1,27 @@
 {
   "properties": {
-    "stabilizer": 0.1,
-    "yawSpeed": 5.0,
-    "engineSpeed": 0.02,
+    "durability": 3,
+    "fuel": 3.0,
+    "yawSpeed": 7.0,
+    "engineSpeed": 0.1,
     "verticalSpeed": 0.025,
-    "glideFactor": 0.0,
-    "driftDrag": 0.01,
-    "lift": 0.1,
     "rollFactor": 5.0,
-    "wind": 0.05,
-    "mass": 3.0,
-    "groundFriction": 0.5,
-    "horizontalDecay": 0.97,
-    "verticalDecay": 0.925
+    "mass": 5.0,
+    "groundFriction": 0.8
   },
   "inventorySlots": [
-    {"type": "weapon", "x": 50, "y": 14},
-    {"type": "upgrade", "x": 72, "y": 14},
-    {"type": "upgrade", "x": 50, "y": 36},
-    {"type": "upgrade", "x": 72, "y": 36},
-    {"type": "banner", "x": 50, "y": 58},
-    {"type": "dye", "x": 72, "y": 58},
+    {"type": "upgrade", "x": 48, "y": 25},
+    {"type": "im:shards", "x": 48, "y": 50},
     {"type": "boiler", "x": 17, "y": 44},
-    {"type": "inventory", "x": 98, "y": 8, "cols": 4, "rows": 4}
+    {"type": "inventory", "x": 80, "y": 20, "cols": 5, "rows": 3},
+    {"type": "inventory", "x": -80, "y": 8, "cols": 4, "rows": 9, "boxed": true},
+    {"type": "inventory", "x": 186, "y": 8, "cols": 4, "rows": 9, "boxed": true}
   ],
   "weaponMounts": [
-    {
-      "ROTATING": [
-        {"x": 0, "y": 0.2875, "z": 1.001}
-      ],
-      "FRONT": [
-        {"x": -0.5, "y": 0.25, "z": 0.0, "roll": 90},
-        {"x": 0.5, "y": 0.25, "z": 0.0, "roll": -90}
-      ],
-      "DROP": [
-        {"x": -0.5, "y": 0.0, "z": 0.0, "roll": -90},
-        {"x": 0.5, "y": 0.0, "z": 0.0, "roll": 90}
-      ]
-    }
   ],
   "passengerPositions": [
     [
-      {"x": 0.0, "y": -0.1, "z": 0.0}
-    ],
-    [
-      {"x": 0.0, "y": -0.1, "z": 0.4},
-      {"x": 0.0, "y": -0.1, "z": -0.3}
+      {"x": 0.0, "y": 1.125, "z": -1.625}
     ]
   ],
   "boundingBoxes": [
