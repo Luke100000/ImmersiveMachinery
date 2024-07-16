@@ -66,9 +66,9 @@ jobs:
           separator: "+"
           msg: ${{steps.tag.outputs.tag}}
       - name: "Rename Fabric files"
-        run: mv "fabric/build/libs/immersive_aircraft-${{steps.tag.outputs.tag}}.jar" "fabric/build/libs/immersive_aircraft-${{steps.tag.outputs.tag}}-fabric.jar"
+        run: mv "fabric/build/libs/immersive_machinery-${{steps.tag.outputs.tag}}.jar" "fabric/build/libs/immersive_machinery-${{steps.tag.outputs.tag}}-fabric.jar"
       - name: "Rename Forge files"
-        run: mv "forge/build/libs/immersive_aircraft-${{steps.tag.outputs.tag}}.jar" "forge/build/libs/immersive_aircraft-${{steps.tag.outputs.tag}}-forge.jar"
+        run: mv "forge/build/libs/immersive_machinery-${{steps.tag.outputs.tag}}.jar" "forge/build/libs/immersive_machinery-${{steps.tag.outputs.tag}}-forge.jar"
       - name: "Upload Fabric"
         uses: Kir-Antipov/mc-publish@v3.3.0
         if: ${{ success() && startsWith(github.ref, 'refs/tags/') }}
@@ -78,10 +78,10 @@ jobs:
           curseforge-id: 666014
           curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
 
-          name: "[Fabric ${{steps.split.outputs._1}}] Immersive Aircraft - ${{steps.split.outputs._0}}"
+          name: "[Fabric ${{steps.split.outputs._1}}] Immersive Machinery - ${{steps.split.outputs._0}}"
           changelog-file: changelog.md
           version-type: release
-          files: "fabric/build/libs/immersive_aircraft-${{steps.tag.outputs.tag}}-fabric.jar"
+          files: "fabric/build/libs/immersive_machinery-${{steps.tag.outputs.tag}}-fabric.jar"
           loaders: |
             fabric
           game-versions: |
@@ -101,10 +101,10 @@ jobs:
           curseforge-id: 666014
           curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
 
-          name: "[Forge ${{steps.split.outputs._1}}] Immersive Aircraft - ${{steps.split.outputs._0}}"
+          name: "[Forge ${{steps.split.outputs._1}}] Immersive Machinery - ${{steps.split.outputs._0}}"
           changelog-file: changelog.md
           version-type: release
-          files: "forge/build/libs/immersive_aircraft-${{steps.tag.outputs.tag}}-forge.jar"
+          files: "forge/build/libs/immersive_machinery-${{steps.tag.outputs.tag}}-forge.jar"
           loaders: |
             forge
           game-versions: |
