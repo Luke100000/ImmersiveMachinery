@@ -2,6 +2,7 @@ package immersive_machinery;
 
 import immersive_aircraft.cobalt.registration.Registration;
 import immersive_machinery.entity.BambooBee;
+import immersive_machinery.entity.Copperfin;
 import immersive_machinery.entity.RedstoneSheep;
 import immersive_machinery.entity.TunnelDigger;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -31,6 +32,13 @@ public interface Entities {
             .of(RedstoneSheep::new, MobCategory.MISC)
             .sized(0.8f, 0.8f)
             .clientTrackingRange(10)
+            .fireImmune()
+    );
+
+    Supplier<EntityType<Copperfin>> COPPERFIN = register("copperfin", EntityType.Builder
+            .of(Copperfin::new, MobCategory.MISC)
+            .sized(1.5f, 1.5f)
+            .clientTrackingRange(12)
             .fireImmune()
     );
 

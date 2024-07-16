@@ -1,0 +1,27 @@
+{
+  "properties": {
+    "durability": 1,
+    "fuel": 0.5,
+    "yawSpeed": 7.0,
+    "engineSpeed": 0.1,
+    "verticalSpeed": 0.025,
+    "rollFactor": 5.0,
+    "mass": 2.0,
+    "groundFriction": 0.8
+  },
+  "inventorySlots": [
+    {"type": "boiler", "x": 17, "y": 44},
+    {"type": "upgrade", "x": 32, "y": 25},
+    {"type": "upgrade", "x": 48, "y": 25},
+    {"type": "inventory", "x": 80, "y": 20, "cols": 5, "rows": 3}
+  ],
+  "weaponMounts": [
+  ],
+  "passengerPositions": [
+    [
+      {"x": 0.0, "y": 0.0, "z": 0.0}
+    ]
+  ],
+  "boundingBoxes": [
+  ]
+}

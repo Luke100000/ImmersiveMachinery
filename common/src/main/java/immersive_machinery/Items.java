@@ -2,6 +2,7 @@ package immersive_machinery;
 
 import immersive_aircraft.cobalt.registration.Registration;
 import immersive_machinery.entity.BambooBee;
+import immersive_machinery.entity.Copperfin;
 import immersive_machinery.entity.RedstoneSheep;
 import immersive_machinery.entity.TunnelDigger;
 import immersive_machinery.item.BambooBeeItem;
@@ -25,6 +26,9 @@ public interface Items {
 
     Supplier<Item> REDSTONE_SHEEP = register("redstone_sheep", () -> new MachineryItem(vehicleProp(),
             world -> new RedstoneSheep(Entities.REDSTONE_SHEEP.get(), world)));
+
+    Supplier<Item> COPPERFIN = register("copperfin", () -> new MachineryItem(vehicleProp(),
+            world -> new Copperfin(Entities.COPPERFIN.get(), world)));
 
     Supplier<Item> REDSTONE_MECHANISM = register("redstone_mechanism", () -> new Item(new Item.Properties().stacksTo(64)));
     Supplier<Item> DIAMOND_DRILL = register("diamond_drill", () -> new Item(new Item.Properties().stacksTo(8)));
