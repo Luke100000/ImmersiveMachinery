@@ -19,7 +19,24 @@
   "immersive_aircraft.slot.im:shards": "Amethyst Shards for improving drill",
   "immersive_aircraft.slot.im:filter": "Item Filter",
 
-  "immersive_machinery.upgrade.drillingSpeed": "%s%% engine power",
+  "immersive_machinery.upgrade.drillingSpeed": "%s%% drilling speed",
 
-  "gui.immersive_machinery.bamboo_bee.filter": "Configure filter"
+  "gui.immersive_machinery.bamboo_bee.tooltip.help1": "Sneak Right-click on a container to add.",
+  "gui.immersive_machinery.bamboo_bee.tooltip.help2": "Sneak Right-click on any other block to reset.",
+  "gui.immersive_machinery.bamboo_bee.tooltip.header": "Has %s containers:",
+  "gui.immersive_machinery.bamboo_bee.tooltip.input": "→ %s",
+  "gui.immersive_machinery.bamboo_bee.tooltip.output": "← %s",
+  "gui.immersive_machinery.bamboo_bee.positions_cleared": "Cleared positions",
+  "gui.immersive_machinery.bamboo_bee.position_removed": "Removed",
+  "gui.immersive_machinery.bamboo_bee.position_output": "Set as output",
+  "gui.immersive_machinery.bamboo_bee.position_input": "Set as input",
+
+  "gui.immersive_machinery.slot.im_filter": "Item filter",
+  "gui.immersive_machinery.bamboo_bee.help": "Open help page",
+
+  "gui.immersive_machinery.bamboo_bee.whitelist": "Whitelist",
+    "gui.immersive_machinery.bamboo_bee.blacklist": "Blacklist",
+  "gui.immersive_machinery.bamboo_bee.tag": "Filter by NBT Tag",
+  "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first"
 }

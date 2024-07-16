@@ -1,9 +1,13 @@
 package immersive_machinery.client.gui.screen;
 
 import immersive_aircraft.client.gui.VehicleScreen;
+import immersive_aircraft.cobalt.network.NetworkHandler;
 import immersive_aircraft.screen.VehicleScreenHandler;
 import immersive_machinery.Common;
+import immersive_machinery.client.gui.screen.widgets.ToggleImageButton;
 import immersive_machinery.entity.BambooBee;
+import immersive_machinery.network.c2s.BambooBeeConfigurationUpdate;
+import net.minecraft.Util;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
@@ -13,11 +17,18 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import org.jetbrains.annotations.NotNull;
 
+import java.net.URI;
+import java.util.Locale;
+
 public class BambooBeeScreen extends VehicleScreen {
     private final BambooBee bee;
 
     private static final ResourceLocation TEXTURE = Common.locate("textures/gui/container/inventory.png");
-    private static final Component TEXT_FILTER = Component.translatable("gui.immersive_machinery.bamboo_bee.filter");
+
+    private static final Component TEXT_HELP = Component.translatable("gui.immersive_machinery.bamboo_bee.help");
+    private static final Component TEXT_WHITELIST = Component.translatable("gui.immersive_machinery.bamboo_bee.whitelist");
+    private static final Component TEXT_BLACKLIST = Component.translatable("gui.immersive_machinery.bamboo_bee.blacklist");
+    private static final Component TEXT_TAG = Component.translatable("gui.immersive_machinery.bamboo_bee.tag");
 
     public BambooBeeScreen(BambooBee bee, VehicleScreenHandler handler, Inventory inventory, Component title) {
         super(handler, inventory, title);
@@ -25,32 +36,65 @@ public class BambooBeeScreen extends VehicleScreen {
         this.bee = bee;
     }
 
-    protected void addImageButton(int x, int y, int u, int v, Button.OnPress onPress, Component button, Component tooltip, boolean active) {
-        ImageButton inout = new ImageButton(getX() + x, getY() + y, 18, 18, u, v, 18, TEXTURE, 128, 128, onPress, button);
-        inout.setTooltip(Tooltip.create(tooltip));
-        inout.active = active;
-        addRenderableWidget(inout);
+    protected void addImageButton(int x, int y, int u, int v, Button.OnPress onPress, Component text, boolean pressed) {
+        ToggleImageButton b = new ToggleImageButton(getX() + x, getY() + y, 16, 16, u, v, 16, TEXTURE, 128, 128, onPress, text);
+        b.setTooltip(Tooltip.create(text));
+        b.setPressed(pressed);
+        addRenderableWidget(b);
+    }
+
+    @Override
+    public void onClose() {
+        super.onClose();
+
+        BambooBee.Configuration c = bee.getConfiguration();
+        if (c.isDirty()) {
+            NetworkHandler.sendToServer(new BambooBeeConfigurationUpdate(bee));
+        }
     }
 
     @Override
     protected void init() {
         super.init();
 
-        for (int i = 0; i < 3; ++i) {
-            // Input/output
-            addImageButton(40, 20 + i * 20, 18, 18, b -> {
-                b.active = !b.active;
-            }, TEXT_FILTER, TEXT_FILTER, true);
+        clearWidgets();
 
-            // Whitelist/blacklist
-            addImageButton(40 + 18, 20 + i * 20, 54, 18, b -> {
-                b.active = !b.active;
-            }, TEXT_FILTER, TEXT_FILTER, true);
+        BambooBee.Configuration c = bee.getConfiguration();
 
-            // Tag filter
-            addImageButton(40 + 18, 20 + i * 20, 36, 18, b -> {
-                b.active = !b.active;
-            }, TEXT_FILTER, TEXT_FILTER, true);
+        // Whitelist/blacklist
+        addImageButton(50, 20, 48, 80, b -> {
+            c.blacklist = !c.blacklist;
+            c.setDirty();
+            init();
+        }, c.blacklist ? TEXT_BLACKLIST : TEXT_WHITELIST, c.blacklist);
+
+        // Tag filter
+        addImageButton(50, 20 + 18, 32, 80, b -> {
+            c.compareTag = !c.compareTag;
+            c.setDirty();
+        }, TEXT_TAG, c.compareTag);
+
+        // Round-robin
+        addImageButton(50, 20 + 36, 0, 80, b -> {
+            c.order = c.order.next();
+            c.setDirty();
+            init();
+        }, Component.translatable("gui.immersive_machinery.bamboo_bee.order." + c.order.name().toLowerCase(Locale.ROOT)), false);
+
+        // Help button
+        ImageButton help = new ImageButton(getX() + 161, getY() + 4,
+                10, 10,
+                64, 0, 10, TEXTURE, 128, 128,
+                b -> openHelp(), TEXT_HELP);
+        help.setTooltip(Tooltip.create(Component.translatable("gui.immersive_machinery.bamboo_bee.help")));
+        addRenderableWidget(help);
+    }
+
+    private void openHelp() {
+        try {
+            Util.getPlatform().openUri(URI.create("https://github.com/Luke100000/ImmersiveMachinery/wiki/bamboo-bee"));
+        } catch (Exception e) {
+            Common.LOGGER.error("Failed to open help page", e);
         }
     }
 

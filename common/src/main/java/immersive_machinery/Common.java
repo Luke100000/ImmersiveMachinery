@@ -1,9 +1,9 @@
 package immersive_machinery;
 
 import immersive_aircraft.entity.inventory.slots.IngredientSlotDescription;
-import immersive_aircraft.entity.inventory.slots.SlotDescription;
 import immersive_aircraft.resources.bbmodel.BBAnimationVariables;
 import immersive_machinery.network.NetworkManager;
+import immersive_machinery.entity.inventory.TooltippedSlotDescription;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -19,8 +19,8 @@ public final class Common {
     public static NetworkManager networkManager;
 
     // Define slot types
-    public static final String SLOT_FILTER = registerSlotType("im:filter", SlotDescription::new, SlotDescription::new);
-    public static final String SLOT_SHARDS = registerSlotType("im:shards",
+    public static final String SLOT_FILTER = registerSlotType("im_filter", TooltippedSlotDescription::new, TooltippedSlotDescription::new);
+    public static final String SLOT_SHARDS = registerSlotType("im_shards",
             (type, index, x, y, json) -> new IngredientSlotDescription(type, index, x, y, json, Ingredient.of(Items.AMETHYST_SHARD), 64),
             IngredientSlotDescription::new);
 

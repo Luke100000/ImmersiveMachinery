@@ -9,36 +9,24 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BambooBeeConfigurationUpdate extends Message {
     private final int id;
-    private final List<BambooBee.Configuration> configurations;
+    private final BambooBee.Configuration configuration;
 
     public BambooBeeConfigurationUpdate(BambooBee bee) {
         this.id = bee.getId();
-        this.configurations = bee.getConfigurations();
+        this.configuration = bee.getConfiguration();
     }
 
     public BambooBeeConfigurationUpdate(FriendlyByteBuf b) {
         this.id = b.readInt();
-        int size = b.readInt();
-        configurations = new ArrayList<>(size);
-        for (int i = 0; i < size; i++) {
-            BambooBee.Configuration configuration = new BambooBee.Configuration();
-            configuration.decode(b);
-            configurations.add(configuration);
-        }
+        configuration = new BambooBee.Configuration();
+        configuration.decode(b);
     }
 
     @Override
     public void encode(FriendlyByteBuf b) {
-        b.writeInt(id);
-        b.writeInt(configurations.size());
-        for (BambooBee.Configuration configuration : configurations) {
-            configuration.encode(b);
-        }
+        configuration.encode(b);
     }
 
     @Override
@@ -59,8 +47,7 @@ public class BambooBeeConfigurationUpdate extends Message {
 
     public void read(Entity entity) {
         if (entity instanceof BambooBee bee) {
-            bee.getConfigurations().clear();
-            bee.getConfigurations().addAll(configurations);
+            bee.setConfiguration(configuration);
         }
     }
 

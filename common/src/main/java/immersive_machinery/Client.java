@@ -6,7 +6,6 @@ import immersive_aircraft.screen.VehicleScreenHandler;
 import immersive_machinery.client.gui.MachinerySlotRenderer;
 import immersive_machinery.client.gui.screen.BambooBeeScreen;
 import immersive_machinery.entity.BambooBee;
-import immersive_machinery.entity.TunnelDigger;
 import immersive_machinery.network.ClientNetworkManager;
 import net.minecraft.client.Minecraft;
 
@@ -30,6 +29,6 @@ public class Client {
 
         // Register slot renderers
         SlotRenderer.register(Common.SLOT_SHARDS, new MachinerySlotRenderer(0, 0, false));
-        SlotRenderer.register(Common.SLOT_FILTER, new MachinerySlotRenderer(46, 0, true));
+        SlotRenderer.register(Common.SLOT_FILTER, new MachinerySlotRenderer(110, 18, true));
     }
 }
