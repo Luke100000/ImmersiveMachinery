@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "CBC",
+    "CGC",
     "IEN",
-    "TTT"
+    "RRR"
   ],
   "key": {
     "I": [
@@ -24,6 +24,11 @@
     "E": [
       {
         "item": "immersive_aircraft:engine"
+      }
+    ],
+    "G": [
+      {
+        "item": "immersive_aircraft:industrial_gears"
       }
     ],
     "R": [
