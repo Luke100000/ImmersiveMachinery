@@ -1,5 +1,6 @@
 {
   "properties": {
+    "engineSpeed": 0.25
   },
   "inventorySlots": [
     {"type": "boiler", "x": 16, "y": 30},

@@ -3,12 +3,16 @@ package immersive_machinery.entity;
 import immersive_aircraft.resources.bbmodel.BBAnimationVariables;
 import immersive_machinery.Common;
 import immersive_machinery.Items;
+import immersive_machinery.entity.misc.PilotNavigator;
 import immersive_machinery.item.BambooBeeItem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -25,61 +29,104 @@ public class BambooBee extends MachineEntity {
     private Configuration configuration = new Configuration();
     private final List<ContainerPosition> containerPositions = new LinkedList<>();
     private Task currentTask;
+    private final PilotNavigator navigator;
 
     private static final int WORK_SLOT = 16;
 
     public BambooBee(EntityType<? extends MachineEntity> entityType, Level world) {
         super(entityType, world, false);
+
+        navigator = new PilotNavigator(this);
+    }
+
+    @Override
+    protected float getGravity() {
+        return 0.0f;
     }
 
     @Override
     public void tick() {
         super.tick();
 
-        if (currentTask == null) {
-            currentTask = getTask();
-            // todo cooldown!
-        } else {
-            ItemStack carries = getSlot(WORK_SLOT).get();
-            if (carries.isEmpty()) {
-                // Fetch item
-                if (moveTo(currentTask.source())) {
-                    BlockEntity blockEntity = level().getBlockEntity(currentTask.source());
-                    if (blockEntity instanceof Container container) {
-                        ItemStack item = container.getItem(currentTask.slot());
-                        if (match(item, currentTask.stack())) {
-                            ItemStack stack = container.removeItem(currentTask.slot(), item.getCount());
-                            getSlot(WORK_SLOT).set(stack);
-                        } else {
-                            error("Item mismatches!");
-                            currentTask = null;
-                        }
-                    } else {
-                        error("Container gone!");
-                        currentTask = null;
-                    }
-                }
-            } else if (match(carries, currentTask.stack())) {
-                if (moveTo(currentTask.target())) {
-                    BlockEntity blockEntity = level().getBlockEntity(currentTask.target());
-                    if (blockEntity instanceof Container container) {
-                        addToContainer(container, carries);
-                        if (carries.isEmpty()) {
-                            currentTask = null;
-                        } else {
-                            returnItem();
-                        }
-                    } else {
-                        error("Container gone!");
-                        currentTask = null;
-                    }
-                }
+        navigator.tick();
+
+        if (!level().isClientSide) {
+            if (currentTask == null) {
+                currentTask = getTask();
+                // todo cooldown!
             } else {
-                // Wrong item, return to source
-                error("Wrong item, returning to source!");
-                returnItem();
+                ItemStack carries = getSlot(WORK_SLOT).get();
+                if (carries.isEmpty()) {
+                    // Fetch item
+                    if (moveTo(currentTask.source().above())) {
+                        BlockEntity blockEntity = level().getBlockEntity(currentTask.source());
+                        if (blockEntity instanceof Container container) {
+                            ItemStack item = container.getItem(currentTask.slot());
+                            if (match(item, currentTask.stack())) {
+                                ItemStack stack = container.removeItem(currentTask.slot(), item.getCount());
+                                getSlot(WORK_SLOT).set(stack);
+                            } else {
+                                error("Item mismatches!");
+                                currentTask = null;
+                            }
+                        } else {
+                            error("Container gone!");
+                            currentTask = null;
+                        }
+                    }
+                } else if (match(carries, currentTask.stack())) {
+                    // Deposit item
+                    if (moveTo(currentTask.target().above())) {
+                        BlockEntity blockEntity = level().getBlockEntity(currentTask.target());
+                        if (blockEntity instanceof Container container) {
+                            addToContainer(container, carries);
+                            if (carries.isEmpty()) {
+                                currentTask = null;
+                            } else {
+                                returnItem();
+                            }
+                        } else {
+                            error("Container gone!");
+                            currentTask = null;
+                        }
+                    }
+                } else {
+                    // Wrong item, return to source
+                    error("Wrong item, returning to source!");
+                    returnItem();
+                }
             }
+
+            // Move to direction
+            Vec3 d = getDeltaMovement();
+            float yRot = getYRot();
+            setXRot(lerp(getXRot(), (float) (d.y() * 180.0f), 20.0f));
+            setYRot(this.lerp(yRot, (float) Math.toDegrees(Math.atan2(d.z(), d.x())) - 90.0f, 20.0f));
+            setZRot(lerp(getRoll(), (getYRot() - yRot) * 5.0f, 10.0f));
         }
+
+        setEngineTarget(1.0f);
+    }
+
+    @Override
+    public boolean isVehicle() {
+        return true;
+    }
+
+    @Override
+    protected void handleNetherPortal() {
+        // Do nothing
+    }
+
+    private float lerp(float angle, float targetAngle, float maxIncrease) {
+        float f = Mth.wrapDegrees(targetAngle - angle);
+        if (f > maxIncrease) {
+            f = maxIncrease;
+        }
+        if (f < -maxIncrease) {
+            f = -maxIncrease;
+        }
+        return angle + f;
     }
 
     private void addToContainer(Container container, ItemStack carries) {
@@ -104,20 +151,19 @@ public class BambooBee extends MachineEntity {
     }
 
     private void error(String message) {
+        MutableComponent error = Component.translatable("entity.immersive_machinery.bamboo_bee")
+                .withStyle(ChatFormatting.ITALIC, ChatFormatting.GOLD)
+                .append(": ")
+                .append(Component.translatable(message));
         level().players().stream()
                 .filter(player -> player.distanceToSqr(this) < 64)
-                .forEach(player -> player.displayClientMessage(Component.translatable(message), false));
+                .forEach(player -> player.displayClientMessage(error, false));
     }
 
     private boolean moveTo(BlockPos pos) {
+        navigator.moveTo(pos);
         Vec3 center = pos.getCenter();
-        if (distanceToSqr(center) < 1.0) {
-            return true;
-        } else {
-            moveTo(center);
-            setDeltaMovement(center.subtract(getX(), getY(), getZ()).normalize().scale(0.1));
-            return false;
-        }
+        return distanceToSqr(center) < 1.0;
     }
 
     // todo add round robin
@@ -200,13 +246,13 @@ public class BambooBee extends MachineEntity {
     @Override
     protected void addAdditionalSaveData(@NotNull CompoundTag tag) {
         super.addAdditionalSaveData(tag);
-        readConfiguration(tag);
+        writeConfiguration(tag);
     }
 
     @Override
     protected void readAdditionalSaveData(@NotNull CompoundTag tag) {
         super.readAdditionalSaveData(tag);
-        writeConfiguration(tag);
+        readConfiguration(tag);
     }
 
     @Override

@@ -3,6 +3,7 @@ package immersive_machinery.item;
 import immersive_machinery.entity.BambooBee;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
@@ -43,10 +44,9 @@ public class BambooBeeItem extends MachineryItem {
                 CompoundTag tag = positions.getCompound(i);
                 String name = tag.getString("name");
                 boolean input = tag.getBoolean("input");
-
+                String key = "gui.immersive_machinery.bamboo_bee.tooltip." + (input ? "input" : "output");
                 tooltip.add(
-                        Component.translatable("gui.immersive_machinery.bamboo_bee.tooltip." + (input ? "input" : "output"), name)
-                                .withStyle(input ? ChatFormatting.GREEN : ChatFormatting.AQUA)
+                        Component.translatable(key, Component.translatable(name)).withStyle(input ? ChatFormatting.GREEN : ChatFormatting.AQUA)
                 );
             }
         }
@@ -58,8 +58,9 @@ public class BambooBeeItem extends MachineryItem {
 
         if (context.isSecondaryUseActive()) {
             if (!context.getLevel().isClientSide()) {
-                if (blockEntity instanceof Container container) {
-                    recordPosition(context.getItemInHand(), context.getClickedPos(), context.getPlayer(), container.toString());
+                if (blockEntity instanceof Container) {
+                    String name = BuiltInRegistries.BLOCK.getKey(blockEntity.getBlockState().getBlock()).toLanguageKey("block");
+                    recordPosition(context.getItemInHand(), context.getClickedPos(), context.getPlayer(), name);
                 } else {
                     getPositions(context.getItemInHand()).clear();
                     send("positions_cleared", context.getPlayer(), ChatFormatting.GOLD);
@@ -71,19 +72,19 @@ public class BambooBeeItem extends MachineryItem {
         }
     }
 
-    private void recordPosition(ItemStack stack, BlockPos pos, Player player, String container) {
+    private void recordPosition(ItemStack stack, BlockPos pos, Player player, String name) {
         get(stack, pos).ifPresentOrElse(
                 containerTag -> {
                     if (containerTag.getBoolean("input")) {
+                        containerTag.putBoolean("input", false);
+                        send("position_output", player, ChatFormatting.GREEN);
+                    } else {
                         remove(stack, pos);
                         send("position_removed", player, ChatFormatting.GRAY);
-                    } else {
-                        containerTag.putBoolean("input", true);
-                        send("position_output", player, ChatFormatting.GREEN);
                     }
                 },
                 () -> {
-                    add(stack, pos, container);
+                    add(stack, pos, name);
                     send("position_input", player, ChatFormatting.AQUA);
                 }
         );
@@ -104,7 +105,7 @@ public class BambooBeeItem extends MachineryItem {
     }
 
     private void add(ItemStack stack, BlockPos pos, String name) {
-        CompoundTag tag = new BambooBee.ContainerPosition(pos, name, false).toTag();
+        CompoundTag tag = new BambooBee.ContainerPosition(pos, name, true).toTag();
         getPositions(stack).add(tag);
     }
 
