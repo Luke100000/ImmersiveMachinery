@@ -11,9 +11,12 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.debug.DebugRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.pathfinder.Node;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.AABB;
@@ -48,10 +51,20 @@ public class BambooBeeRenderer<T extends BambooBee> extends MachineryRenderer<T>
 
     @Override
     public void render(T entity, float yaw, float tickDelta, PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int light) {
+        Minecraft client = Minecraft.getInstance();
+        if (pathEntity == entity.getId() && path != null && client.getEntityRenderDispatcher().shouldRenderHitBoxes()) {
+            double x = Mth.lerp(tickDelta, entity.xOld, entity.getX());
+            double y = Mth.lerp(tickDelta, entity.yOld, entity.getY());
+            double z = Mth.lerp(tickDelta, entity.zOld, entity.getZ());
+            renderPath(matrixStack, vertexConsumerProvider, path, x, y, z);
+        }
+
         super.render(entity, yaw, tickDelta, matrixStack, vertexConsumerProvider, light);
 
-        if (pathEntity == entity.getId() && path != null && !entity.isInvisible() && !Minecraft.getInstance().showOnlyReducedInfo()) {
-            renderPath(matrixStack, vertexConsumerProvider, path, entity.getX(), entity.getY(), entity.getZ());
+        ItemStack stack = entity.getInventory().getItem(BambooBee.WORK_SLOT);
+        if (!stack.isEmpty()) {
+            matrixStack.translate(0.0, -0.125, 0.0);
+            client.getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, light, OverlayTexture.NO_OVERLAY, matrixStack, vertexConsumerProvider, entity.level(), entity.getId());
         }
     }
 

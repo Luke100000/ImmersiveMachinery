@@ -17,6 +17,7 @@ import net.minecraft.world.level.pathfinder.FlyNodeEvaluator;
 import net.minecraft.world.level.pathfinder.Node;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.level.pathfinder.PathFinder;
+import org.joml.Vector3d;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -34,6 +35,15 @@ public class PilotNavigator {
     private final double speed;
 
     private final int followRange = 128;
+
+    public Vector3d getDirection() {
+        if (isDone()) return null;
+        Node node = currentPath.getNextNode();
+        double dx = node.x - vehicle.getX() + 0.5;
+        double dy = node.y - vehicle.getY() + 0.5 - vehicle.getBbHeight() * 0.5;
+        double dz = node.z - vehicle.getZ() + 0.5;
+        return new Vector3d(dx, dy, dz);
+    }
 
     record Index(BlockPos pos1, BlockPos pos2) {
     }
@@ -110,34 +120,19 @@ public class PilotNavigator {
     }
 
     protected void followThePath() {
-        Node node = currentPath.getNextNode();
-        double dx = node.x - vehicle.getX() + 0.5;
-        double dy = node.y - vehicle.getY() + 0.5 - vehicle.getBbHeight() * 0.5;
-        double dz = node.z - vehicle.getZ() + 0.5;
-        double distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        boolean lastNode = currentPath.getNextNodeIndex() + 1 == currentPath.getNodeCount();
-        double margin = lastNode ? 0.5 : (1.0 - vehicle.getBbWidth()) * 0.475;
+        Vector3d d = getDirection();
+        double distance = d.length();
+        double margin = 0.5;
 
         if (distance < margin * margin) {
             currentPath.advance();
             stuckTime = 0;
-        } else if (!lastNode) {
-            // Skip to the next node if
-            Node nextNode = currentPath.getNode(currentPath.getNextNodeIndex() + 1);
-            double ndx = nextNode.x - node.x;
-            double ndy = nextNode.y - node.y;
-            double ndz = nextNode.z - node.z;
-            double nextSegmentDistance = Math.sqrt(ndx * ndx + ndy * ndy + ndz * ndz);
-            if (distance < nextSegmentDistance) {
-                currentPath.advance();
-                stuckTime = 0;
-            }
         }
 
         // Move
         double s = speed / distance;
         s = Math.min(s, distance);
-        vehicle.setDeltaMovement(dx * s, dy * s, dz * s);
+        vehicle.setDeltaMovement(d.x * s, d.y * s, d.z * s);
     }
 
     private void unstuck() {

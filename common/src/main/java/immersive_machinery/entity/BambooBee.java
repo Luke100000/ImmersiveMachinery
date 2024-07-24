@@ -21,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3d;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class BambooBee extends MachineEntity {
     private Task currentTask;
     private final PilotNavigator navigator;
 
-    private static final int WORK_SLOT = 16;
+    public static final int WORK_SLOT = 1;
 
     public BambooBee(EntityType<? extends MachineEntity> entityType, Level world) {
         super(entityType, world, false);
@@ -41,16 +42,18 @@ public class BambooBee extends MachineEntity {
 
     @Override
     protected float getGravity() {
-        return 0.0f;
+        return (1.0f - getEnginePower()) * super.getGravity();
     }
 
     @Override
     public void tick() {
         super.tick();
 
-        navigator.tick();
-
         if (!level().isClientSide) {
+            if (getEnginePower() > 0.75) {
+                navigator.tick();
+            }
+
             if (currentTask == null) {
                 currentTask = getTask();
                 // todo cooldown!
@@ -98,11 +101,16 @@ public class BambooBee extends MachineEntity {
             }
 
             // Move to direction
-            Vec3 d = getDeltaMovement();
-            float yRot = getYRot();
-            setXRot(lerp(getXRot(), (float) (d.y() * 180.0f), 20.0f));
-            setYRot(this.lerp(yRot, (float) Math.toDegrees(Math.atan2(d.z(), d.x())) - 90.0f, 20.0f));
-            setZRot(lerp(getRoll(), (getYRot() - yRot) * 5.0f, 10.0f));
+            Vector3d d = navigator.getDirection();
+            if (d != null && getEnginePower() > 0.1f) {
+                float yRot = getYRot();
+                setXRot(lerp(getXRot(), (float) (d.y() * 180.0f), 20.0f));
+                setYRot(this.lerp(yRot, (float) Math.toDegrees(Math.atan2(d.z(), d.x())) - 90.0f, 20.0f));
+                setZRot(lerp(getRoll(), (getYRot() - yRot) * 5.0f, 10.0f));
+            } else {
+                setXRot(lerp(getXRot(), 0.0f, 10.0f));
+                setZRot(lerp(getRoll(), 0.0f, 10.0f));
+            }
         }
 
         setEngineTarget(1.0f);
@@ -163,7 +171,13 @@ public class BambooBee extends MachineEntity {
     private boolean moveTo(BlockPos pos) {
         navigator.moveTo(pos);
         Vec3 center = pos.getCenter();
-        return distanceToSqr(center) < 1.0;
+        return Math.max(
+                Math.max(
+                        Math.abs(center.x() - getX()),
+                        Math.abs(center.y() - getY())
+                ),
+                Math.abs(center.z() - getZ())
+        ) < 1.5;
     }
 
     // todo add round robin
@@ -295,7 +309,7 @@ public class BambooBee extends MachineEntity {
     public void setAnimationVariables(float tickDelta) {
         super.setAnimationVariables(tickDelta);
 
-        BBAnimationVariables.set("grabber", 0.0f);
+        BBAnimationVariables.set("grabber", getInventory().getItem(WORK_SLOT).isEmpty() ? -45.0f : 0.0f);
     }
 
     @Override

@@ -4,8 +4,8 @@
   },
   "inventorySlots": [
     {"type": "boiler", "x": 16, "y": 30},
-    {"type": "im_filter", "x": 80, "y": 20, "cols": 5, "rows": 3},
-    {"type": "inventory", "x": 16, "y": 55}
+    {"type": "inventory", "x": 16, "y": 55},
+    {"type": "im_filter", "x": 80, "y": 20, "cols": 5, "rows": 3}
   ],
   "weaponMounts": [
   ],
