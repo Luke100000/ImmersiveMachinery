@@ -1,10 +1,9 @@
 package immersive_machinery.forge;
 
-import immersive_aircraft.Renderer;
-import immersive_aircraft.WeaponRendererRegistry;
-import immersive_aircraft.client.KeyBindings;
 import immersive_machinery.Client;
 import immersive_machinery.Common;
+import immersive_machinery.Renderer;
+import immersive_machinery.client.KeyBindings;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,7 +16,6 @@ public final class ClientForge {
     @SubscribeEvent
     public static void setup(FMLClientSetupEvent event) {
         Renderer.bootstrap();
-        WeaponRendererRegistry.bootstrap();
         Client.init();
     }
 

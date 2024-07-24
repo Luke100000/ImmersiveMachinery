@@ -22,17 +22,15 @@ public final class CommonForge {
         if (!registered) {
             registered = true;
             Common.init();
+
+            Items.bootstrap();
+            Sounds.bootstrap();
+            Entities.bootstrap();
+
+            Messages.loadMessages();
+
+            DEF_REG.register(FMLJavaModLoadingContext.get().getModEventBus());
         }
-    }
-
-    public CommonForge() {
-        Items.bootstrap();
-        Sounds.bootstrap();
-        Entities.bootstrap();
-
-        Messages.loadMessages();
-
-        DEF_REG.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     public static final DeferredRegister<CreativeModeTab> DEF_REG = DeferredRegister.create(CREATIVE_MODE_TAB, Common.MOD_ID);

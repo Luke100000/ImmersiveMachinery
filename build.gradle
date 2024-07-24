@@ -30,6 +30,7 @@ subprojects {
         maven { url "https://maven.teamresourceful.com/repository/maven-public/" }
         maven { url "https://cursemaven.com" }
         maven { url "https://maven.conczin.net/Artifacts" }
+        maven { url "https://maven.wispforest.io/releases" }
     }
 
     dependencies {

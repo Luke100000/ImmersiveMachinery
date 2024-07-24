@@ -29,6 +29,10 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 
     modImplementation("net.conczin:immersive_aircraft:${immersive_aircraft_version}+fabric")
+
+    modImplementation "io.wispforest:owo-lib:${project.owo_lib_version}"
+    modImplementation "io.wispforest:worldmesher:${project.worldmesher_version}"
+    implementation "curse.maven:isometric-renders-483805:4721043" // 0.4.5+1.20
 }
 
 processResources {
