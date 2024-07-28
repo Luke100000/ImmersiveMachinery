@@ -92,7 +92,15 @@ allprojects {
         }
     }
 
+    def exclusionPatterns = ['**/*.aup3', '**/.xdp-*', '**/*.kra', '**/*~*']
     processResources {
-        exclude('*.aup3')
+        exclusionPatterns.each { pattern ->
+            exclude pattern
+        }
+    }
+    sourcesJar {
+        exclusionPatterns.each { pattern ->
+            exclude pattern
+        }
     }
 }
