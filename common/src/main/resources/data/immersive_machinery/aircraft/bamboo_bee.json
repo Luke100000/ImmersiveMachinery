@@ -1,11 +1,10 @@
 {
   "properties": {
-    "engineSpeed": 0.25
+    "engineSpeed": 0.35
   },
   "inventorySlots": [
-    {"type": "boiler", "x": 16, "y": 30},
-    {"type": "inventory", "x": 16, "y": 55},
-    {"type": "im_filter", "x": 80, "y": 20, "cols": 5, "rows": 3}
+    {"type": "inventory", "x": 22, "y": 33},
+    {"type": "im_filter", "x": 71, "y": 20, "cols": 5, "rows": 3}
   ],
   "weaponMounts": [
   ],

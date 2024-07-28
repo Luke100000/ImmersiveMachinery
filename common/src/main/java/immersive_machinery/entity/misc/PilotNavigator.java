@@ -32,6 +32,7 @@ public class PilotNavigator {
 
     private Path currentPath;
     private int stuckTime;
+
     private final double speed;
 
     private final int followRange = 128;
@@ -112,6 +113,8 @@ public class PilotNavigator {
         if (!isDone()) {
             followThePath();
             unstuck();
+        } else {
+            move(0, 0, 0);
         }
     }
 
@@ -132,7 +135,11 @@ public class PilotNavigator {
         // Move
         double s = speed / distance;
         s = Math.min(s, distance);
-        vehicle.setDeltaMovement(d.x * s, d.y * s, d.z * s);
+        move(d.x * s, d.y * s, d.z * s);
+    }
+
+    private void move(double x, double y, double z) {
+        vehicle.setDeltaMovement(x, y, z);
     }
 
     private void unstuck() {

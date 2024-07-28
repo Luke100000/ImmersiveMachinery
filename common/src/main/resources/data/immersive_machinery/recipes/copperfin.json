@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BGB",
+    "GCP",
+    "BEB"
+  ],
+  "key": {
+    "P": [
+      {
+        "item": "immersive_machinery:propeller"
+      }
+    ],
+    "B": [
+      {
+        "item": "minecraft:copper_ingot"
+      }
+    ],
+    "G": [
+      {
+        "tag": "minecraft:glass"
+      }
+    ],
+    "C": [
+      {
+        "item": "minecraft:conduit"
+      }
+    ],
+    "E": [
+      {
+        "item": "immersive_machinery:engine"
+      }
+    ]
+  },
+  "result": {
+    "item": "immersive_machinery:bamboo_bee"
+  }
+}

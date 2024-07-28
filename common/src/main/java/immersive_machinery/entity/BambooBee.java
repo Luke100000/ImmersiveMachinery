@@ -32,7 +32,7 @@ public class BambooBee extends MachineEntity {
     private Task currentTask;
     private final PilotNavigator navigator;
 
-    public static final int WORK_SLOT = 1;
+    public static final int WORK_SLOT = 0;
 
     public BambooBee(EntityType<? extends MachineEntity> entityType, Level world) {
         super(entityType, world, false);
@@ -50,9 +50,7 @@ public class BambooBee extends MachineEntity {
         super.tick();
 
         if (!level().isClientSide) {
-            if (getEnginePower() > 0.75) {
-                navigator.tick();
-            }
+            navigator.tick();
 
             if (currentTask == null) {
                 currentTask = getTask();
@@ -99,21 +97,27 @@ public class BambooBee extends MachineEntity {
                     returnItem();
                 }
             }
+        }
 
-            // Move to direction
-            Vector3d d = navigator.getDirection();
-            if (d != null && getEnginePower() > 0.1f) {
+        // Rotate to direction
+        if (level().isClientSide) {
+            Vector3d d = new Vector3d(
+                    x - secondLastX,
+                    y - secondLastY,
+                    z - secondLastZ
+            ).normalize();
+            if (d.lengthSquared() > 0.0f) {
                 float yRot = getYRot();
-                setXRot(lerp(getXRot(), (float) (d.y() * 180.0f), 20.0f));
-                setYRot(this.lerp(yRot, (float) Math.toDegrees(Math.atan2(d.z(), d.x())) - 90.0f, 20.0f));
-                setZRot(lerp(getRoll(), (getYRot() - yRot) * 5.0f, 10.0f));
+                setXRot(lerp(getXRot(), (float) (d.y() * 90.0f), 5.0f));
+                setYRot(this.lerp(yRot, (float) Math.toDegrees(Math.atan2(d.z(), d.x())) - 90.0f, 10.0f));
+                setZRot(lerp(getRoll(), (getYRot() - yRot) * 2.0f, 2.0f));
             } else {
                 setXRot(lerp(getXRot(), 0.0f, 10.0f));
                 setZRot(lerp(getRoll(), 0.0f, 10.0f));
             }
         }
 
-        setEngineTarget(1.0f);
+        setEngineTarget(currentTask != null ? 1.0f : 0.0f);
     }
 
     @Override

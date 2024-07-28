@@ -23,7 +23,7 @@ public interface Entities {
 
     Supplier<EntityType<BambooBee>> BAMBOO_BEE = register("bamboo_bee", EntityType.Builder
             .of(BambooBee::new, MobCategory.MISC)
-            .sized(0.8f, 0.8f)
+            .sized(0.8f, 0.625f)
             .clientTrackingRange(10)
             .fireImmune()
     );

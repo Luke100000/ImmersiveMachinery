@@ -4,6 +4,7 @@
   "entity.immersive_machinery.tunnel_digger": "Tunnel Digger",
   "entity.immersive_machinery.bamboo_bee": "Bamboo Bee",
   "entity.immersive_machinery.redstone_sheep": "Redstone Sheep",
+  "entity.immersive_machinery.copperfin": "Copper Fin",
 
   "item.immersive_machinery.tunnel_digger": "Tunnel Digger",
   "item.immersive_machinery.tunnel_digger.description": "A machine that can dig tunnels with ease.",
@@ -13,6 +14,9 @@
 
   "item.immersive_machinery.redstone_sheep": "Redstone Sheep",
   "item.immersive_machinery.redstone_sheep.description": "Harvests crops in its vicinity and returns to its spawn when full or idle.",
+
+  "item.immersive_machinery.copperfin": "Copper Fin",
+  "item.immersive_machinery.copperfin.description": "Powered by a conduit, it allows for easier underwater travel and work.",
 
   "item.immersive_machinery.redstone_mechanism": "Redstone Mechanism",
 
