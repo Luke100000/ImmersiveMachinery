@@ -31,7 +31,9 @@ public interface Items {
             world -> new Copperfin(Entities.COPPERFIN.get(), world)));
 
     Supplier<Item> REDSTONE_MECHANISM = register("redstone_mechanism", () -> new Item(new Item.Properties().stacksTo(64)));
+    Supplier<Item> IRON_DRILL = register("iron_drill", () -> new Item(new Item.Properties().stacksTo(8)));
     Supplier<Item> DIAMOND_DRILL = register("diamond_drill", () -> new Item(new Item.Properties().stacksTo(8)));
+    Supplier<Item> NETHERITE_DRILL = register("netherite_drill", () -> new Item(new Item.Properties().stacksTo(8)));
 
     static void bootstrap() {
     }

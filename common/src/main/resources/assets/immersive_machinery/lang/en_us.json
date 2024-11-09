@@ -19,6 +19,9 @@
   "item.immersive_machinery.copperfin.description": "Powered by a conduit, it allows for easier underwater travel and work.",
 
   "item.immersive_machinery.redstone_mechanism": "Redstone Mechanism",
+  "item.immersive_machinery.iron_drill": "Iron Drill",
+  "item.immersive_machinery.diamond_drill": "Diamond Drill",
+  "item.immersive_machinery.netherite_drill": "Netherite Drill",
 
   "immersive_aircraft.slot.im:shards": "Amethyst Shards for improving drill",
   "immersive_aircraft.slot.im:filter": "Item Filter",
@@ -36,6 +39,8 @@
   "gui.immersive_machinery.bamboo_bee.position_input": "Set as input",
 
   "gui.immersive_machinery.slot.im_filter": "Item filter",
+  "gui.immersive_machinery.slot.im_shards": "Amethyst shards for 2x speed",
+
   "gui.immersive_machinery.bamboo_bee.help": "Open help page",
 
   "gui.immersive_machinery.bamboo_bee.whitelist": "Whitelist",

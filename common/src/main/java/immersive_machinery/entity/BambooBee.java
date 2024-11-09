@@ -3,6 +3,7 @@ package immersive_machinery.entity;
 import immersive_aircraft.resources.bbmodel.BBAnimationVariables;
 import immersive_machinery.Common;
 import immersive_machinery.Items;
+import immersive_machinery.Utils;
 import immersive_machinery.entity.misc.PilotNavigator;
 import immersive_machinery.item.BambooBeeItem;
 import net.minecraft.ChatFormatting;
@@ -12,7 +13,6 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -21,7 +21,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Vector3d;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -31,13 +30,14 @@ public class BambooBee extends MachineEntity {
     private final List<ContainerPosition> containerPositions = new LinkedList<>();
     private Task currentTask;
     private final PilotNavigator navigator;
+    private int searchCooldown = 0;
 
     public static final int WORK_SLOT = 0;
 
     public BambooBee(EntityType<? extends MachineEntity> entityType, Level world) {
         super(entityType, world, false);
 
-        navigator = new PilotNavigator(this);
+        navigator = new PilotNavigator(this, true);
     }
 
     @Override
@@ -53,8 +53,15 @@ public class BambooBee extends MachineEntity {
             navigator.tick();
 
             if (currentTask == null) {
-                currentTask = getTask();
-                // todo cooldown!
+                if (searchCooldown > 0) {
+                    searchCooldown--;
+                } else {
+                    currentTask = getTask();
+
+                    if (currentTask == null) {
+                        searchCooldown = 60;
+                    }
+                }
             } else {
                 ItemStack carries = getSlot(WORK_SLOT).get();
                 if (carries.isEmpty()) {
@@ -101,19 +108,18 @@ public class BambooBee extends MachineEntity {
 
         // Rotate to direction
         if (level().isClientSide) {
-            Vector3d d = new Vector3d(
-                    x - secondLastX,
-                    y - secondLastY,
-                    z - secondLastZ
-            ).normalize();
-            if (d.lengthSquared() > 0.0f) {
+            double dx = x - secondLastX;
+            double dy = y - secondLastY;
+            double dz = z - secondLastZ;
+            double d2 = dx * dx + dy * dy + dz * dz;
+            if (d2 > 0.0f) {
                 float yRot = getYRot();
-                setXRot(lerp(getXRot(), (float) (d.y() * 90.0f), 5.0f));
-                setYRot(this.lerp(yRot, (float) Math.toDegrees(Math.atan2(d.z(), d.x())) - 90.0f, 10.0f));
-                setZRot(lerp(getRoll(), (getYRot() - yRot) * 2.0f, 2.0f));
+                setXRot(Utils.lerpAngle(getXRot(), (float) (dy * 90.0f), 5.0f));
+                setYRot(Utils.lerpAngle(yRot, (float) Math.toDegrees(Math.atan2(dz, dx)) - 90.0f, 10.0f));
+                setZRot(Utils.lerpAngle(getRoll(), (getYRot() - yRot) * 2.0f, 2.0f));
             } else {
-                setXRot(lerp(getXRot(), 0.0f, 10.0f));
-                setZRot(lerp(getRoll(), 0.0f, 10.0f));
+                setXRot(Utils.lerpAngle(getXRot(), 0.0f, 10.0f));
+                setZRot(Utils.lerpAngle(getRoll(), 0.0f, 10.0f));
             }
         }
 
@@ -128,17 +134,6 @@ public class BambooBee extends MachineEntity {
     @Override
     protected void handleNetherPortal() {
         // Do nothing
-    }
-
-    private float lerp(float angle, float targetAngle, float maxIncrease) {
-        float f = Mth.wrapDegrees(targetAngle - angle);
-        if (f > maxIncrease) {
-            f = maxIncrease;
-        }
-        if (f < -maxIncrease) {
-            f = -maxIncrease;
-        }
-        return angle + f;
     }
 
     private void addToContainer(Container container, ItemStack carries) {

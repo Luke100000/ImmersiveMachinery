@@ -28,9 +28,9 @@ public class MachinerySlotRenderer implements SlotRenderer.Renderer {
             context.blit(TEXTURE, x, y, u, v, s, s, 128, 128);
         } else {
             if (small) {
-                context.blit(TEXTURE, x, y, 28, 36, s, s, 128, 128);
+                context.blit(TEXTURE, x, y, 110, 0, s, s, 128, 128);
             } else {
-                context.blit(TEXTURE, x, y, 22, 0, s, s, 128, 128);
+                context.blit(TEXTURE, x, y, 0, 0, s, s, 128, 128);
             }
         }
     }

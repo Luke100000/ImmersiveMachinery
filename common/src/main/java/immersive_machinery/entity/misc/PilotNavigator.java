@@ -5,7 +5,7 @@ import com.google.common.cache.CacheBuilder;
 import immersive_aircraft.entity.InventoryVehicleEntity;
 import immersive_aircraft.entity.VehicleEntity;
 import immersive_aircraft.item.upgrade.VehicleStat;
-import immersive_machinery.client.render.entity.renderer.BambooBeeRenderer;
+import immersive_machinery.client.render.entity.renderer.PathDebugRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -13,10 +13,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Bee;
 import net.minecraft.world.level.PathNavigationRegion;
-import net.minecraft.world.level.pathfinder.FlyNodeEvaluator;
-import net.minecraft.world.level.pathfinder.Node;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.level.pathfinder.PathFinder;
+import net.minecraft.world.level.pathfinder.*;
 import org.joml.Vector3d;
 
 import java.util.LinkedList;
@@ -38,11 +35,10 @@ public class PilotNavigator {
     private final int followRange = 128;
 
     public Vector3d getDirection() {
-        if (isDone()) return null;
-        Node node = currentPath.getNextNode();
-        double dx = node.x - vehicle.getX() + 0.5;
-        double dy = node.y - vehicle.getY() + 0.5 - vehicle.getBbHeight() * 0.5;
-        double dz = node.z - vehicle.getZ() + 0.5;
+        BlockPos node = currentPath.isDone() ? currentPath.getTarget() : currentPath.getNextNodePos();
+        double dx = node.getX() - vehicle.getX() + 0.5;
+        double dy = node.getY() - vehicle.getY();
+        double dz = node.getZ() - vehicle.getZ() + 0.5;
         return new Vector3d(dx, dy, dz);
     }
 
@@ -54,7 +50,7 @@ public class PilotNavigator {
             .expireAfterWrite(5, TimeUnit.MINUTES)
             .build();
 
-    public PilotNavigator(InventoryVehicleEntity vehicle) {
+    public PilotNavigator(InventoryVehicleEntity vehicle, boolean isFlying) {
         this.vehicle = vehicle;
         this.pilot = new Bee(EntityType.BEE, vehicle.level());
 
@@ -65,19 +61,19 @@ public class PilotNavigator {
         }
 
         // Initialize pathfinder
-        FlyNodeEvaluator nodeEvaluator = new FlyNodeEvaluator();
+        NodeEvaluator nodeEvaluator = isFlying ? new FlyNodeEvaluator() : new WalkNodeEvaluator();
         this.pathFinder = new PathFinder(nodeEvaluator, followRange * 16);
         this.speed = vehicle.getProperties().get(VehicleStat.ENGINE_SPEED);
     }
 
     public void moveTo(BlockPos pos) {
-        if (!pos.equals(target)) {
+        if (!pos.equals(target) && !pos.equals(vehicle.blockPosition())) {
             target = pos;
             stuckTime = 0;
             currentPath = findPath(pos);
 
             // Debug
-            BambooBeeRenderer.setPath(currentPath, vehicle);
+            PathDebugRenderer.INSTANCE.setPath(currentPath, vehicle);
         }
     }
 
@@ -110,7 +106,7 @@ public class PilotNavigator {
     }
 
     public void tick() {
-        if (!isDone()) {
+        if (currentPath != null) {
             followThePath();
             unstuck();
         } else {
@@ -118,18 +114,20 @@ public class PilotNavigator {
         }
     }
 
-    private boolean isDone() {
-        return currentPath == null || currentPath.isDone();
-    }
-
     protected void followThePath() {
         Vector3d d = getDirection();
         double distance = d.length();
-        double margin = 0.5;
+        double margin = 0.1;
 
-        if (distance < margin * margin) {
-            currentPath.advance();
-            stuckTime = 0;
+        // Target reached
+        if (distance < margin) {
+            if (currentPath.isDone()) {
+                currentPath = null;
+                target = null;
+            } else {
+                currentPath.advance();
+                stuckTime = 0;
+            }
         }
 
         // Move
@@ -139,6 +137,7 @@ public class PilotNavigator {
     }
 
     private void move(double x, double y, double z) {
+        // TODO: RedstoneSheep can not fly
         vehicle.setDeltaMovement(x, y, z);
     }
 

@@ -13,7 +13,6 @@ import org.apache.logging.log4j.Logger;
 import static immersive_aircraft.entity.inventory.VehicleInventoryDescription.registerSlotType;
 
 public final class Common {
-    public static final String SHORT_MOD_ID = "ic_ma";
     public static final String MOD_ID = "immersive_machinery";
     public static final Logger LOGGER = LogManager.getLogger();
     public static NetworkManager networkManager;

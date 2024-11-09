@@ -3,6 +3,7 @@ package immersive_machinery;
 import immersive_machinery.entity.MachineEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Block;
@@ -30,9 +31,7 @@ public class Utils {
             // Mine the block
             BlockEntity blockEntity = blockState.hasBlockEntity() ? level.getBlockEntity(pos) : null;
             Block.getDrops(blockState, level, pos, blockEntity, vehicle, ItemStack.EMPTY).forEach(itemStack -> {
-                if (vehicle.getInventory().canAddItem(itemStack)) {
-                    itemStack = vehicle.addItem(itemStack);
-                }
+                itemStack = vehicle.addItem(itemStack);
                 if (!itemStack.isEmpty()) {
                     popResource(level, pos, itemStack);
                 }
@@ -45,5 +44,16 @@ public class Utils {
             }
         }
         return Math.max(destroySpeed, 0.0f);
+    }
+
+    public static float lerpAngle(float angle, float targetAngle, float maxIncrease) {
+        float f = Mth.wrapDegrees(targetAngle - angle);
+        if (f > maxIncrease) {
+            f = maxIncrease;
+        }
+        if (f < -maxIncrease) {
+            f = -maxIncrease;
+        }
+        return angle + f;
     }
 }
