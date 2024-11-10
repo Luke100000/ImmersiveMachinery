@@ -4,7 +4,6 @@ import immersive_aircraft.resources.bbmodel.BBAnimationVariables;
 import immersive_machinery.Common;
 import immersive_machinery.Items;
 import immersive_machinery.Utils;
-import immersive_machinery.entity.misc.PilotNavigator;
 import immersive_machinery.item.BambooBeeItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -19,25 +18,21 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class BambooBee extends MachineEntity {
+public class BambooBee extends NavigatingMachine {
     private Configuration configuration = new Configuration();
     private final List<ContainerPosition> containerPositions = new LinkedList<>();
     private Task currentTask;
-    private final PilotNavigator navigator;
     private int searchCooldown = 0;
 
     public static final int WORK_SLOT = 0;
 
     public BambooBee(EntityType<? extends MachineEntity> entityType, Level world) {
-        super(entityType, world, false);
-
-        navigator = new PilotNavigator(this, true);
+        super(entityType, world, false, true);
     }
 
     @Override
@@ -49,61 +44,8 @@ public class BambooBee extends MachineEntity {
     public void tick() {
         super.tick();
 
-        if (!level().isClientSide) {
-            navigator.tick();
-
-            if (currentTask == null) {
-                if (searchCooldown > 0) {
-                    searchCooldown--;
-                } else {
-                    currentTask = getTask();
-
-                    if (currentTask == null) {
-                        searchCooldown = 60;
-                    }
-                }
-            } else {
-                ItemStack carries = getSlot(WORK_SLOT).get();
-                if (carries.isEmpty()) {
-                    // Fetch item
-                    if (moveTo(currentTask.source().above())) {
-                        BlockEntity blockEntity = level().getBlockEntity(currentTask.source());
-                        if (blockEntity instanceof Container container) {
-                            ItemStack item = container.getItem(currentTask.slot());
-                            if (match(item, currentTask.stack())) {
-                                ItemStack stack = container.removeItem(currentTask.slot(), item.getCount());
-                                getSlot(WORK_SLOT).set(stack);
-                            } else {
-                                error("Item mismatches!");
-                                currentTask = null;
-                            }
-                        } else {
-                            error("Container gone!");
-                            currentTask = null;
-                        }
-                    }
-                } else if (match(carries, currentTask.stack())) {
-                    // Deposit item
-                    if (moveTo(currentTask.target().above())) {
-                        BlockEntity blockEntity = level().getBlockEntity(currentTask.target());
-                        if (blockEntity instanceof Container container) {
-                            addToContainer(container, carries);
-                            if (carries.isEmpty()) {
-                                currentTask = null;
-                            } else {
-                                returnItem();
-                            }
-                        } else {
-                            error("Container gone!");
-                            currentTask = null;
-                        }
-                    }
-                } else {
-                    // Wrong item, return to source
-                    error("Wrong item, returning to source!");
-                    returnItem();
-                }
-            }
+        if (level().isClientSide) {
+            return;
         }
 
         // Rotate to direction
@@ -124,6 +66,58 @@ public class BambooBee extends MachineEntity {
         }
 
         setEngineTarget(currentTask != null ? 1.0f : 0.0f);
+
+        if (currentTask == null) {
+            // Find task
+            searchCooldown--;
+            if (searchCooldown <= 0) {
+                currentTask = getTask();
+                if (currentTask == null) {
+                    searchCooldown = 60;
+                }
+            }
+        } else {
+            ItemStack carries = getSlot(WORK_SLOT).get();
+            if (carries.isEmpty()) {
+                // Fetch item
+                if (moveTowards(currentTask.source())) {
+                    BlockEntity blockEntity = level().getBlockEntity(currentTask.source());
+                    if (blockEntity instanceof Container container) {
+                        ItemStack item = container.getItem(currentTask.slot());
+                        if (match(item, currentTask.stack())) {
+                            ItemStack stack = container.removeItem(currentTask.slot(), item.getCount());
+                            getSlot(WORK_SLOT).set(stack);
+                        } else {
+                            error("Item mismatches!");
+                            currentTask = null;
+                        }
+                    } else {
+                        error("Container gone!");
+                        currentTask = null;
+                    }
+                }
+            } else if (match(carries, currentTask.stack())) {
+                // Deposit item
+                if (moveTowards(currentTask.target())) {
+                    BlockEntity blockEntity = level().getBlockEntity(currentTask.target());
+                    if (blockEntity instanceof Container container) {
+                        addToContainer(container, carries);
+                        if (carries.isEmpty()) {
+                            currentTask = null;
+                        } else {
+                            returnItem();
+                        }
+                    } else {
+                        error("Container gone!");
+                        currentTask = null;
+                    }
+                }
+            } else {
+                // Wrong item, return to source
+                error("Wrong item, returning to source!");
+                returnItem();
+            }
+        }
     }
 
     @Override
@@ -165,18 +159,6 @@ public class BambooBee extends MachineEntity {
         level().players().stream()
                 .filter(player -> player.distanceToSqr(this) < 64)
                 .forEach(player -> player.displayClientMessage(error, false));
-    }
-
-    private boolean moveTo(BlockPos pos) {
-        navigator.moveTo(pos);
-        Vec3 center = pos.getCenter();
-        return Math.max(
-                Math.max(
-                        Math.abs(center.x() - getX()),
-                        Math.abs(center.y() - getY())
-                ),
-                Math.abs(center.z() - getZ())
-        ) < 1.5;
     }
 
     // todo add round robin

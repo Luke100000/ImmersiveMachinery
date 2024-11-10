@@ -3,7 +3,6 @@ package immersive_machinery.entity;
 import immersive_machinery.Items;
 import immersive_machinery.Utils;
 import immersive_machinery.config.Config;
-import immersive_machinery.entity.misc.PilotNavigator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -20,15 +19,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class RedstoneSheep extends MachineEntity {
+public class RedstoneSheep extends NavigatingMachine {
     private static final int INVENTORY_BUFFER_SPACE = 3;
 
-    private final PilotNavigator navigator;
     private BlockPos home;
     private BlockPos task;
     private int reloadingTicks;
@@ -40,11 +37,9 @@ public class RedstoneSheep extends MachineEntity {
     private Set<BlockPos> backlogSet = new HashSet<>();
 
     public RedstoneSheep(EntityType<? extends MachineEntity> entityType, Level world) {
-        super(entityType, world, false);
+        super(entityType, world, false, false);
 
         setMaxUpStep(0.1f);
-
-        this.navigator = new PilotNavigator(this, false);
     }
 
     @Override
@@ -66,9 +61,6 @@ public class RedstoneSheep extends MachineEntity {
         if (level().isClientSide) {
             return;
         }
-
-        // Update navigator and movement controller
-        this.navigator.tick();
 
         // Time to return home
         if (isFuelLow() || isInventoryFull()) {
@@ -251,18 +243,6 @@ public class RedstoneSheep extends MachineEntity {
             }
         }
         return i;
-    }
-
-    private boolean moveTo(BlockPos pos) {
-        navigator.moveTo(pos);
-        Vec3 center = pos.getCenter().subtract(0.0, 0.5, 0.0);
-        return Math.max(
-                Math.max(
-                        Math.abs(center.x() - getX()),
-                        Math.abs(center.y() - getY())
-                ),
-                Math.abs(center.z() - getZ())
-        ) < 0.5;
     }
 
     @Override

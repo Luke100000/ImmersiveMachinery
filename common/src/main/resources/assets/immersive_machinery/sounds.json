@@ -1,42 +1,34 @@
 {
-  "engine_start": {
+  "tunnel_digger": {
     "sounds": [
-      "immersive_machinery:engine_start"
+      {
+        "name": "immersive_machinery:tunnel_digger",
+        "attenuation_distance": 24
+      }
     ]
   },
-  "propeller": {
+  "tunnel_digger_drilling": {
     "sounds": [
-      "immersive_machinery:propeller"
+      {
+        "name": "immersive_machinery:tunnel_digger_drilling",
+        "attenuation_distance": 24
+      }
     ]
   },
-  "propeller_small": {
+  "copper_fin_engine": {
     "sounds": [
-      "immersive_machinery:propeller_small"
+      {
+        "name": "immersive_machinery:copper_fin_engine",
+        "attenuation_distance": 24
+      }
     ]
   },
-  "propeller_tiny": {
+  "copper_fin_startup": {
     "sounds": [
-      "immersive_machinery:propeller_tiny"
-    ]
-  },
-  "woosh": {
-    "sounds": [
-      "immersive_machinery:woosh"
-    ]
-  },
-  "cannon": {
-    "sounds": [
-      "immersive_machinery:cannon"
-    ]
-  },
-  "repair": {
-    "sounds": [
-      "immersive_machinery:repair_0",
-      "immersive_machinery:repair_1",
-      "immersive_machinery:repair_2",
-      "immersive_machinery:repair_3",
-      "immersive_machinery:repair_4",
-      "immersive_machinery:repair_5"
+      {
+        "name": "immersive_machinery:copper_fin_startup",
+        "attenuation_distance": 24
+      }
     ]
   }
 }

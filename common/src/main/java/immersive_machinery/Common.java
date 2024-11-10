@@ -1,6 +1,7 @@
 package immersive_machinery;
 
 import immersive_aircraft.entity.inventory.slots.IngredientSlotDescription;
+import immersive_aircraft.item.upgrade.VehicleStat;
 import immersive_aircraft.resources.bbmodel.BBAnimationVariables;
 import immersive_machinery.network.NetworkManager;
 import immersive_machinery.entity.inventory.TooltippedSlotDescription;
@@ -11,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static immersive_aircraft.entity.inventory.VehicleInventoryDescription.registerSlotType;
+import static immersive_aircraft.item.upgrade.VehicleStat.register;
 
 public final class Common {
     public static final String MOD_ID = "immersive_machinery";
@@ -22,6 +24,10 @@ public final class Common {
     public static final String SLOT_SHARDS = registerSlotType("im_shards",
             (type, index, x, y, json) -> new IngredientSlotDescription(type, index, x, y, json, Ingredient.of(Items.AMETHYST_SHARD), 64),
             IngredientSlotDescription::new);
+
+
+    // Register vehicle properties
+    public static final VehicleStat DRILLING_SPEED = register("drillingSpeed", true, 1.0f);
 
     public static void init() {
         // Register animation variables

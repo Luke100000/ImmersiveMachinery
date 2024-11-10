@@ -4,6 +4,7 @@ import immersive_aircraft.cobalt.network.NetworkHandler;
 import immersive_aircraft.resources.bbmodel.BBAnimationVariables;
 import immersive_machinery.Common;
 import immersive_machinery.Items;
+import immersive_machinery.Sounds;
 import immersive_machinery.Utils;
 import immersive_machinery.client.KeyBindings;
 import immersive_machinery.config.Config;
@@ -12,6 +13,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
@@ -111,13 +113,13 @@ public class TunnelDigger extends MachineEntity {
         if (level().random.nextDouble() < chance) {
             boolean fire = level().random.nextFloat() < engineSpinUpStrength;
             Matrix4f transform = getVehicleTransform();
-            Vector4f pos = transformPosition(transform, 1.25f, -0.75f, -1.375f);
+            Vector4f pos = transformPosition(transform, 1.125f, 2.7f, -1.4375f);
             level().addParticle(fire ? ParticleTypes.SMALL_FLAME : ParticleTypes.SMOKE, pos.x, pos.y, pos.z, 0.0, 0.1, 0.0);
         }
     }
 
     public float getDrillSpeed() {
-        return hasShards() ? 10.0f : 5.0f;
+        return (hasShards() ? 10.0f : 5.0f) * this.getProperties().get(Common.DRILLING_SPEED);
     }
 
     public boolean hasShards() {
@@ -217,5 +219,10 @@ public class TunnelDigger extends MachineEntity {
     @Override
     public double getZoom() {
         return 4.0;
+    }
+
+    @Override
+    protected SoundEvent getEngineSound() {
+        return drilling ? Sounds.TUNNEL_DIGGER_DRILLING.get() : Sounds.TUNNEL_DIGGER.get();
     }
 }

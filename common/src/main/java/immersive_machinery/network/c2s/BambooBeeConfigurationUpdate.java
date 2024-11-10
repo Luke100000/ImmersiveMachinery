@@ -26,6 +26,7 @@ public class BambooBeeConfigurationUpdate extends Message {
 
     @Override
     public void encode(FriendlyByteBuf b) {
+        b.writeInt(id);
         configuration.encode(b);
     }
 

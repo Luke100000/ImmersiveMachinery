@@ -22,22 +22,23 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class PilotNavigator {
+    private final int followRange = 128;
+
     private final VehicleEntity vehicle;
     private final Mob pilot;
     private final PathFinder pathFinder;
-    private BlockPos target;
+    private final double speed;
+    private final boolean isFlying;
 
+    private BlockPos target;
     private Path currentPath;
     private int stuckTime;
 
-    private final double speed;
-
-    private final int followRange = 128;
 
     public Vector3d getDirection() {
         BlockPos node = currentPath.isDone() ? currentPath.getTarget() : currentPath.getNextNodePos();
         double dx = node.getX() - vehicle.getX() + 0.5;
-        double dy = node.getY() - vehicle.getY();
+        double dy = isFlying ? node.getY() - vehicle.getY() : 0;
         double dz = node.getZ() - vehicle.getZ() + 0.5;
         return new Vector3d(dx, dy, dz);
     }
@@ -64,6 +65,7 @@ public class PilotNavigator {
         NodeEvaluator nodeEvaluator = isFlying ? new FlyNodeEvaluator() : new WalkNodeEvaluator();
         this.pathFinder = new PathFinder(nodeEvaluator, followRange * 16);
         this.speed = vehicle.getProperties().get(VehicleStat.ENGINE_SPEED);
+        this.isFlying = isFlying;
     }
 
     public void moveTo(BlockPos pos) {
@@ -131,13 +133,12 @@ public class PilotNavigator {
         }
 
         // Move
-        double s = speed / distance;
+        double s = speed / (distance + 0.00001);
         s = Math.min(s, distance);
         move(d.x * s, d.y * s, d.z * s);
     }
 
     private void move(double x, double y, double z) {
-        // TODO: RedstoneSheep can not fly
         vehicle.setDeltaMovement(x, y, z);
     }
 
