@@ -12,6 +12,7 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -87,6 +88,7 @@ public class BambooBee extends NavigatingMachine {
                         if (match(item, currentTask.stack())) {
                             ItemStack stack = container.removeItem(currentTask.slot(), item.getCount());
                             getSlot(WORK_SLOT).set(stack);
+                            playSound(SoundEvents.BARREL_OPEN);
                         } else {
                             error("Item mismatches!");
                             currentTask = null;
@@ -102,6 +104,7 @@ public class BambooBee extends NavigatingMachine {
                     BlockEntity blockEntity = level().getBlockEntity(currentTask.target());
                     if (blockEntity instanceof Container container) {
                         addToContainer(container, carries);
+                        playSound(SoundEvents.BARREL_CLOSE);
                         if (carries.isEmpty()) {
                             currentTask = null;
                         } else {

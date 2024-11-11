@@ -113,7 +113,7 @@ public class TunnelDigger extends MachineEntity {
         if (level().random.nextDouble() < chance) {
             boolean fire = level().random.nextFloat() < engineSpinUpStrength;
             Matrix4f transform = getVehicleTransform();
-            Vector4f pos = transformPosition(transform, 1.125f, 2.7f, -1.4375f);
+            Vector4f pos = transformPosition(transform, 1.0f, 2.7f, -1.4375f);
             level().addParticle(fire ? ParticleTypes.SMALL_FLAME : ParticleTypes.SMOKE, pos.x, pos.y, pos.z, 0.0, 0.1, 0.0);
         }
     }
@@ -191,11 +191,12 @@ public class TunnelDigger extends MachineEntity {
 
     @Override
     protected float getSpeed() {
+        // TODO: currentlyDrilling needs to be a syed flag
         return currentlyDrilling ? 0.0f : super.getSpeed();
     }
 
     public boolean isTrackMoving() {
-        return getSpeed() * pressingInterpolatedZ.getSmooth() > 0.1f;
+        return getSpeed() * pressingInterpolatedZ.getSmooth() > 0.001f;
     }
 
     @Override
