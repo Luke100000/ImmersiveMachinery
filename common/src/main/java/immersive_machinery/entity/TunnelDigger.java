@@ -109,12 +109,14 @@ public class TunnelDigger extends MachineEntity {
         setMaxUpStep(drillY > 0 ? 1.1f : 0.55f);
 
         // Exhaust particles
-        double chance = engineSpinUpStrength + getEnginePower();
-        if (level().random.nextDouble() < chance) {
-            boolean fire = level().random.nextFloat() < engineSpinUpStrength;
-            Matrix4f transform = getVehicleTransform();
-            Vector4f pos = transformPosition(transform, 1.0f, 2.7f, -1.4375f);
-            level().addParticle(fire ? ParticleTypes.SMALL_FLAME : ParticleTypes.SMOKE, pos.x, pos.y, pos.z, 0.0, 0.1, 0.0);
+        if (level().isClientSide()) {
+            double chance = engineSpinUpStrength + getEnginePower();
+            if (level().random.nextDouble() < chance) {
+                boolean fire = level().random.nextFloat() < engineSpinUpStrength;
+                Matrix4f transform = getVehicleTransform();
+                Vector4f pos = transformPosition(transform, 1.0f, 2.45f, -1.4375f);
+                level().addParticle(fire ? ParticleTypes.SMALL_FLAME : ParticleTypes.SMOKE, pos.x, pos.y, pos.z, 0.0, 0.1, 0.0);
+            }
         }
     }
 
@@ -167,6 +169,7 @@ public class TunnelDigger extends MachineEntity {
         }
 
         // Turn off drill
+        // TODO: that needs to be sent to the server
         if (KeyBindings.HORN.consumeClick()) {
             drillOn = !drillOn;
             LivingEntity pilot = getControllingPassenger();

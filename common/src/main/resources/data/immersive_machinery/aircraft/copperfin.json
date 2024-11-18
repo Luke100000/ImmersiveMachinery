@@ -2,18 +2,20 @@
   "properties": {
     "durability": 1,
     "fuel": 0.5,
-    "yawSpeed": 7.0,
-    "engineSpeed": 0.1,
-    "verticalSpeed": 0.025,
+    "yawSpeed": 10.0,
+    "engineSpeed": 0.075,
+    "verticalSpeed": 0.35,
     "rollFactor": 5.0,
     "mass": 2.0,
     "groundFriction": 0.8
   },
   "inventorySlots": [
-    {"type": "boiler", "x": 17, "y": 44},
-    {"type": "upgrade", "x": 32, "y": 25},
-    {"type": "upgrade", "x": 48, "y": 25},
-    {"type": "inventory", "x": 80, "y": 20, "cols": 5, "rows": 3}
+    {"type": "boiler", "x": 80, "y": 44},
+    {"type": "upgrade", "x": 24, "y": 26},
+    {"type": "upgrade", "x": 46, "y": 26},
+    {"type": "upgrade", "x": 24, "y": 48},
+    {"type": "upgrade", "x": 46, "y": 48},
+    {"type": "inventory", "x": 116, "y": 20, "cols": 3, "rows": 3}
   ],
   "weaponMounts": [
   ],

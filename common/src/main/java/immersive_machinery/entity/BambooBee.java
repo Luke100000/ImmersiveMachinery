@@ -37,6 +37,11 @@ public class BambooBee extends NavigatingMachine {
     }
 
     @Override
+    protected float getEnginePitch() {
+        return 2.0f;
+    }
+
+    @Override
     protected float getGravity() {
         return (1.0f - getEnginePower()) * super.getGravity();
     }

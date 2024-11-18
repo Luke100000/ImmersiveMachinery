@@ -37,7 +37,7 @@ public interface Entities {
 
     Supplier<EntityType<Copperfin>> COPPERFIN = register("copperfin", EntityType.Builder
             .of(Copperfin::new, MobCategory.MISC)
-            .sized(1.5f, 1.5f)
+            .sized(1.5f, 1.625f)
             .clientTrackingRange(12)
             .fireImmune()
     );
