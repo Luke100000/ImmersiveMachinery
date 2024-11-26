@@ -21,6 +21,9 @@ public final class Config extends JsonConfig {
     @BooleanConfigEntry()
     public boolean allowDiagonalDrilling;
 
+    @BooleanConfigEntry(true)
+    public boolean waterRenderingFixForCopperfin;
+
     @IntegerConfigEntry(8)
     public int redstoneSheepMinHorizontalScanRange;
 

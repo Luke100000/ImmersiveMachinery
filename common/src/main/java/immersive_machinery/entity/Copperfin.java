@@ -1,15 +1,19 @@
 package immersive_machinery.entity;
 
 import immersive_aircraft.item.upgrade.VehicleStat;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.material.FluidState;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
 public class Copperfin extends MachineEntity {
+    public float waterSurface = 62.875f;
+
     public Copperfin(EntityType<? extends MachineEntity> entityType, Level world) {
         super(entityType, world, true);
     }
@@ -54,6 +58,21 @@ public class Copperfin extends MachineEntity {
     public void tick() {
         super.tick();
 
+        // Scan for surface
+        if (level().getGameTime() % 13 == 0) {
+            boolean air = false;
+            for (int y = (int) (getY() + getBbHeight()); y >= getBlockY(); y--) {
+                FluidState fluidState = level().getFluidState(new BlockPos(getBlockX(), y, getBlockZ()));
+                if (fluidState.isEmpty()) {
+                    air = true;
+                } else if (air) {
+                    float ownHeight = fluidState.getOwnHeight();
+                    waterSurface = y + ownHeight;
+                    break;
+                }
+            }
+        }
+
         // Reset air supply for passengers
         getPassengers().forEach(passenger -> {
             if (passenger instanceof LivingEntity livingEntity) {
@@ -68,9 +87,18 @@ public class Copperfin extends MachineEntity {
             level().addParticle(ParticleTypes.BUBBLE, pos.x, pos.y, pos.z, vec.x, 0.0, vec.z);
         }
 
+        // TODO: Dripping and half-submerged effects
+
         // Yaw and roll
-        setXRot(pressingInterpolatedY.getSmooth() * -20.0f);
-        setZRot(pressingInterpolatedX.getSmooth() * -20.0f);
+        double speed = getCurrentSpeed() * 3.0 + 0.5;
+        setXRot((float) (pressingInterpolatedY.getSmooth() * -15.0f * speed));
+        setZRot((float) (pressingInterpolatedX.getSmooth() * -20.0f * speed));
+    }
+
+    protected double getCurrentSpeed() {
+        double dx = getX() - xOld;
+        double dz = getZ() - zOld;
+        return Math.sqrt(dx * dx + dz * dz);
     }
 
     @Override
