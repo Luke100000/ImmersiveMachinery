@@ -15,18 +15,44 @@
       }
     ]
   },
-  "copper_fin_engine": {
+  "hatch_close": {
     "sounds": [
       {
-        "name": "immersive_machinery:copper_fin_engine",
-        "attenuation_distance": 24
+        "name": "immersive_machinery:hatch_close",
+        "attenuation_distance": 16
       }
     ]
   },
-  "copper_fin_startup": {
+  "hatch_open": {
     "sounds": [
       {
-        "name": "immersive_machinery:copper_fin_startup",
+        "name": "immersive_machinery:hatch_open",
+        "attenuation_distance": 16
+      }
+    ]
+  },
+  "sonar": {
+    "sounds": [
+      {
+        "name": "immersive_machinery:sonar",
+        "attenuation_distance": 48
+      }
+    ]
+  },
+  "submarine_ambience": {
+    "sounds": [
+      "immersive_machinery:submarine_ambience_0",
+      "immersive_machinery:submarine_ambience_1",
+      "immersive_machinery:submarine_ambience_2",
+      "immersive_machinery:submarine_ambience_3",
+      "immersive_machinery:submarine_ambience_4",
+      "immersive_machinery:submarine_ambience_5"
+    ]
+  },
+  "submarine_engine": {
+    "sounds": [
+      {
+        "name": "immersive_machinery:submarine_engine",
         "attenuation_distance": 24
       }
     ]

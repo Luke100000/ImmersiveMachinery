@@ -1,18 +1,31 @@
 package immersive_machinery.entity;
 
+import immersive_aircraft.cobalt.network.NetworkHandler;
 import immersive_aircraft.item.upgrade.VehicleStat;
+import immersive_machinery.Sounds;
+import immersive_machinery.client.KeyBindings;
+import immersive_machinery.network.c2s.SonarMessage;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
 public class Copperfin extends MachineEntity {
     public float waterSurface = 62.875f;
+    public float dripping = 0.0f;
+    public float bubbling = 0.0f;
+    public int ambientSoundTime = 0;
 
     public Copperfin(EntityType<? extends MachineEntity> entityType, Level world) {
         super(entityType, world, true);
@@ -40,8 +53,18 @@ public class Copperfin extends MachineEntity {
     }
 
     @Override
-    public float getEnginePower() {
-        return 1.0f; //TODO remove on update
+    public boolean worksUnderWater() {
+        return true;
+    }
+
+    @Override
+    protected SoundEvent getEngineStartSound() {
+        return super.getEngineStartSound();
+    }
+
+    @Override
+    protected SoundEvent getEngineSound() {
+        return Sounds.SUBMARINE_ENGINE.get();
     }
 
     @Override
@@ -52,6 +75,24 @@ public class Copperfin extends MachineEntity {
     @Override
     protected float getEyeHeight(@NotNull Pose pose, EntityDimensions dimensions) {
         return dimensions.height * 0.25f;
+    }
+
+    @Override
+    protected void addPassenger(Entity passenger) {
+        super.addPassenger(passenger);
+
+        this.playSound(Sounds.HATCH_CLOSE.get());
+    }
+
+    @Override
+    protected void removePassenger(Entity passenger) {
+        super.removePassenger(passenger);
+
+        this.playSound(Sounds.HATCH_OPEN.get());
+    }
+
+    public float getUnderwaterFraction() {
+        return (float) Math.min(1.0f, Math.max(0.0f, (waterSurface - getY()) / getBbHeight()));
     }
 
     @Override
@@ -80,19 +121,104 @@ public class Copperfin extends MachineEntity {
             }
         });
 
-        // Bubbles
-        if (level().isClientSide() && pressingInterpolatedZ.getSmooth() > 0.0f && isUnderWater()) {
-            Vector4f pos = transformPosition(getVehicleTransform(), (random.nextFloat() - 0.5f) * 0.5f, (random.nextFloat() - 0.5f) * 0.5f + getBbHeight() * 0.5f, -1.25f);
-            Vector3f vec = transformVector(getVehicleNormalTransform(), 0.0f, 0.0f, -1.0f * (pressingInterpolatedZ.getSmooth() + 0.25f));
-            level().addParticle(ParticleTypes.BUBBLE, pos.x, pos.y, pos.z, vec.x, 0.0, vec.z);
+        if (!level().isClientSide) {
+            return;
         }
 
-        // TODO: Dripping and half-submerged effects
+        // Sonar
+        if (KeyBindings.HORN.consumeClick()) {
+            NetworkHandler.sendToServer(new SonarMessage());
+        }
+
+        // Ambient sounds
+        ambientSoundTime--;
+        if (ambientSoundTime <= 0) {
+            ambientSoundTime = 20 * 5 + random.nextInt(20 * 10);
+            playSound(Sounds.SUBMARINE_AMBIENCE.get());
+        }
+
+        float underwaterFraction = getUnderwaterFraction();
+
+        // Wet particles
+        if (underwaterFraction >= dripping) {
+            dripping = underwaterFraction;
+        } else if (underwaterFraction < 0.6) {
+            dripping = Math.max(0.0f, dripping - 0.005f);
+            float r = random.nextFloat();
+            spawnParticlesAround(ParticleTypes.FALLING_WATER, 10.0f * dripping, 1.625f * r + 1.625f * underwaterFraction * (1.0f - r));
+        }
+
+        // Submerge particles
+        if (underwaterFraction <= bubbling) {
+            bubbling = underwaterFraction;
+        } else if (underwaterFraction > 0.8) {
+            bubbling = Math.min(1.0f, bubbling + 0.01f);
+            spawnParticlesAround(ParticleTypes.BUBBLE, 10.0f, random.nextFloat() * underwaterFraction);
+        }
+
+        // Bubbles
+        float rawSpeed = (float) getCurrentSpeed();
+        double speed = rawSpeed * 3.0 + 0.5;
+        if (underwaterFraction > 0.6 && level().isClientSide() && pressingInterpolatedZ.getSmooth() > -0.01f && isUnderWater()) {
+            for (int i = 0; i < (int) (speed * 2.5f + random.nextFloat()); i++) {
+                Vector4f pos = transformPosition(getVehicleTransform(), (random.nextFloat() - 0.5f) * 0.5f, (random.nextFloat() - 0.5f) * 0.5f + getBbHeight() * 0.5f + 0.1f, -1.0f);
+                Vector3f vec = transformVector(getVehicleNormalTransform(), 0.0f, 0.0f, -1.0f * (pressingInterpolatedZ.getSmooth() + 0.25f));
+                level().addParticle(ParticleTypes.BUBBLE, pos.x, pos.y, pos.z, vec.x, 0.0, vec.z);
+            }
+        }
 
         // Yaw and roll
-        double speed = getCurrentSpeed() * 3.0 + 0.5;
         setXRot((float) (pressingInterpolatedY.getSmooth() * -15.0f * speed));
         setZRot((float) (pressingInterpolatedX.getSmooth() * -20.0f * speed));
+
+        // Speed particles
+        if (underwaterFraction > 0.0 && underwaterFraction < 1.0 && rawSpeed > 0) {
+            for (int i = 0; i < rawSpeed * 8.0; i++) {
+                Vector3f pos = getParticlePosition(0.0f);
+                level().addParticle(ParticleTypes.SPLASH, pos.x, waterSurface, pos.z, 0.0, 1.0, 0.0);
+            }
+
+            if (this.random.nextInt(10) == 0) {
+                this.playSound(SoundEvents.GENERIC_SPLASH, 1.0f, 0.8f + 0.4f * this.random.nextFloat());
+            }
+        }
+    }
+
+    public Vector3f getParticlePosition(float y) {
+        boolean front = random.nextBoolean();
+        float x, z;
+        float w = 0.875f;
+        float l = 1.0f;
+        if (front) {
+            x = (random.nextFloat() - 0.5f) * w;
+            float mz = pressingInterpolatedZ.getSmooth();
+            if (Math.abs(mz) < 0.01f) {
+                z = random.nextBoolean() ? -l : l;
+            } else {
+                z = mz > 0.0f ? -l : l;
+            }
+        } else {
+            x = random.nextBoolean() ? -w : w;
+            z = (random.nextFloat() - 0.5f) * l;
+        }
+        Vector4f vector4f = transformPosition(getVehicleTransform(), x, y, z);
+        return new Vector3f(vector4f.x, vector4f.y, vector4f.z);
+    }
+
+    protected void spawnParticlesAround(ParticleOptions type, float amount, float height) {
+        for (int i = 0; i < amount + random.nextFloat(); i++) {
+            Vector3f pos = getParticlePosition(height);
+            level().addParticle(type, pos.x, pos.y, pos.z, 0.0, 1.0, 0.0);
+        }
+    }
+
+    public void sonar() {
+        level().getEntities(this, new AABB(getOnPos(), getOnPos()).inflate(16)).forEach(e -> {
+            if (e instanceof LivingEntity le) {
+                le.addEffect(new MobEffectInstance(MobEffects.GLOWING, 8));
+            }
+        });
+        this.playSound(Sounds.SONAR.get());
     }
 
     protected double getCurrentSpeed() {
