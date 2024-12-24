@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "IBI",
+    "III"
+  ],
+  "key": {
+    "I": [
+      {
+        "item": "minecraft:iron_ingot"
+      }
+    ],
+    "B": [
+      {
+        "item": "minecraft:iron_block"
+      }
+    ]
+  },
+  "result": {
+    "item": "immersive_machinery:iron_drill"
+  }
+}

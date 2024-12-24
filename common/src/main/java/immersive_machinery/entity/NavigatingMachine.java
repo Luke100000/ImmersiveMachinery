@@ -6,7 +6,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-public abstract class NavigatingMachine extends  MachineEntity{
+public abstract class NavigatingMachine extends MachineEntity {
     public final PilotNavigator navigator;
 
     public NavigatingMachine(EntityType<? extends MachineEntity> entityType, Level world, boolean canExplodeOnCrash, boolean isFlying) {
@@ -35,13 +35,13 @@ public abstract class NavigatingMachine extends  MachineEntity{
 
     public boolean moveTo(BlockPos pos, double distance) {
         navigator.moveTo(pos);
-        Vec3 center = pos.getCenter().subtract(0.0, 0.5, 0.0);
+        Vec3 center = pos.getCenter();
         return Math.max(
                 Math.max(
                         Math.abs(center.x() - getX()),
-                        Math.abs(center.y() - getY())
+                        Math.abs(center.z() - getZ())
                 ),
-                Math.abs(center.z() - getZ())
+                this.navigator.isFlying() ? Math.abs(center.y() - (getY() + getBbHeight() / 2) + 0.5) : 0.0
         ) < distance;
     }
 }

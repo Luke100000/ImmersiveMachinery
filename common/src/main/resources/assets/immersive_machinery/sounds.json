@@ -56,5 +56,21 @@
         "attenuation_distance": 24
       }
     ]
+  },
+  "bamboo_bee": {
+    "sounds": [
+      {
+        "name": "immersive_machinery:bamboo_bee",
+        "attenuation_distance": 16
+      }
+    ]
+  },
+  "redstone_sheep": {
+    "sounds": [
+      {
+        "name": "immersive_machinery:redstone_sheep",
+        "attenuation_distance": 16
+      }
+    ]
   }
 }

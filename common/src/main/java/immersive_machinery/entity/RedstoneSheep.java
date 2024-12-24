@@ -1,6 +1,7 @@
 package immersive_machinery.entity;
 
 import immersive_machinery.Items;
+import immersive_machinery.Sounds;
 import immersive_machinery.Utils;
 import immersive_machinery.config.Config;
 import net.minecraft.core.BlockPos;
@@ -9,6 +10,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -43,6 +45,17 @@ public class RedstoneSheep extends NavigatingMachine {
     }
 
     @Override
+    protected SoundEvent getEngineSound() {
+        return Sounds.REDSTONE_SHEEP.get();
+    }
+
+    @Override
+    protected float getEnginePitch() {
+        float speed = (float) getSpeedVector().length();
+        return Math.min(1.0f, 0.75f + speed * 10.0f);
+    }
+
+    @Override
     public void tick() {
         super.tick();
 
@@ -68,6 +81,8 @@ public class RedstoneSheep extends NavigatingMachine {
         }
 
         rescanningTicks--;
+
+        setEngineTarget(task != null ? 1.0f : 0.0f);
 
         // The sheep's state machine (loading/unloading -> working -> rescanning)
         if (reloadingTicks > 0) {

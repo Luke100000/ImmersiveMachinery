@@ -53,7 +53,6 @@ public abstract class MachineEntity extends EngineVehicle {
 
     @Override
     protected void updateVelocity() {
-        // TODO maybe move this block to vehicle entity
         float decay = 1.0f - getProperties().get(VehicleStat.FRICTION);
         float gravity = getGravity();
         if (wasTouchingWater) {

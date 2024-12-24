@@ -22,6 +22,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
@@ -35,7 +36,6 @@ public class TunnelDigger extends MachineEntity {
     public int drillY = 0;
     public boolean drilling = false;
     public boolean drillOn = true;
-    public boolean currentlyDrilling = false;
 
     public float drillingAnimation = 0;
     public float lastDrillingAnimation = 0;
@@ -88,8 +88,6 @@ public class TunnelDigger extends MachineEntity {
                     }
                 }
 
-                currentlyDrilling = !positions.isEmpty();
-
                 // Mine blocks
                 while (!positions.isEmpty() && drillPower > 0) {
                     BlockPos blockPos = positions.remove(random.nextInt(positions.size()));
@@ -98,8 +96,6 @@ public class TunnelDigger extends MachineEntity {
                     drillPower -= destroySpeed;
                 }
             }
-        } else {
-            currentlyDrilling = false;
         }
 
         // Update drilling animation
@@ -169,8 +165,7 @@ public class TunnelDigger extends MachineEntity {
         }
 
         // Turn off drill
-        // TODO: that needs to be sent to the server
-        if (KeyBindings.HORN.consumeClick()) {
+        if (level().isClientSide() && KeyBindings.HORN.consumeClick()) {
             drillOn = !drillOn;
             LivingEntity pilot = getControllingPassenger();
             if (pilot != null) {
@@ -180,7 +175,7 @@ public class TunnelDigger extends MachineEntity {
     }
 
     @Override
-    public Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
+    public @NotNull Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
         Vector3f p = getForwardDirection().negate().mul(2.0f).add((float) getX(), (float) getY(), (float) getZ());
         Vec3 position = new Vec3(p.x, p.y, p.z);
         for (Pose entityPose : passenger.getDismountPoses()) {
@@ -192,14 +187,8 @@ public class TunnelDigger extends MachineEntity {
         return super.getDismountLocationForPassenger(passenger);
     }
 
-    @Override
-    protected float getSpeed() {
-        // TODO: currentlyDrilling needs to be a syed flag
-        return currentlyDrilling ? 0.0f : super.getSpeed();
-    }
-
     public boolean isTrackMoving() {
-        return getSpeed() * pressingInterpolatedZ.getSmooth() > 0.001f;
+        return getSpeedVector().lengthSqr() * pressingInterpolatedZ.getSmooth() > 0.001f;
     }
 
     @Override

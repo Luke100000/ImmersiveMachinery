@@ -3,13 +3,13 @@
   "rewards": {
     "recipes": [
       "immersive_machinery:tunnel_digger",
-        "immersive_machinery:bamboo_bee",
-        "immersive_machinery:redstone_sheep",
-        "immersive_machinery:copperfin",
-        "immersive_machinery:redstone_mechanism",
-        "immersive_machinery:iron_drill",
-        "immersive_machinery:diamond_drill",
-        "immersive_machinery:netherite_drill"
+      "immersive_machinery:bamboo_bee",
+      "immersive_machinery:redstone_sheep",
+      "immersive_machinery:copperfin",
+      "immersive_machinery:redstone_mechanism",
+      "immersive_machinery:iron_drill",
+      "immersive_machinery:diamond_drill",
+      "immersive_machinery:netherite_drill"
     ]
   },
   "criteria": {

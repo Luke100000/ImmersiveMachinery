@@ -3,6 +3,7 @@ package immersive_machinery.entity;
 import immersive_aircraft.resources.bbmodel.BBAnimationVariables;
 import immersive_machinery.Common;
 import immersive_machinery.Items;
+import immersive_machinery.Sounds;
 import immersive_machinery.Utils;
 import immersive_machinery.item.BambooBeeItem;
 import net.minecraft.ChatFormatting;
@@ -12,6 +13,7 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.EntityType;
@@ -21,6 +23,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -37,8 +40,14 @@ public class BambooBee extends NavigatingMachine {
     }
 
     @Override
+    protected SoundEvent getEngineSound() {
+        return Sounds.BAMBOO_BEE.get();
+    }
+
+    @Override
     protected float getEnginePitch() {
-        return 2.0f;
+        float speed = (float) getSpeedVector().length();
+        return 0.65f + speed * 1.25f;
     }
 
     @Override
@@ -50,10 +59,6 @@ public class BambooBee extends NavigatingMachine {
     public void tick() {
         super.tick();
 
-        if (level().isClientSide) {
-            return;
-        }
-
         // Rotate to direction
         if (level().isClientSide) {
             double dx = x - secondLastX;
@@ -62,13 +67,15 @@ public class BambooBee extends NavigatingMachine {
             double d2 = dx * dx + dy * dy + dz * dz;
             if (d2 > 0.0f) {
                 float yRot = getYRot();
-                setXRot(Utils.lerpAngle(getXRot(), (float) (dy * 90.0f), 5.0f));
+                setXRot(Utils.lerpAngle(getXRot(), (float) (dy * 45.0f), 5.0f));
                 setYRot(Utils.lerpAngle(yRot, (float) Math.toDegrees(Math.atan2(dz, dx)) - 90.0f, 10.0f));
                 setZRot(Utils.lerpAngle(getRoll(), (getYRot() - yRot) * 2.0f, 2.0f));
             } else {
                 setXRot(Utils.lerpAngle(getXRot(), 0.0f, 10.0f));
                 setZRot(Utils.lerpAngle(getRoll(), 0.0f, 10.0f));
             }
+
+            return;
         }
 
         setEngineTarget(currentTask != null ? 1.0f : 0.0f);
@@ -169,7 +176,6 @@ public class BambooBee extends NavigatingMachine {
                 .forEach(player -> player.displayClientMessage(error, false));
     }
 
-    // todo add round robin
     private List<ContainerPosition> getPositions(boolean input) {
         List<ContainerPosition> positions = new LinkedList<>();
         for (ContainerPosition position : containerPositions) {
@@ -177,6 +183,12 @@ public class BambooBee extends NavigatingMachine {
                 positions.add(position);
             }
         }
+
+        // Round-robin
+        if (configuration.order == Configuration.Order.ROUND_ROBIN) {
+            Collections.rotate(positions, (int) level().getGameTime());
+        }
+
         return positions;
     }
 

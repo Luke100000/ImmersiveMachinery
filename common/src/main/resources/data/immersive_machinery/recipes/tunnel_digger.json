@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "CGC",
-    "IEN",
+    "IED",
     "RRR"
   ],
   "key": {
@@ -11,9 +11,9 @@
         "item": "minecraft:iron_block"
       }
     ],
-    "N": [
+    "D": [
       {
-        "item": "minecraft:iron_ingot"
+        "item": "immersive_machinery:iron_drill"
       }
     ],
     "C": [

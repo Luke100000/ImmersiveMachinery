@@ -18,7 +18,7 @@
     ],
     "G": [
       {
-        "tag": "minecraft:glass"
+        "item": "minecraft:glass"
       }
     ],
     "C": [
@@ -28,11 +28,11 @@
     ],
     "E": [
       {
-        "item": "immersive_machinery:engine"
+        "item": "immersive_aircraft:engine"
       }
     ]
   },
   "result": {
-    "item": "immersive_machinery:bamboo_bee"
+    "item": "immersive_machinery:copperfin"
   }
 }

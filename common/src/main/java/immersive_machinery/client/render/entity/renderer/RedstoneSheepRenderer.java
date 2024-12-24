@@ -26,7 +26,9 @@ public class RedstoneSheepRenderer<T extends RedstoneSheep> extends MachineryRen
     @Override
     public void renderLocal(T entity, float yaw, float tickDelta, PoseStack matrixStack, PoseStack.Pose peek, MultiBufferSource vertexConsumerProvider, int light) {
         // Bobbing effect
-        matrixStack.translate(0.0f, (Math.cos((entity.tickCount + tickDelta) * 2.0f) + 1.0f) / 64.0f * entity.getEnginePower(), 0.0f);
+        if (entity.getEnginePower() > 0.0) {
+            matrixStack.translate(0.0f, (Math.cos((entity.tickCount + tickDelta) * 2.0f) + 1.0f) / 64.0f * entity.getEnginePower(), 0.0f);
+        }
 
         super.renderLocal(entity, yaw, tickDelta, matrixStack, peek, vertexConsumerProvider, light);
     }

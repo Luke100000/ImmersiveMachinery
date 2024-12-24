@@ -38,7 +38,7 @@ public class PilotNavigator {
     public Vector3d getDirection() {
         BlockPos node = currentPath.isDone() ? currentPath.getTarget() : currentPath.getNextNodePos();
         double dx = node.getX() - vehicle.getX() + 0.5;
-        double dy = isFlying ? node.getY() - vehicle.getY() : 0;
+        double dy = isFlying ? node.getY() - (vehicle.getY() + vehicle.getBbHeight() / 2) + 0.5 : 0;
         double dz = node.getZ() - vehicle.getZ() + 0.5;
         return new Vector3d(dx, dy, dz);
     }
@@ -148,5 +148,9 @@ public class PilotNavigator {
             currentPath = null;
             target = null;
         }
+    }
+
+    public boolean isFlying() {
+        return isFlying;
     }
 }

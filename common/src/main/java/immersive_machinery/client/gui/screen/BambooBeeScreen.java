@@ -28,7 +28,8 @@ public class BambooBeeScreen extends VehicleScreen {
     private static final Component TEXT_HELP = Component.translatable("gui.immersive_machinery.bamboo_bee.help");
     private static final Component TEXT_WHITELIST = Component.translatable("gui.immersive_machinery.bamboo_bee.whitelist");
     private static final Component TEXT_BLACKLIST = Component.translatable("gui.immersive_machinery.bamboo_bee.blacklist");
-    private static final Component TEXT_TAG = Component.translatable("gui.immersive_machinery.bamboo_bee.tag");
+    private static final Component TEXT_FILTER_NAME = Component.translatable("gui.immersive_machinery.bamboo_bee.filter.name");
+    private static final Component TEXT_FILTER_TAG = Component.translatable("gui.immersive_machinery.bamboo_bee.filter.tag");
 
     public BambooBeeScreen(BambooBee bee, VehicleScreenHandler handler, Inventory inventory, Component title) {
         super(handler, inventory, title);
@@ -62,20 +63,21 @@ public class BambooBeeScreen extends VehicleScreen {
         BambooBee.Configuration c = bee.getConfiguration();
 
         // Whitelist/blacklist
-        addImageButton(50, 20, 48, 80, b -> {
+        addImageButton(50, 20, c.blacklist ? 48 : 64, 80, b -> {
             c.blacklist = !c.blacklist;
             c.setDirty();
             init();
-        }, c.blacklist ? TEXT_BLACKLIST : TEXT_WHITELIST, c.blacklist);
+        }, c.blacklist ? TEXT_BLACKLIST : TEXT_WHITELIST, false);
 
         // Tag filter
-        addImageButton(50, 20 + 18, 32, 80, b -> {
+        addImageButton(50, 20 + 18, c.compareTag ? 0 : 16, 80, b -> {
             c.compareTag = !c.compareTag;
             c.setDirty();
-        }, TEXT_TAG, c.compareTag);
+            init();
+        }, c.compareTag ? TEXT_FILTER_TAG : TEXT_FILTER_NAME, false);
 
         // Round-robin
-        addImageButton(50, 20 + 36, 0, 80, b -> {
+        addImageButton(50, 20 + 36, c.order.ordinal() * 16 + 64, 80, b -> {
             c.order = c.order.next();
             c.setDirty();
             init();

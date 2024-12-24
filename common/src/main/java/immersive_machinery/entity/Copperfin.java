@@ -26,6 +26,7 @@ public class Copperfin extends MachineEntity {
     public float dripping = 0.0f;
     public float bubbling = 0.0f;
     public int ambientSoundTime = 0;
+    private int sonarCooldown = 0;
 
     public Copperfin(EntityType<? extends MachineEntity> entityType, Level world) {
         super(entityType, world, true);
@@ -69,7 +70,7 @@ public class Copperfin extends MachineEntity {
 
     @Override
     protected float getGravity() {
-        return super.getGravity() * (isUnderWater() ? 1.0f - getEnginePower() : 1.0f);
+        return isUnderWater() ? 0.0f : super.getGravity();
     }
 
     @Override
@@ -121,20 +122,19 @@ public class Copperfin extends MachineEntity {
             }
         });
 
-        if (!level().isClientSide) {
-            return;
+        if (level().isClientSide) {
+            tickClient();
+        } else {
+            tickServer();
         }
+    }
 
+    public void tickClient() {
         // Sonar
-        if (KeyBindings.HORN.consumeClick()) {
+        sonarCooldown--;
+        if (KeyBindings.HORN.consumeClick() && sonarCooldown < 0) {
             NetworkHandler.sendToServer(new SonarMessage());
-        }
-
-        // Ambient sounds
-        ambientSoundTime--;
-        if (ambientSoundTime <= 0) {
-            ambientSoundTime = 20 * 5 + random.nextInt(20 * 10);
-            playSound(Sounds.SUBMARINE_AMBIENCE.get());
+            sonarCooldown = 60;
         }
 
         float underwaterFraction = getUnderwaterFraction();
@@ -184,6 +184,17 @@ public class Copperfin extends MachineEntity {
         }
     }
 
+    public void tickServer() {
+        // Ambient sounds
+        if (isVehicle()) {
+            ambientSoundTime -= (getY() < lastY - 0.00001 ? 1 : 3);
+            if (ambientSoundTime <= 0) {
+                ambientSoundTime = 100 + random.nextInt(250);
+                this.playSound(Sounds.SUBMARINE_AMBIENCE.get());
+            }
+        }
+    }
+
     public Vector3f getParticlePosition(float y) {
         boolean front = random.nextBoolean();
         float x, z;
@@ -214,8 +225,8 @@ public class Copperfin extends MachineEntity {
 
     public void sonar() {
         level().getEntities(this, new AABB(getOnPos(), getOnPos()).inflate(16)).forEach(e -> {
-            if (e instanceof LivingEntity le) {
-                le.addEffect(new MobEffectInstance(MobEffects.GLOWING, 8));
+            if (e instanceof LivingEntity le && !e.isPassengerOfSameVehicle(this)) {
+                le.addEffect(new MobEffectInstance(MobEffects.GLOWING, 15));
             }
         });
         this.playSound(Sounds.SONAR.get());

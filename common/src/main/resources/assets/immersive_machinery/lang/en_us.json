@@ -47,7 +47,8 @@
 
   "gui.immersive_machinery.bamboo_bee.whitelist": "Whitelist",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Blacklist",
-  "gui.immersive_machinery.bamboo_bee.tag": "Filter by NBT Tag",
+  "gui.immersive_machinery.bamboo_bee.filter.name": "Filter by name",
+  "gui.immersive_machinery.bamboo_bee.filter.tag": "Filter by NBT Tag",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
   "gui.immersive_machinery.bamboo_bee.order.first": "Pick first"
 }

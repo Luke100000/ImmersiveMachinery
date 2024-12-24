@@ -15,6 +15,8 @@ public interface Sounds {
     Supplier<SoundEvent> SONAR = register("sonar");
     Supplier<SoundEvent> SUBMARINE_AMBIENCE = register("submarine_ambience");
     Supplier<SoundEvent> SUBMARINE_ENGINE = register("submarine_engine");
+    Supplier<SoundEvent> BAMBOO_BEE = register("bamboo_bee");
+    Supplier<SoundEvent> REDSTONE_SHEEP = register("redstone_sheep");
 
     static void bootstrap() {
         // nop
