@@ -18,9 +18,6 @@ public final class Config extends JsonConfig {
         return INSTANCE;
     }
 
-    @BooleanConfigEntry()
-    public boolean allowDiagonalDrilling;
-
     @BooleanConfigEntry(true)
     public boolean waterRenderingFixForCopperfin;
 

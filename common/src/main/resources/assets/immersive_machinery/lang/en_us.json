@@ -23,11 +23,6 @@
   "item.immersive_machinery.diamond_drill": "Diamond Drill",
   "item.immersive_machinery.netherite_drill": "Netherite Drill",
 
-  "immersive_aircraft.slot.im_shards": "Amethyst Shards for improving drill",
-  "immersive_aircraft.slot.im_filter": "Item Filter",
-
-  "immersive_machinery.upgrade.drillingSpeed": "%s%% drilling speed",
-
   "gui.immersive_machinery.bamboo_bee.tooltip.help1": "Sneak Right-click on a container to add.",
   "gui.immersive_machinery.bamboo_bee.tooltip.help2": "Sneak Right-click on any other block to reset.",
   "gui.immersive_machinery.bamboo_bee.tooltip.header": "Has %s containers:",
@@ -38,11 +33,6 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Set as output",
   "gui.immersive_machinery.bamboo_bee.position_input": "Set as input",
 
-  "gui.immersive_machinery.slot.im_filter": "Item filter",
-  "gui.immersive_machinery.slot.im_shards": "Amethyst shards for 2x speed",
-
-  "immersive_aircraft.upgrade.drillingspeed": "%s%% drilling speed",
-
   "gui.immersive_machinery.bamboo_bee.help": "Open help page",
 
   "gui.immersive_machinery.bamboo_bee.whitelist": "Whitelist",
@@ -50,5 +40,13 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filter by name",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filter by NBT Tag",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first"
+  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+
+  "immersive_machinery.tunnel_digger.drill_on": "Drill on",
+  "immersive_machinery.tunnel_digger.drill_off": "Drill off",
+
+  "immersive_aircraft.upgrade.drillingspeed": "%s%% drilling speed",
+
+  "immersive_aircraft.slot.im_shards": "Amethyst Shards for faster drilling",
+  "immersive_aircraft.slot.im_filter": "Item Filter"
 }

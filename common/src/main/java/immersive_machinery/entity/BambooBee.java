@@ -8,6 +8,7 @@ import immersive_machinery.Utils;
 import immersive_machinery.item.BambooBeeItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -67,12 +68,17 @@ public class BambooBee extends NavigatingMachine {
             double d2 = dx * dx + dy * dy + dz * dz;
             if (d2 > 0.0f && d2 < 10.0f) {
                 float yRot = getYRot();
-                setXRot(Utils.lerpAngle(getXRot(), (float) (dy * 45.0f), 5.0f));
-                setYRot(Utils.lerpAngle(yRot, (float) Math.toDegrees(Math.atan2(dz, dx)) - 90.0f, 10.0f));
+                setXRot(Utils.lerpAngle(getXRot(), (float) (dy * 45.0f), 2.0f));
+                setYRot(Utils.lerpAngle(yRot, (float) Math.toDegrees(Math.atan2(dz, dx)) - 90.0f, 8.0f));
                 setZRot(Utils.lerpAngle(getRoll(), (getYRot() - yRot) * 2.0f, 2.0f));
+
+                // Smoke particles
+                if (level().getGameTime() % 4 == 0) {
+                    level().addParticle(ParticleTypes.SMOKE, x, y + 0.4, z, 0.0, 0.0, 0.0);
+                }
             } else {
-                setXRot(Utils.lerpAngle(getXRot(), 0.0f, 10.0f));
-                setZRot(Utils.lerpAngle(getRoll(), 0.0f, 10.0f));
+                setXRot(Utils.lerpAngle(getXRot(), 0.0f, 5.0f));
+                setZRot(Utils.lerpAngle(getRoll(), 0.0f, 5.0f));
             }
 
             return;

@@ -28,7 +28,7 @@ public class Client {
         });
 
         // Register slot renderers
-        SlotRenderer.register(Common.SLOT_SHARDS, new MachinerySlotRenderer(0, 0, false));
+        SlotRenderer.register(Common.SLOT_SHARDS, new MachinerySlotRenderer(0, 22, false));
         SlotRenderer.register(Common.SLOT_FILTER, new MachinerySlotRenderer(110, 18, true));
     }
 }

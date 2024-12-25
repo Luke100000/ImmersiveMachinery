@@ -7,7 +7,6 @@ import immersive_machinery.Items;
 import immersive_machinery.Sounds;
 import immersive_machinery.Utils;
 import immersive_machinery.client.KeyBindings;
-import immersive_machinery.config.Config;
 import immersive_machinery.network.c2s.TunnelDiggerControlsUpdate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -62,27 +61,29 @@ public class TunnelDigger extends MachineEntity {
             drillPower = Math.min(drillPower + getDrillSpeed() / 20.0f, 1.0f);
 
             if (drillPower > 0 && level() instanceof ServerLevel level) {
-                // Check if vertical drilling is requested
-                boolean diagonal = (Math.floorMod(Math.round(getYRot() / 45), 2) == 1) && Config.getInstance().allowDiagonalDrilling;
-
                 // Collect all possible positions
                 List<BlockPos> positions = new LinkedList<>();
 
-                // Drilling
-                float front = diagonal ? 2.0f : 1.75f;
+                // Drilling (A 3x4x3 or expanded by 0-2 blocks when drilling up/down)
+                float front = -0.25f;
                 float height = 1.5f;
                 Vector3f forwardDirection = getForwardDirection();
                 Vector3f rightDirection = getRightDirection();
                 Vector3f upDirection = getTopDirection();
                 Vector3f center = new Vector3f(forwardDirection).mul(front).add(0, height, 0);
                 center = center.add((float) getX(), (float) getY(), (float) getZ());
-                for (int x = -(diagonal ? 2 : 1); x <= (diagonal ? 2 : 1); x++) {
-                    for (int z = -Math.max(0, drillY) - Math.abs(drillY) * 2; z <= 1 - Math.max(0, drillY); z++) {
-                        for (int y = -1 + drillY; y <= 1 + drillY; y++) {
-                            float fz = z + 0.22f * Math.floorMod(x + y, 2);
-                            double px = center.x + rightDirection.x * x + upDirection.x * y + forwardDirection.x * fz;
-                            double py = center.y + rightDirection.y * x + upDirection.y * y + forwardDirection.y * fz;
-                            double pz = center.z + rightDirection.z * x + upDirection.z * y + forwardDirection.z * fz;
+
+                for (int x = -1; x <= 1; x++) {
+                    for (int z = 0; z <= 3; z++) {
+                        for (int y = -1 - Math.max(0, -drillY); y <= 1 + Math.max(0, drillY); y++) {
+                            if (drillY > 0 && y == 2 && z == 0) continue;
+                            if (drillY > 0 && y == -2 && z == 3) continue;
+                            if (drillY < 0 && y == 2 && z == 0) continue;
+                            if (drillY < 0 && y == -2 && z == 3) continue;
+
+                            double px = center.x + rightDirection.x * x + upDirection.x * y + forwardDirection.x * z;
+                            double py = center.y + rightDirection.y * x + upDirection.y * y + forwardDirection.y * z;
+                            double pz = center.z + rightDirection.z * x + upDirection.z * y + forwardDirection.z * z;
                             positions.add(doubleToPos(px, py, pz));
                         }
                     }
@@ -102,7 +103,7 @@ public class TunnelDigger extends MachineEntity {
         lastDrillingAnimation = drillingAnimation;
         drillingAnimation += (drilling ? 1 : 0) * 0.1f;
 
-        setMaxUpStep(drillY > 0 ? 1.1f : 0.55f);
+        setMaxUpStep((drillY > 0 || !drilling) ? 1.1f : 0.55f);
 
         // Exhaust particles
         if (level().isClientSide()) {
@@ -110,7 +111,7 @@ public class TunnelDigger extends MachineEntity {
             if (level().random.nextDouble() < chance) {
                 boolean fire = level().random.nextFloat() < engineSpinUpStrength;
                 Matrix4f transform = getVehicleTransform();
-                Vector4f pos = transformPosition(transform, 1.0f, 2.45f, -1.4375f);
+                Vector4f pos = transformPosition(transform, 1.0f, 2.45f, -0.9375f);
                 level().addParticle(fire ? ParticleTypes.SMALL_FLAME : ParticleTypes.SMOKE, pos.x, pos.y, pos.z, 0.0, 0.1, 0.0);
             }
         }
@@ -149,7 +150,7 @@ public class TunnelDigger extends MachineEntity {
         // Lock into increments
         if (movementX == 0) {
             float yRot = getYRot();
-            double step = Config.getInstance().allowDiagonalDrilling ? 45 : 90;
+            double step = 90;
             double targetRotation = Math.round(yRot / step) * step;
             double speed = 0.06f;
             setYRot((float) (yRot * (1.0 - speed) + targetRotation * speed));
@@ -174,9 +175,8 @@ public class TunnelDigger extends MachineEntity {
         }
     }
 
-    @Override
-    public @NotNull Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
-        Vector3f p = getForwardDirection().negate().mul(2.0f).add((float) getX(), (float) getY(), (float) getZ());
+    public Vec3 attemptToDismount(LivingEntity passenger, float ox, float oy, float oz) {
+        Vector3f p = new Vector3f((float) getX() + ox * 2.0f, (float) getY() + oy * 2.0f, (float) getZ() + oz * 2.0f);
         Vec3 position = new Vec3(p.x, p.y, p.z);
         for (Pose entityPose : passenger.getDismountPoses()) {
             if (DismountHelper.canDismountTo(level(), position, passenger, entityPose)) {
@@ -184,11 +184,27 @@ public class TunnelDigger extends MachineEntity {
                 return position;
             }
         }
+        return null;
+    }
+
+    @Override
+    public @NotNull Vec3 getDismountLocationForPassenger(LivingEntity passenger) {
+        Vec3 dismountLocation;
+        Vector3f forwardDirection = getForwardDirection();
+        dismountLocation = attemptToDismount(passenger, -forwardDirection.x(), 0.0f, -forwardDirection.z());
+        if (dismountLocation != null) return dismountLocation;
+        Vector3f rightDirection = getRightDirection();
+        dismountLocation = attemptToDismount(passenger, rightDirection.x(), 0.0f, rightDirection.z());
+        if (dismountLocation != null) return dismountLocation;
+        dismountLocation = attemptToDismount(passenger, -rightDirection.x(), 0.0f, -rightDirection.z());
+        if (dismountLocation != null) return dismountLocation;
+        dismountLocation = attemptToDismount(passenger, forwardDirection.x(), 0.0f, forwardDirection.z());
+        if (dismountLocation != null) return dismountLocation;
         return super.getDismountLocationForPassenger(passenger);
     }
 
     public boolean isTrackMoving() {
-        return getSpeedVector().lengthSqr() * pressingInterpolatedZ.getSmooth() > 0.001f;
+        return getSpeedVector().lengthSqr() > 0.00001f;
     }
 
     @Override

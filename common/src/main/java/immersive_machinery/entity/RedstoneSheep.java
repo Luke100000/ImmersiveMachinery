@@ -63,6 +63,11 @@ public class RedstoneSheep extends NavigatingMachine {
     }
 
     @Override
+    protected float getEngineReactionSpeed() {
+        return 10f;
+    }
+
+    @Override
     public void tick() {
         super.tick();
 
