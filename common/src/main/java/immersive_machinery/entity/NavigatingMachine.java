@@ -9,10 +9,10 @@ import net.minecraft.world.phys.Vec3;
 public abstract class NavigatingMachine extends MachineEntity {
     public final PilotNavigator navigator;
 
-    public NavigatingMachine(EntityType<? extends MachineEntity> entityType, Level world, boolean canExplodeOnCrash, boolean isFlying) {
+    public NavigatingMachine(EntityType<? extends MachineEntity> entityType, Level world, boolean canExplodeOnCrash, boolean isFlying, int pathAccuracy) {
         super(entityType, world, canExplodeOnCrash);
 
-        this.navigator = new PilotNavigator(this, isFlying);
+        this.navigator = new PilotNavigator(this, isFlying, pathAccuracy);
     }
 
     @Override

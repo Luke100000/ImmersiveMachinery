@@ -36,7 +36,7 @@ public class BambooBee extends NavigatingMachine {
     public static final int WORK_SLOT = 0;
 
     public BambooBee(EntityType<? extends MachineEntity> entityType, Level world) {
-        super(entityType, world, false, true);
+        super(entityType, world, false, true, 1);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class BambooBee extends NavigatingMachine {
             double dy = y - secondLastY;
             double dz = z - secondLastZ;
             double d2 = dx * dx + dy * dy + dz * dz;
-            if (d2 > 0.0f) {
+            if (d2 > 0.0f && d2 < 10.0f) {
                 float yRot = getYRot();
                 setXRot(Utils.lerpAngle(getXRot(), (float) (dy * 45.0f), 5.0f));
                 setYRot(Utils.lerpAngle(yRot, (float) Math.toDegrees(Math.atan2(dz, dx)) - 90.0f, 10.0f));

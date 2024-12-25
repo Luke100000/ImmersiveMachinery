@@ -29,19 +29,11 @@ public class PilotNavigator {
     private final PathFinder pathFinder;
     private final double speed;
     private final boolean isFlying;
+    private final int accuracy;
 
     private BlockPos target;
     private Path currentPath;
     private int stuckTime;
-
-
-    public Vector3d getDirection() {
-        BlockPos node = currentPath.isDone() ? currentPath.getTarget() : currentPath.getNextNodePos();
-        double dx = node.getX() - vehicle.getX() + 0.5;
-        double dy = isFlying ? node.getY() - (vehicle.getY() + vehicle.getBbHeight() / 2) + 0.5 : 0;
-        double dz = node.getZ() - vehicle.getZ() + 0.5;
-        return new Vector3d(dx, dy, dz);
-    }
 
     record Index(BlockPos pos1, BlockPos pos2) {
     }
@@ -51,7 +43,7 @@ public class PilotNavigator {
             .expireAfterWrite(5, TimeUnit.MINUTES)
             .build();
 
-    public PilotNavigator(InventoryVehicleEntity vehicle, boolean isFlying) {
+    public PilotNavigator(InventoryVehicleEntity vehicle, boolean isFlying, int accuracy) {
         this.vehicle = vehicle;
         this.pilot = new Bee(EntityType.BEE, vehicle.level());
 
@@ -66,6 +58,15 @@ public class PilotNavigator {
         this.pathFinder = new PathFinder(nodeEvaluator, followRange * 16);
         this.speed = vehicle.getProperties().get(VehicleStat.ENGINE_SPEED);
         this.isFlying = isFlying;
+        this.accuracy = accuracy;
+    }
+
+    public Vector3d getDirection() {
+        BlockPos node = currentPath.isDone() ? currentPath.getTarget() : currentPath.getNextNodePos();
+        double dx = node.getX() - vehicle.getX() + 0.5;
+        double dy = isFlying ? node.getY() - (vehicle.getY() + vehicle.getBbHeight() / 2) + 0.5 : 0;
+        double dz = node.getZ() - vehicle.getZ() + 0.5;
+        return new Vector3d(dx, dy, dz);
     }
 
     public void moveTo(BlockPos pos) {
@@ -73,6 +74,11 @@ public class PilotNavigator {
             target = pos;
             stuckTime = 0;
             currentPath = findPath(pos);
+
+            // Do not accept incomplete paths
+            if (currentPath != null && currentPath.getDistToTarget() > accuracy + 0.5) {
+                currentPath = null;
+            }
 
             // Debug
             PathDebugRenderer.INSTANCE.setPath(currentPath, vehicle);
@@ -90,7 +96,7 @@ public class PilotNavigator {
             BlockPos blockPos = vehicle.blockPosition();
             int i = followRange + 8;
             PathNavigationRegion pathNavigationRegion = new PathNavigationRegion(vehicle.level(), blockPos.offset(-i, -i, -i), blockPos.offset(i, i, i));
-            path = pathFinder.findPath(pathNavigationRegion, pilot, Set.of(pos), followRange, 1, 1.0f);
+            path = pathFinder.findPath(pathNavigationRegion, pilot, Set.of(pos), followRange, accuracy, 1.0f);
 
             if (path == null) {
                 return null;
@@ -148,6 +154,10 @@ public class PilotNavigator {
             currentPath = null;
             target = null;
         }
+    }
+
+    public boolean hasPath() {
+        return currentPath != null;
     }
 
     public boolean isFlying() {

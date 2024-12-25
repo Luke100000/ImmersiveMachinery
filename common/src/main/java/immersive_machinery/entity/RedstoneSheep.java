@@ -4,6 +4,7 @@ import immersive_machinery.Items;
 import immersive_machinery.Sounds;
 import immersive_machinery.Utils;
 import immersive_machinery.config.Config;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -27,6 +28,7 @@ import java.util.*;
 
 public class RedstoneSheep extends NavigatingMachine {
     private static final int INVENTORY_BUFFER_SPACE = 3;
+    private static final int RESCAN_INTERVAL = 200;
 
     private BlockPos home;
     private BlockPos task;
@@ -39,9 +41,14 @@ public class RedstoneSheep extends NavigatingMachine {
     private Set<BlockPos> backlogSet = new HashSet<>();
 
     public RedstoneSheep(EntityType<? extends MachineEntity> entityType, Level world) {
-        super(entityType, world, false, false);
+        super(entityType, world, false, false, 0);
 
-        setMaxUpStep(0.1f);
+        setMaxUpStep(1.1f);
+    }
+
+    @Override
+    public boolean isNoGravity() {
+        return false;
     }
 
     @Override
@@ -69,6 +76,8 @@ public class RedstoneSheep extends NavigatingMachine {
         double dz = getZ() - lastZ;
         if (dx * dx + dz * dz > 0.00001) {
             setYRot(Utils.lerpAngle(getYRot(), (float) Math.toDegrees(Math.atan2(dz, dx)) + 90.0f, 10.0f));
+        } else {
+            setYRot(Utils.lerpAngle(getYRot(), (float) (Math.floor(getYRot() / 90.0f + 0.5f) * 90.0f), 5.0f));
         }
 
         if (level().isClientSide) {
@@ -87,7 +96,7 @@ public class RedstoneSheep extends NavigatingMachine {
         // The sheep's state machine (loading/unloading -> working -> rescanning)
         if (reloadingTicks > 0) {
             // Head home, wait until loading and unloading is done
-            if (moveTo(home)) {
+            if (moveTo(home) || !navigator.hasPath()) {
                 reloadingTicks--;
             }
         } else if (task != null) {
@@ -97,6 +106,10 @@ public class RedstoneSheep extends NavigatingMachine {
                 if (state == VerifyState.VALID) {
                     work(task);
                 }
+                task = null;
+            } else if (!navigator.hasPath()) {
+                // Target is unreachable, remove from list
+                backlogSet.remove(task);
                 task = null;
             }
         } else if (!workingSet.isEmpty()) {
@@ -122,9 +135,13 @@ public class RedstoneSheep extends NavigatingMachine {
             // If last run was unproductive, rescan
             if (tasksHarvested == 0) {
                 if (rescanningTicks <= 0) {
-                    rescan();
-                    rescanningTicks = 200;
+                    // If no players are nearby, why would the world change noticeable?
+                    if (playerIsClose()) {
+                        rescan();
+                    }
+                    rescanningTicks = RESCAN_INTERVAL;
                 } else {
+                    // Return home and wait
                     reloadingTicks = 60;
                 }
             }
@@ -132,7 +149,7 @@ public class RedstoneSheep extends NavigatingMachine {
         } else if (rescanningTicks <= 0) {
             // Never found any tasks, rescan
             rescan();
-            rescanningTicks = 200;
+            rescanningTicks = RESCAN_INTERVAL;
         }
     }
 
@@ -145,16 +162,34 @@ public class RedstoneSheep extends NavigatingMachine {
         workingSet.clear();
         backlogSet.clear();
 
-        // TODO: Scan more smartly using basic pathfinding, recursive flood fill with one overstep
         int range = Config.getInstance().redstoneSheepMinHorizontalScanRange;
-        for (int x = -range; x <= range; x++) {
-            for (int z = -range; z <= range; z++) {
-                BlockPos pos = new BlockPos(x + home.getX(), home.getY(), z + home.getZ());
-                if (verify(pos) != VerifyState.INVALID) {
-                    workingSet.add(pos);
+
+        // Breadth-first search with up to "range" of skip range
+        LongOpenHashSet visited = new LongOpenHashSet();
+        Queue<BlockPos> queue = new LinkedList<>();
+        queue.add(home);
+        visited.add(home.asLong());
+
+        while (!queue.isEmpty()) {
+            BlockPos origin = queue.poll();
+            for (int x = -range; x <= range; x++) {
+                for (int z = -range; z <= range; z++) {
+                    BlockPos pos = new BlockPos(x + origin.getX(), origin.getY(), z + origin.getZ());
+                    if (visited.contains(pos.asLong())) {
+                        continue;
+                    }
+                    visited.add(pos.asLong());
+                    if (verify(pos) != VerifyState.INVALID) {
+                        workingSet.add(pos);
+                        queue.add(pos);
+                    }
                 }
             }
         }
+    }
+
+    private boolean playerIsClose() {
+        return level().getNearestPlayer(this, 32.0) != null;
     }
 
     private void work(BlockPos pos) {
