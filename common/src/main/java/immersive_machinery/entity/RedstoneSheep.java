@@ -28,7 +28,7 @@ import java.util.*;
 
 public class RedstoneSheep extends NavigatingMachine {
     private static final int INVENTORY_BUFFER_SPACE = 3;
-    private static final int RESCAN_INTERVAL = 200;
+    private static final int RESCAN_INTERVAL = 100;
 
     private BlockPos home;
     private BlockPos task;
@@ -127,6 +127,7 @@ public class RedstoneSheep extends NavigatingMachine {
                     task = closest;
                     backlogSet.add(closest);
                     tasksHarvested++;
+                    rescanningTicks = RESCAN_INTERVAL;
                 } else if (state == VerifyState.NOT_MATURE) {
                     backlogSet.add(closest);
                 }
