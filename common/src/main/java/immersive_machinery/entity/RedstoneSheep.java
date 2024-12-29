@@ -146,10 +146,10 @@ public class RedstoneSheep extends NavigatingMachine {
                         rescan();
                     }
                     rescanningTicks = RESCAN_INTERVAL;
-                } else {
-                    // Return home and wait
-                    reloadingTicks = 60;
                 }
+
+                // Return home and wait
+                reloadingTicks = 60;
             }
             tasksHarvested = 0;
         } else if (rescanningTicks <= 0) {
