@@ -30,6 +30,6 @@ side = "BOTH"
 [[dependencies.immersive_machinery]]
 modId = "immersive_aircraft"
 mandatory = true
-versionRange = "[0.8.0,)"
+versionRange = "[1.1.6,)"
 ordering = "NONE"
 side = "BOTH"
