@@ -107,6 +107,7 @@ public class BambooBee extends NavigatingMachine {
                             ItemStack stack = container.removeItem(currentTask.slot(), item.getCount());
                             getSlot(WORK_SLOT).set(stack);
                             playSound(SoundEvents.BARREL_OPEN);
+                            blockEntity.setChanged();
                         } else {
                             error("Item mismatches!");
                             currentTask = null;
@@ -123,6 +124,7 @@ public class BambooBee extends NavigatingMachine {
                     if (blockEntity instanceof Container container) {
                         addToContainer(container, carries);
                         playSound(SoundEvents.BARREL_CLOSE);
+                        blockEntity.setChanged();
                         if (carries.isEmpty()) {
                             currentTask = null;
                         } else {
