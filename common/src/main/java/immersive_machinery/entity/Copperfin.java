@@ -2,6 +2,7 @@ package immersive_machinery.entity;
 
 import immersive_aircraft.cobalt.network.NetworkHandler;
 import immersive_aircraft.item.upgrade.VehicleStat;
+import immersive_machinery.Items;
 import immersive_machinery.Sounds;
 import immersive_machinery.client.KeyBindings;
 import immersive_machinery.network.c2s.SonarMessage;
@@ -14,6 +15,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
@@ -30,6 +32,11 @@ public class Copperfin extends MachineEntity {
 
     public Copperfin(EntityType<? extends MachineEntity> entityType, Level world) {
         super(entityType, world, true);
+    }
+
+    @Override
+    public Item asItem() {
+        return Items.COPPERFIN.get();
     }
 
     @Override
@@ -224,9 +231,9 @@ public class Copperfin extends MachineEntity {
     }
 
     public void sonar() {
-        level().getEntities(this, new AABB(getOnPos(), getOnPos()).inflate(16)).forEach(e -> {
+        level().getEntities(this, new AABB(getOnPos(), getOnPos()).inflate(48)).forEach(e -> {
             if (e instanceof LivingEntity le && !e.isPassengerOfSameVehicle(this)) {
-                le.addEffect(new MobEffectInstance(MobEffects.GLOWING, 15));
+                le.addEffect(new MobEffectInstance(MobEffects.GLOWING, 30));
             }
         });
         this.playSound(Sounds.SONAR.get());
