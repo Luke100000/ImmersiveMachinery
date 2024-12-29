@@ -3,7 +3,9 @@
   "minVersion": "0.7",
   "package": "immersive_machinery.mixin",
   "compatibilityLevel": "JAVA_16",
-  "mixins": [],
+  "mixins": [
+    "client.EntityMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   },
