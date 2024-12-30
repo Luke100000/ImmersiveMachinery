@@ -61,9 +61,9 @@ jobs:
         uses: Kir-Antipov/mc-publish@v3.3.0
         if: ${{ success() && startsWith(github.ref, 'refs/tags/') }}
         with:
-          modrinth-id: x3HZvrj6
+          modrinth-id: kGP3J2TW
           modrinth-token: ${{ env.MODRINTH_TOKEN }}
-          curseforge-id: 666014
+          curseforge-id: 1068736
           curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
 
           name: "[Fabric ${{steps.split.outputs._1}}] Immersive Machinery - ${{steps.split.outputs._0}}"
@@ -84,9 +84,9 @@ jobs:
         uses: Kir-Antipov/mc-publish@v3.3.0
         if: ${{ success() && startsWith(github.ref, 'refs/tags/') }}
         with:
-          modrinth-id: x3HZvrj6
+          modrinth-id: kGP3J2TW
           modrinth-token: ${{ env.MODRINTH_TOKEN }}
-          curseforge-id: 666014
+          curseforge-id: 1068736
           curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
 
           name: "[Forge ${{steps.split.outputs._1}}] Immersive Machinery - ${{steps.split.outputs._0}}"
