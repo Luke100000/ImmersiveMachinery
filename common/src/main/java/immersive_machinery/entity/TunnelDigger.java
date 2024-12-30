@@ -51,6 +51,11 @@ public class TunnelDigger extends MachineEntity {
     }
 
     @Override
+    public boolean isPushedByFluid() {
+        return false;
+    }
+
+    @Override
     public void tick() {
         super.tick();
 
@@ -138,6 +143,10 @@ public class TunnelDigger extends MachineEntity {
     protected void updateController() {
         super.updateController();
 
+        if (!level().isClientSide()) {
+            return;
+        }
+
         // Update drill controls
         int newDrillY = movementY > 0 ? 1 : movementY < 0 ? -1 : 0;
         boolean newDilling = (movementY != 0 || movementZ > 0) && drillOn && getEnginePower() > 0.1f;
@@ -166,7 +175,7 @@ public class TunnelDigger extends MachineEntity {
         }
 
         // Turn off drill
-        if (level().isClientSide() && KeyBindings.HORN.consumeClick()) {
+        if (KeyBindings.HORN.consumeClick()) {
             drillOn = !drillOn;
             LivingEntity pilot = getControllingPassenger();
             if (pilot != null) {

@@ -43,6 +43,13 @@ public class Copperfin extends MachineEntity {
     protected void updateController() {
         super.updateController();
 
+        // Sonar
+        sonarCooldown--;
+        if (level().isClientSide() && KeyBindings.HORN.consumeClick() && sonarCooldown < 0) {
+            NetworkHandler.sendToServer(new SonarMessage());
+            sonarCooldown = 60;
+        }
+
         // up and down
         setDeltaMovement(getDeltaMovement().add(0.0f, getSpeed() * getProperties().get(VehicleStat.VERTICAL_SPEED) * pressingInterpolatedY.getSmooth(), 0.0f));
 
@@ -137,13 +144,6 @@ public class Copperfin extends MachineEntity {
     }
 
     public void tickClient() {
-        // Sonar
-        sonarCooldown--;
-        if (KeyBindings.HORN.consumeClick() && sonarCooldown < 0) {
-            NetworkHandler.sendToServer(new SonarMessage());
-            sonarCooldown = 60;
-        }
-
         float underwaterFraction = getUnderwaterFraction();
 
         // Wet particles
