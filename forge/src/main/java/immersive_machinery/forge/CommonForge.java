@@ -14,10 +14,6 @@ import static net.minecraft.core.registries.Registries.CREATIVE_MODE_TAB;
 @Mod.EventBusSubscriber(modid = Common.MOD_ID, bus = Bus.MOD)
 public final class CommonForge {
     public CommonForge() {
-        // Force loading the Immersive Aircraft class to have networking and registration loaded
-        //noinspection InstantiationOfUtilityClass
-        new immersive_aircraft.forge.CommonForge();
-
         Common.init();
 
         Items.bootstrap();
