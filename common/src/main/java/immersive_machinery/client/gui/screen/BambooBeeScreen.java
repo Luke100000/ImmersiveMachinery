@@ -8,14 +8,12 @@ import immersive_machinery.client.gui.screen.widgets.ToggleImageButton;
 import immersive_machinery.entity.BambooBee;
 import immersive_machinery.network.c2s.BambooBeeConfigurationUpdate;
 import net.minecraft.Util;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import org.jetbrains.annotations.NotNull;
 
 import java.net.URI;
 import java.util.Locale;
@@ -84,25 +82,20 @@ public class BambooBeeScreen extends VehicleScreen {
         }, Component.translatable("gui.immersive_machinery.bamboo_bee.order." + c.order.name().toLowerCase(Locale.ROOT)), false);
 
         // Help button
-        ImageButton help = new ImageButton(getX() + 161, getY() + 4,
+        ImageButton help = new ImageButton(getX() + 160, getY() + 5,
                 10, 10,
                 64, 0, 10, TEXTURE, 128, 128,
                 b -> openHelp(), TEXT_HELP);
-        help.setTooltip(Tooltip.create(Component.translatable("gui.immersive_machinery.bamboo_bee.help")));
+        help.setTooltip(Tooltip.create(TEXT_HELP));
         addRenderableWidget(help);
     }
 
     private void openHelp() {
         try {
-            Util.getPlatform().openUri(URI.create("https://github.com/Luke100000/ImmersiveMachinery/wiki/bamboo-bee"));
+            Util.getPlatform().openUri(URI.create("https://github.com/Luke100000/ImmersiveMachinery/wiki/Bamboo-Bee"));
         } catch (Exception e) {
             Common.LOGGER.error("Failed to open help page", e);
         }
-    }
-
-    @Override
-    public void render(@NotNull GuiGraphics context, int mouseX, int mouseY, float delta) {
-        super.render(context, mouseX, mouseY, delta);
     }
 
     public void updateConfigurations() {

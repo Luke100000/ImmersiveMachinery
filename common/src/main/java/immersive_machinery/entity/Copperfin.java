@@ -46,8 +46,7 @@ public class Copperfin extends MachineEntity {
         // Sonar
         sonarCooldown--;
         if (level().isClientSide() && KeyBindings.HORN.consumeClick() && sonarCooldown < 0) {
-            NetworkHandler.sendToServer(new SonarMessage());
-            sonarCooldown = 60;
+            requestSonar();
         }
 
         // up and down
@@ -228,6 +227,11 @@ public class Copperfin extends MachineEntity {
             Vector3f pos = getParticlePosition(height);
             level().addParticle(type, pos.x, pos.y, pos.z, 0.0, 1.0, 0.0);
         }
+    }
+
+    public void requestSonar() {
+        NetworkHandler.sendToServer(new SonarMessage());
+        sonarCooldown = 60;
     }
 
     public void sonar() {

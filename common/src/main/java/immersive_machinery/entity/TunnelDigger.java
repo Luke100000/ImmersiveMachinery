@@ -176,11 +176,15 @@ public class TunnelDigger extends MachineEntity {
 
         // Turn off drill
         if (KeyBindings.HORN.consumeClick()) {
-            drillOn = !drillOn;
-            LivingEntity pilot = getControllingPassenger();
-            if (pilot != null) {
-                pilot.sendSystemMessage(Component.translatable(drillOn ? "immersive_machinery.tunnel_digger.drill_on" : "immersive_machinery.tunnel_digger.drill_off"));
-            }
+            toggleDrill();
+        }
+    }
+
+    public void toggleDrill() {
+        drillOn = !drillOn;
+        LivingEntity pilot = getControllingPassenger();
+        if (pilot != null) {
+            pilot.sendSystemMessage(Component.translatable(drillOn ? "immersive_machinery.tunnel_digger.drill_on" : "immersive_machinery.tunnel_digger.drill_off"));
         }
     }
 

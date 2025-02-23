@@ -35,6 +35,10 @@
 
   "gui.immersive_machinery.bamboo_bee.help": "Open help page",
 
+  "gui.immersive_machinery.tunnel_digger.drill": "Toggle drill (%s)",
+
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
+
   "gui.immersive_machinery.bamboo_bee.whitelist": "Whitelist",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Blacklist",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filter by name",
