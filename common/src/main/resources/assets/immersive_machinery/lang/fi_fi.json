@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Aseta tulosteeksi",
   "gui.immersive_machinery.bamboo_bee.position_input": "Aseta syötteeksi",
   "gui.immersive_machinery.bamboo_bee.help": "Avaa ohjesivu",
+  "gui.immersive_machinery.tunnel_digger.drill": "Kääntöpora (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Whitelist",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Musta lista",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Suodata nimen mukaan",
