@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "出力として設定",
   "gui.immersive_machinery.bamboo_bee.position_input": "入力に設定",
   "gui.immersive_machinery.bamboo_bee.help": "ヘルプページを開く",
+  "gui.immersive_machinery.tunnel_digger.drill": "トグル・ドリル (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "ソナー (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "ホワイトリスト",
   "gui.immersive_machinery.bamboo_bee.blacklist": "ブラックリスト",
   "gui.immersive_machinery.bamboo_bee.filter.name": "名前で絞り込む",
