@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Definir como saída",
   "gui.immersive_machinery.bamboo_bee.position_input": "Definir como entrada",
   "gui.immersive_machinery.bamboo_bee.help": "Abrir a página de ajuda",
+  "gui.immersive_machinery.tunnel_digger.drill": "Broca articulada (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Lista de permissões",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Lista negra",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrar por nome",
