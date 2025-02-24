@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Nastavit jako výstup",
   "gui.immersive_machinery.bamboo_bee.position_input": "Nastavení jako vstup",
   "gui.immersive_machinery.bamboo_bee.help": "Otevřít stránku nápovědy",
+  "gui.immersive_machinery.tunnel_digger.drill": "Přepínací vrták (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Bílá listina",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Černá listina",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrování podle názvu",
