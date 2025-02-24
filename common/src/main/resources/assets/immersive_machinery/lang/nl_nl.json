@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Instellen als uitvoer",
   "gui.immersive_machinery.bamboo_bee.position_input": "Instellen als invoer",
   "gui.immersive_machinery.bamboo_bee.help": "Help pagina openen",
+  "gui.immersive_machinery.tunnel_digger.drill": "Schakelboor (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Whitelist",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Zwarte lijst",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filter op naam",
