@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Nastavite kot izhod",
   "gui.immersive_machinery.bamboo_bee.position_input": "Nastavljeno kot vhodni podatek",
   "gui.immersive_machinery.bamboo_bee.help": "Odprite stran pomoči",
+  "gui.immersive_machinery.tunnel_digger.drill": "Vrtalnik s preklopnim mehanizmom (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Bela lista",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Črni seznam",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtriranje po imenu",
