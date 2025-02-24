@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Définir comme sortie",
   "gui.immersive_machinery.bamboo_bee.position_input": "Définir comme entrée",
   "gui.immersive_machinery.bamboo_bee.help": "Ouvrir la page d'aide",
+  "gui.immersive_machinery.tunnel_digger.drill": "Perceuse à bascule (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Liste blanche",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Liste noire",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrer par nom",
