@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "設定為輸出",
   "gui.immersive_machinery.bamboo_bee.position_input": "設定為輸入",
   "gui.immersive_machinery.bamboo_bee.help": "開啟說明網頁",
+  "gui.immersive_machinery.tunnel_digger.drill": "搖臂鑽 (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "聲納 (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "白名單",
   "gui.immersive_machinery.bamboo_bee.blacklist": "黑名單",
   "gui.immersive_machinery.bamboo_bee.filter.name": "依名稱篩選",
