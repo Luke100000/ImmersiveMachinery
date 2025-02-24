@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Indstil som output",
   "gui.immersive_machinery.bamboo_bee.position_input": "Indstil som input",
   "gui.immersive_machinery.bamboo_bee.help": "Åbn hjælpesiden",
+  "gui.immersive_machinery.tunnel_digger.drill": "Vippebor (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Hvidliste",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Sortliste",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrer efter navn",
