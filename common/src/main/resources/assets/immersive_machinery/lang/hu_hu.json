@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Kimenetként beállítva",
   "gui.immersive_machinery.bamboo_bee.position_input": "Beállítás bemenetként",
   "gui.immersive_machinery.bamboo_bee.help": "Súgóoldal megnyitása",
+  "gui.immersive_machinery.tunnel_digger.drill": "Fúrógép (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Fehér lista",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Fekete lista",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Szűrés név szerint",
