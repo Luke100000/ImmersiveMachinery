@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Задайте като изход",
   "gui.immersive_machinery.bamboo_bee.position_input": "Задайте като вход",
   "gui.immersive_machinery.bamboo_bee.help": "Отваряне на помощна страница",
+  "gui.immersive_machinery.tunnel_digger.drill": "Свредел за превключване (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Сонар (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Бял списък",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Черен списък",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Филтриране по име",
