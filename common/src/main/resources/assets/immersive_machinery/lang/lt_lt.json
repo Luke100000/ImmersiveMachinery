@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Nustatyti kaip išvestį",
   "gui.immersive_machinery.bamboo_bee.position_input": "Nustatyti kaip įvestį",
   "gui.immersive_machinery.bamboo_bee.help": "Atidaryti pagalbos puslapį",
+  "gui.immersive_machinery.tunnel_digger.drill": "Perjungiamasis grąžtas (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonaras (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Baltasis sąrašas",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Juodasis sąrašas",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtruoti pagal pavadinimą",
