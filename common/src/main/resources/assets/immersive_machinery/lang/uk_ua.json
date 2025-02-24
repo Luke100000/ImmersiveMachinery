@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Встановити як вихідні дані",
   "gui.immersive_machinery.bamboo_bee.position_input": "Встановити як вхідні дані",
   "gui.immersive_machinery.bamboo_bee.help": "Відкрити сторінку довідки",
+  "gui.immersive_machinery.tunnel_digger.drill": "Тумблерне свердло (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Сонар (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Білий список",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Чорний список",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Фільтр за назвою",
