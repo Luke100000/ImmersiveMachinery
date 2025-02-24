@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Setat ca ieșire",
   "gui.immersive_machinery.bamboo_bee.position_input": "Setați ca intrare",
   "gui.immersive_machinery.bamboo_bee.help": "Deschideți pagina de ajutor",
+  "gui.immersive_machinery.tunnel_digger.drill": "Burghiu cu pârghie (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Lista albă",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Lista neagră",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrați după nume",
