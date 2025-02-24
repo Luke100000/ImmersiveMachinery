@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Установить в качестве выхода",
   "gui.immersive_machinery.bamboo_bee.position_input": "Установить в качестве входа",
   "gui.immersive_machinery.bamboo_bee.help": "Открыть страницу справки",
+  "gui.immersive_machinery.tunnel_digger.drill": "Сверло с толкателем (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Сонар (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Белый список",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Чёрный список",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Фильтровать по названию",
