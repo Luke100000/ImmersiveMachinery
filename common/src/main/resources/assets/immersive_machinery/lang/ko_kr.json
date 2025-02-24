@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "출력으로 설정",
   "gui.immersive_machinery.bamboo_bee.position_input": "입력으로 설정",
   "gui.immersive_machinery.bamboo_bee.help": "도움말 페이지 열기",
+  "gui.immersive_machinery.tunnel_digger.drill": "드릴 토글 (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "소나 (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "화이트리스트",
   "gui.immersive_machinery.bamboo_bee.blacklist": "블랙리스트",
   "gui.immersive_machinery.bamboo_bee.filter.name": "이름으로 필터링",
