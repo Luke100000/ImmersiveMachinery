@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Establecer como resultado",
   "gui.immersive_machinery.bamboo_bee.position_input": "Establecer como entrada",
   "gui.immersive_machinery.bamboo_bee.help": "Abrir página de ayuda",
+  "gui.immersive_machinery.tunnel_digger.drill": "Toggle drill (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Whitelist",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Blacklist",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrar por nombre",
