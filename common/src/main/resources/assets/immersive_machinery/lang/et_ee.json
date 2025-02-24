@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Määra väljundiks",
   "gui.immersive_machinery.bamboo_bee.position_input": "Sisendiks määrata",
   "gui.immersive_machinery.bamboo_bee.help": "Ava abileht",
+  "gui.immersive_machinery.tunnel_digger.drill": "Pöördpuur (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Valge nimekiri",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Must nimekiri",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtreeri nime järgi",
