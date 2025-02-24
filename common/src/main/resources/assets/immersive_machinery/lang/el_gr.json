@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Ορίστε ως έξοδο",
   "gui.immersive_machinery.bamboo_bee.position_input": "Ορίστε ως είσοδο",
   "gui.immersive_machinery.bamboo_bee.help": "Άνοιγμα σελίδας βοήθειας",
+  "gui.immersive_machinery.tunnel_digger.drill": "Τρυπάνι με περιστρεφόμενο τρυπάνι (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Λευκή λίστα",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Μαύρη λίστα",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Φίλτρο με βάση το όνομα",
