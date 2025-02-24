@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Çıktı olarak ayarla",
   "gui.immersive_machinery.bamboo_bee.position_input": "Giriş olarak ayarla",
   "gui.immersive_machinery.bamboo_bee.help": "Yardım sayfasını aç",
+  "gui.immersive_machinery.tunnel_digger.drill": "Geçiş matkabı (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Beyaz Liste",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Kara Liste",
   "gui.immersive_machinery.bamboo_bee.filter.name": "İsme göre filtrele",
