@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Imposta come uscita",
   "gui.immersive_machinery.bamboo_bee.position_input": "Imposta come ingresso",
   "gui.immersive_machinery.bamboo_bee.help": "Apri la pagina di aiuto",
+  "gui.immersive_machinery.tunnel_digger.drill": "Trapano a colonna (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Whitelist",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Lista nera",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtra per nome",
