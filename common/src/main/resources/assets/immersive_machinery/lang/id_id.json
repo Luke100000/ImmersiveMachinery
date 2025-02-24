@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Ditetapkan sebagai output",
   "gui.immersive_machinery.bamboo_bee.position_input": "Tetapkan sebagai masukan",
   "gui.immersive_machinery.bamboo_bee.help": "Buka halaman bantuan",
+  "gui.immersive_machinery.tunnel_digger.drill": "Beralih bor (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Daftar putih",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Daftar hitam",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Saring berdasarkan nama",
