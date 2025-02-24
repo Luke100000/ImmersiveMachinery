@@ -26,6 +26,8 @@
   "gui.immersive_machinery.bamboo_bee.position_output": "Iestatīts kā izejas",
   "gui.immersive_machinery.bamboo_bee.position_input": "Iestatīts kā ievade",
   "gui.immersive_machinery.bamboo_bee.help": "Atvērt palīdzības lapu",
+  "gui.immersive_machinery.tunnel_digger.drill": "Pārslēgšanas urbis (%s)",
+  "gui.immersive_machinery.copperfin.sonar": "Sonārs (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Baltais saraksts",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Melnais saraksts",
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrēt pēc nosaukuma",
