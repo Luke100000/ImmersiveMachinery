@@ -1,7 +1,8 @@
-# 0.0.3
+# 0.1.0
 
 * Added drill control to the Tunnel Digger's GUI
 * Added sonar to the Copperfins GUI
+* Ported to Immersive Aircraft 1.2.0 and resolved crashes
 
 # 0.0.2
 

@@ -15,6 +15,7 @@ import static immersive_aircraft.entity.inventory.VehicleInventoryDescription.re
 import static immersive_aircraft.item.upgrade.VehicleStat.register;
 
 public final class Common {
+    public static final String SHORT_MOD_ID = "ic_im";
     public static final String MOD_ID = "immersive_machinery";
     public static final Logger LOGGER = LogManager.getLogger();
     public static NetworkManager networkManager;

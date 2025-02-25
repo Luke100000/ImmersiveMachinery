@@ -33,6 +33,6 @@
     "fabricloader": ">=0.11.3",
     "java": ">=8",
     "fabric-api-base": ">=0.1.0",
-    "immersive_aircraft": ">=1.1.6"
+    "immersive_aircraft": ">=1.2.0"
   }
 }
