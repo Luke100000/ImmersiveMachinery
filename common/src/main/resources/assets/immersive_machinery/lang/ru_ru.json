@@ -15,7 +15,7 @@
   "item.immersive_machinery.redstone_mechanism": "Редстоуновый механизм",
   "item.immersive_machinery.iron_drill": "Железный бур",
   "item.immersive_machinery.diamond_drill": "Алмазный бур",
-  "item.immersive_machinery.netherite_drill": "Нетеритовое сверло",
+  "item.immersive_machinery.netherite_drill": "Незеритовый бур",
   "gui.immersive_machinery.bamboo_bee.tooltip.help1": "Кликните с зажатым Shift по контейнеру для добавления.",
   "gui.immersive_machinery.bamboo_bee.tooltip.help2": "Кликните с зажатым Shift по любому другому блоку для сброса.",
   "gui.immersive_machinery.bamboo_bee.tooltip.header": "Имеет %s контейнеров:",
