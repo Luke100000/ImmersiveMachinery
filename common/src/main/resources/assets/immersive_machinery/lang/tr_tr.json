@@ -30,13 +30,13 @@
   "gui.immersive_machinery.copperfin.sonar": "Sonar (%s)",
   "gui.immersive_machinery.bamboo_bee.whitelist": "Beyaz Liste",
   "gui.immersive_machinery.bamboo_bee.blacklist": "Kara Liste",
-  "gui.immersive_machinery.bamboo_bee.filter.name": "İsme göre filtrele",
-  "gui.immersive_machinery.bamboo_bee.filter.tag": "NBT Etiketine Göre Filtrele",
+  "gui.immersive_machinery.bamboo_bee.filter.name": "Ada göre süz",
+  "gui.immersive_machinery.bamboo_bee.filter.tag": "NBT Etiketine Göre Süz",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
   "gui.immersive_machinery.bamboo_bee.order.first": "Önce seç",
   "immersive_machinery.tunnel_digger.drill_on": "Matkap açık",
   "immersive_machinery.tunnel_digger.drill_off": "Matkap kapalı",
   "immersive_aircraft.upgrade.drillingspeed": "%s% delme hızı",
   "immersive_aircraft.slot.im_shards": "Daha hızlı delme için Ametist Parçaları",
-  "immersive_aircraft.slot.im_filter": "Ürün Filtresi"
+  "immersive_aircraft.slot.im_filter": "Ürün Süzgeci"
 }
