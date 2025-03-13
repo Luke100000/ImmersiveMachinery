@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrování podle názvu",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtrování podle značky NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Vyberte první",
   "immersive_machinery.tunnel_digger.drill_on": "Vrtání na",
   "immersive_machinery.tunnel_digger.drill_off": "Vypnutí vrtáku",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% rychlost vrtání",
