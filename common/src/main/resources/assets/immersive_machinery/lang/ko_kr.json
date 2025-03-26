@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "이름으로 필터링",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "NBT 태그로 필터링",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "라운드 로빈",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "먼저 선택",
   "immersive_machinery.tunnel_digger.drill_on": "드릴온",
   "immersive_machinery.tunnel_digger.drill_off": "드릴 오프",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% 드릴링 속도",
