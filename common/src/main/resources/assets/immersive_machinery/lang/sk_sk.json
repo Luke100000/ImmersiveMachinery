@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrovanie podľa názvu",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtrovanie podľa značky NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Okrúhly turnaj",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Vyberte si ako prvé",
   "immersive_machinery.tunnel_digger.drill_on": "Vŕtanie na",
   "immersive_machinery.tunnel_digger.drill_off": "Vypnutie vŕtania",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% rýchlosť vŕtania",
