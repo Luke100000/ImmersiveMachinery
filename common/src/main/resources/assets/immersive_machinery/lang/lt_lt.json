@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtruoti pagal pavadinimą",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtruoti pagal NBT žymą",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "\"Round Robin\" turas",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Pasirinkite pirmąją",
   "immersive_machinery.tunnel_digger.drill_on": "Gręžkite",
   "immersive_machinery.tunnel_digger.drill_off": "Išjungti gręžimą",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% gręžimo greitis",
