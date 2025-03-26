@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrer par nom",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtrer par étiquette NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Tour de table",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Choisis d'abord",
   "immersive_machinery.tunnel_digger.drill_on": "Perce sur",
   "immersive_machinery.tunnel_digger.drill_off": "Perçage",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% Vitesse de forage",
