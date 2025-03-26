@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrēt pēc nosaukuma",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtrēt pēc NBT birkas",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Apaļais turnīrs",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Izvēlieties pirmo",
   "immersive_machinery.tunnel_digger.drill_on": "Urbis uz",
   "immersive_machinery.tunnel_digger.drill_off": "Izslēgt urbi",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% urbšanas ātrums",
