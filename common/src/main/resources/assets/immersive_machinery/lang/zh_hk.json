@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "依名稱篩選",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "依 NBT 標籤篩選",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "循環賽",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "先選擇",
   "immersive_machinery.tunnel_digger.drill_on": "鑽孔",
   "immersive_machinery.tunnel_digger.drill_off": "鑽脫",
   "immersive_aircraft.upgrade.drillingspeed": "%s%%鑽孔速度",
