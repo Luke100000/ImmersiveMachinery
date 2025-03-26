@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtreeri nime järgi",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtreeri NBT sildi järgi",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Valige esimene",
   "immersive_machinery.tunnel_digger.drill_on": "Puur edasi",
   "immersive_machinery.tunnel_digger.drill_off": "Puur maha",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% puurimiskiirus",
