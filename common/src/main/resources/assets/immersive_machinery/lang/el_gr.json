@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Φίλτρο με βάση το όνομα",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Φίλτρο ανά ετικέτα NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Διαλέξτε πρώτα",
   "immersive_machinery.tunnel_digger.drill_on": "Drill on",
   "immersive_machinery.tunnel_digger.drill_off": "Τρυπάνι μακριά",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% ταχύτητα διάτρησης",
