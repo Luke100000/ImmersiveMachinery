@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Szűrés név szerint",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Szűrés NBT címke szerint",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Válasszon először",
   "immersive_machinery.tunnel_digger.drill_on": "Drill on",
   "immersive_machinery.tunnel_digger.drill_off": "Fúrás ki",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% fúrási sebesség",
