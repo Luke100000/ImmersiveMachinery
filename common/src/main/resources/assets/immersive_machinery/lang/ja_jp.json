@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "名前で絞り込む",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "NBTタグによるフィルタリング",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "ラウンドロビン",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "最初に選ぶ",
   "immersive_machinery.tunnel_digger.drill_on": "ドリル",
   "immersive_machinery.tunnel_digger.drill_off": "ドリルオフ",
   "immersive_aircraft.upgrade.drillingspeed": "%s掘削速度",
