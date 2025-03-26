@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrer efter navn",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtrer efter NBT-tag",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Vælg først",
   "immersive_machinery.tunnel_digger.drill_on": "Bor på",
   "immersive_machinery.tunnel_digger.drill_off": "Bor af",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% borehastighed",
