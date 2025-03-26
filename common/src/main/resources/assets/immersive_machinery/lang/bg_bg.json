@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Филтриране по име",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Филтриране по NBT етикет",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Кръгъл мач",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Изберете първи",
   "immersive_machinery.tunnel_digger.drill_on": "Пробиване на",
   "immersive_machinery.tunnel_digger.drill_off": "Изключване на пробиване",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% скорост на пробиване",
