@@ -79,10 +79,8 @@ public class TunnelDigger extends MachineEntity {
                 center = center.add((float) getX(), (float) getY(), (float) getZ());
 
                 for (int x = -1; x <= 1; x++) {
-                    for (int z = 0; z <= 3; z++) {
-                        for (int y = -1 - Math.max(0, -drillY); y <= 1 + Math.max(0, drillY); y++) {
-                            if (drillY > 0 && y == 2 && z == 0) continue;
-                            if (drillY > 0 && y == -2 && z == 3) continue;
+                    for (int z = -Math.max(0, drillY) * 2; z <= 3; z++) {
+                        for (int y = drillY - 1; y <= 1 + Math.max(0, drillY); y++) {
                             if (drillY < 0 && y == 2 && z == 0) continue;
                             if (drillY < 0 && y == -2 && z == 3) continue;
 
@@ -123,7 +121,7 @@ public class TunnelDigger extends MachineEntity {
     }
 
     public float getDrillSpeed() {
-        return (hasShards() ? 10.0f : 5.0f) * this.getProperties().get(Common.DRILLING_SPEED);
+        return (hasShards() ? 2.0f : 1.0f) * this.getProperties().get(Common.DRILLING_SPEED);
     }
 
     public boolean hasShards() {

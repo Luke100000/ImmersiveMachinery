@@ -1,3 +1,9 @@
+# 0.1.1
+
+* Made tunnel digger faster
+* Fixed tunnel digger upwards digging
+* Added localization
+
 # 0.1.0
 
 * Added drill control to the Tunnel Digger's GUI
