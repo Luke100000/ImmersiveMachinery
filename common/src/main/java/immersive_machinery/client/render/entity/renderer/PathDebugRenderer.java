@@ -68,7 +68,8 @@ public class PathDebugRenderer {
             int k = j >> 16 & 0xFF;
             int l = j >> 8 & 0xFF;
             int m = j & 0xFF;
-            consumer.vertex(poseStack.last().pose(), (float) ((double) node.x - x + 0.5f), (float) ((double) node.y - y + 0.5), (float) ((double) node.z - z + 0.5)).color(k, l, m, 255).endVertex();
+            consumer.addVertex(poseStack.last().pose(), (float) ((double) node.x - x + 0.5f), (float) ((double) node.y - y + 0.5), (float) ((double) node.z - z + 0.5))
+                    .setColor(k, l, m, 255);
         }
     }
 

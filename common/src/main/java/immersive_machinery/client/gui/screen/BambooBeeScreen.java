@@ -4,6 +4,7 @@ import immersive_aircraft.client.gui.VehicleScreen;
 import immersive_aircraft.cobalt.network.NetworkHandler;
 import immersive_aircraft.screen.VehicleScreenHandler;
 import immersive_machinery.Common;
+import immersive_machinery.client.gui.screen.widgets.LegacyImageButton;
 import immersive_machinery.client.gui.screen.widgets.ToggleImageButton;
 import immersive_machinery.entity.BambooBee;
 import immersive_machinery.network.c2s.BambooBeeConfigurationUpdate;
@@ -82,7 +83,7 @@ public class BambooBeeScreen extends VehicleScreen {
         }, Component.translatable("gui.immersive_machinery.bamboo_bee.order." + c.order.name().toLowerCase(Locale.ROOT)), false);
 
         // Help button
-        ImageButton help = new ImageButton(getX() + 160, getY() + 5,
+        ImageButton help = new LegacyImageButton(getX() + 160, getY() + 5,
                 10, 10,
                 64, 0, 10, TEXTURE, 128, 128,
                 b -> openHelp(), TEXT_HELP);

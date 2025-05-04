@@ -38,6 +38,7 @@ public interface Entities {
     Supplier<EntityType<Copperfin>> COPPERFIN = register("copperfin", EntityType.Builder
             .of(Copperfin::new, MobCategory.MISC)
             .sized(1.5f, 1.625f)
+            .eyeHeight(0.4f)
             .clientTrackingRange(12)
             .fireImmune()
     );
@@ -47,7 +48,7 @@ public interface Entities {
     }
 
     static <T extends Entity> Supplier<EntityType<T>> register(String name, EntityType.Builder<T> builder) {
-        ResourceLocation id = new ResourceLocation(Common.MOD_ID, name);
+        ResourceLocation id = Common.locate(name);
         return Registration.register(BuiltInRegistries.ENTITY_TYPE, id, () -> builder.build(id.toString()));
     }
 }

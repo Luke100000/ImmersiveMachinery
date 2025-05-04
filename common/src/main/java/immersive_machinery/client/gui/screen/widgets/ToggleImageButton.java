@@ -2,11 +2,10 @@ package immersive_machinery.client.gui.screen.widgets;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
-public class ToggleImageButton extends ImageButton {
+public class ToggleImageButton extends LegacyImageButton {
     private boolean pressed;
 
     public ToggleImageButton(int x, int y, int width, int height, int xTexStart, int yTexStart, int yDiffTex, ResourceLocation resourceLocation, int textureWidth, int textureHeight, OnPress onPress, Component message) {

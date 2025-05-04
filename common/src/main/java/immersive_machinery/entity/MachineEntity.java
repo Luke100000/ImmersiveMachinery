@@ -14,6 +14,11 @@ public abstract class MachineEntity extends EngineVehicle {
     }
 
     @Override
+    public boolean isNoGravity() {
+        return false;
+    }
+
+    @Override
     public void tick() {
         // rolling interpolation
         prevRoll = roll;
@@ -36,7 +41,7 @@ public abstract class MachineEntity extends EngineVehicle {
         setYRot(getYRot() - getProperties().get(VehicleStat.YAW_SPEED) * pressingInterpolatedX.getSmooth());
 
         if (onGround()) {
-            // get direction
+            // get the direction
             Vector3f direction = getForwardDirection();
 
             // speeds
@@ -54,7 +59,7 @@ public abstract class MachineEntity extends EngineVehicle {
     @Override
     protected void updateVelocity() {
         float decay = 1.0f - getProperties().get(VehicleStat.FRICTION);
-        float gravity = getGravity();
+        double gravity = getGravity();
         if (wasTouchingWater) {
             gravity *= 0.25f;
             decay = 0.9f;
@@ -65,7 +70,7 @@ public abstract class MachineEntity extends EngineVehicle {
         float hd = getProperties().get(VehicleStat.HORIZONTAL_DECAY);
         float vd = getProperties().get(VehicleStat.VERTICAL_DECAY);
         Vec3 velocity = getDeltaMovement();
-        setDeltaMovement(velocity.x * decay * hd, velocity.y * decay * vd + gravity, velocity.z * decay * hd);
+        setDeltaMovement(velocity.x * decay * hd, velocity.y * decay * vd - gravity, velocity.z * decay * hd);
         float rf = decay * getProperties().get(VehicleStat.ROTATION_DECAY);
         pressingInterpolatedX.decay(0.0f, 1.0f - rf);
         pressingInterpolatedZ.decay(0.0f, 1.0f - rf);
@@ -91,7 +96,7 @@ public abstract class MachineEntity extends EngineVehicle {
     private void moveItemToOccupiedSlotsWithSameType(ItemStack stack) {
         for (int i = 0; i < this.getContainerSize(); ++i) {
             ItemStack itemStack = this.getItem(i);
-            if (ItemStack.isSameItemSameTags(itemStack, stack)) {
+            if (ItemStack.isSameItemSameComponents(itemStack, stack)) {
                 this.moveItemsBetweenStacks(stack, itemStack);
                 if (stack.isEmpty()) {
                     return;

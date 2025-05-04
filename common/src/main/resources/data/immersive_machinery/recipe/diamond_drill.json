@@ -1,15 +1,15 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "minecraft:netherite_ingot"
+    "item": "minecraft:diamond"
   },
   "base": {
-    "item": "immersive_machinery:diamond_drill"
+    "item": "immersive_machinery:iron_drill"
   },
   "template": {
     "item": "minecraft:iron_block"
   },
   "result": {
-    "item": "immersive_machinery:netherite_drill"
+    "id": "immersive_machinery:diamond_drill"
   }
 }

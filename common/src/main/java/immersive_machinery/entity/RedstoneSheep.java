@@ -42,13 +42,11 @@ public class RedstoneSheep extends NavigatingMachine {
 
     public RedstoneSheep(EntityType<? extends MachineEntity> entityType, Level world) {
         super(entityType, world, false, false, 0);
-
-        setMaxUpStep(1.1f);
     }
 
     @Override
-    public boolean isNoGravity() {
-        return false;
+    public float maxUpStep() {
+        return 1.1f;
     }
 
     @Override
@@ -113,12 +111,12 @@ public class RedstoneSheep extends NavigatingMachine {
                 }
                 task = null;
             } else if (!navigator.hasPath()) {
-                // Target is unreachable, remove from list
+                // Target is unreachable, remove from the list
                 backlogSet.remove(task);
                 task = null;
             }
         } else if (!workingSet.isEmpty()) {
-            // Pick the closest task, verify, set as task, and move to backlog
+            // Pick the closest task, verify, set as the task, and move to backlog
             if ((level().getGameTime() + getId()) % 5 == 0) {
                 //noinspection OptionalGetWithoutIsPresent
                 BlockPos closest = workingSet.stream().min(Comparator.comparingDouble(a -> a.distToCenterSqr(getX(), getY(), getZ()))).get();
@@ -138,7 +136,7 @@ public class RedstoneSheep extends NavigatingMachine {
             workingSet = backlogSet;
             backlogSet = new HashSet<>();
 
-            // If last run was unproductive, rescan
+            // If the last run was unproductive, rescan
             if (tasksHarvested == 0) {
                 if (rescanningTicks <= 0) {
                     // If no players are nearby, why would the world change noticeable?
@@ -253,7 +251,7 @@ public class RedstoneSheep extends NavigatingMachine {
 
     /**
      * @param block Block to check
-     * @return Whether the block is harvestable crop
+     * @return Whether the block is a harvestable crop
      */
     public static boolean isCrop(Block block) {
         String key = BuiltInRegistries.BLOCK.getKey(block).toString();

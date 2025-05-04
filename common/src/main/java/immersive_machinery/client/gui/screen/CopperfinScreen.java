@@ -4,6 +4,7 @@ import immersive_aircraft.client.gui.VehicleScreen;
 import immersive_aircraft.screen.VehicleScreenHandler;
 import immersive_machinery.Common;
 import immersive_machinery.client.KeyBindings;
+import immersive_machinery.client.gui.screen.widgets.LegacyImageButton;
 import immersive_machinery.entity.Copperfin;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.Tooltip;
@@ -29,7 +30,7 @@ public class CopperfinScreen extends VehicleScreen {
 
         // Sonar button
         MutableComponent text = Component.translatable("gui.immersive_machinery.copperfin.sonar", KeyBindings.HORN.getTranslatedKeyMessage());
-        ImageButton help = new ImageButton(getX() + 160, getY() + 5,
+        ImageButton help = new LegacyImageButton(getX() + 160, getY() + 5,
                 10, 10,
                 64, 0, 10, TEXTURE, 128, 128,
                 b -> copperfin.requestSonar(), text);

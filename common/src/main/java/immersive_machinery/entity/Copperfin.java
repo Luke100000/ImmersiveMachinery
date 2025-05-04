@@ -14,7 +14,9 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FluidState;
@@ -82,13 +84,13 @@ public class Copperfin extends MachineEntity {
     }
 
     @Override
-    protected float getGravity() {
-        return isUnderWater() ? 0.0f : super.getGravity();
+    protected double getDefaultGravity() {
+        return isUnderWater() ? 0.0f : super.getDefaultGravity();
     }
 
     @Override
-    protected float getEyeHeight(@NotNull Pose pose, EntityDimensions dimensions) {
-        return dimensions.height * 0.25f;
+    public double getEyeY() {
+        return super.getEyeY();
     }
 
     @Override
@@ -235,7 +237,7 @@ public class Copperfin extends MachineEntity {
     }
 
     public void sonar() {
-        level().getEntities(this, new AABB(getOnPos(), getOnPos()).inflate(48)).forEach(e -> {
+        level().getEntities(this, new AABB(getEyePosition(), getEyePosition()).inflate(48)).forEach(e -> {
             if (e instanceof LivingEntity le && !e.isPassengerOfSameVehicle(this)) {
                 le.addEffect(new MobEffectInstance(MobEffects.GLOWING, 30));
             }

@@ -40,9 +40,15 @@ public class TunnelDigger extends MachineEntity {
     public float lastDrillingAnimation = 0;
 
     public float drillPower = 0.0f;
+    private float maxStepUp = 1.0f;
 
     public TunnelDigger(EntityType<? extends TunnelDigger> entityType, Level world) {
         super(entityType, world, true);
+    }
+
+    @Override
+    public float maxUpStep() {
+        return maxStepUp;
     }
 
     @Override
@@ -106,7 +112,7 @@ public class TunnelDigger extends MachineEntity {
         lastDrillingAnimation = drillingAnimation;
         drillingAnimation += (drilling ? 1 : 0) * 0.1f;
 
-        setMaxUpStep((drillY > 0 || !drilling) ? 1.1f : 0.55f);
+        maxStepUp = (drillY > 0 || !drilling) ? 1.1f : 0.55f;
 
         // Exhaust particles
         if (level().isClientSide()) {

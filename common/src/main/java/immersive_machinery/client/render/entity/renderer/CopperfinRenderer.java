@@ -110,13 +110,12 @@ public class CopperfinRenderer<T extends Copperfin> extends MachineryRenderer<T>
                 Vector3f v = faces[j][i];
                 Vector3f n = normals[i];
                 Vector4f v2 = matrixStack.last().pose().transform(new Vector4f(v.x, v.y + (j == 0 ? -z * 2 : 0.0f), v.z, 1.0f));
-                buffer.vertex(v2.x, v2.y, v2.z);
-                buffer.color(averageWaterColor | 0x70000000);
-                buffer.uv(0.5f, 0.5f);
-                buffer.overlayCoords(OverlayTexture.NO_OVERLAY);
-                buffer.uv2(light);
-                buffer.normal(matrixStack.last().normal(), n.x, n.y, n.z);
-                buffer.endVertex();
+                buffer.addVertex(v2.x, v2.y, v2.z);
+                buffer.setColor(averageWaterColor | 0x70000000);
+                buffer.setUv(0.5f, 0.5f);
+                buffer.setOverlay(OverlayTexture.NO_OVERLAY);
+                buffer.setLight(light);
+                buffer.setNormal(matrixStack.last(), n.x, n.y, n.z);
             }
         }
     }
