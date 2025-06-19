@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Izenaren arabera iragazi",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "NBT Tag-en arabera iragazi",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Ingeldu geroa",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Hautatu lehenengoa",
   "immersive_machinery.tunnel_digger.drill_on": "Drill gainean",
   "immersive_machinery.tunnel_digger.drill_off": "Drill itzalita",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% zulatzeko abiadura",
