@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "moku tan nimi",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "moku tan NBT Tag",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "round robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "kule wan",
   "immersive_machinery.tunnel_digger.drill_on": "ilo pali pona",
   "immersive_machinery.tunnel_digger.drill_off": "ilo pali ala",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% tawa wile",
