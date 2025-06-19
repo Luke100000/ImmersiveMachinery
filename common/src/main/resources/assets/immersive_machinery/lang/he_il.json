@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "סנן לפי שם",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "סנן לפי תג NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "רונד רובין",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "בחר ראשון",
   "immersive_machinery.tunnel_digger.drill_on": "מקדח פועל",
   "immersive_machinery.tunnel_digger.drill_off": "מקדח כבוי",
   "immersive_aircraft.upgrade.drillingspeed": "מהירות חפירה %s%%",
