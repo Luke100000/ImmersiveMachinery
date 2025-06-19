@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtri laŭ nomo",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtri laŭ NBT Etikedo",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Rondironda",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Elektu unua",
   "immersive_machinery.tunnel_digger.drill_on": "Fosaĵo aktiva",
   "immersive_machinery.tunnel_digger.drill_off": "Fosaĵo malaktive",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% fosi rapido",
