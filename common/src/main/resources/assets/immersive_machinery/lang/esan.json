@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrar por nombre",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtrar por etiqueta NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Ronda Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Elige el primero",
   "immersive_machinery.tunnel_digger.drill_on": "Perforar encendido",
   "immersive_machinery.tunnel_digger.drill_off": "Perforar apagado",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% de velocidad de perforación",
