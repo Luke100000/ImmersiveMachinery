@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Фільтрувати за назвою",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Фільтрувати за NBT тегом",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Округлити Рубін",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Виберіть перший",
   "immersive_machinery.tunnel_digger.drill_on": "Бурити вкл",
   "immersive_machinery.tunnel_digger.drill_off": "Бурити вимкнено",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% швидкість буріння",
