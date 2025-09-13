@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "ფილტრის მიხედვით სახელი",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "ფილტრი NBT სიახლეების მიხედვით",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "გრაუნდი რუბა",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "აირჩიე პირველი",
   "immersive_machinery.tunnel_digger.drill_on": "ბურღვა ჩართულ",
   "immersive_machinery.tunnel_digger.drill_off": "ბურღვა გამართული",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% ბურღვის სიჩქარე",
