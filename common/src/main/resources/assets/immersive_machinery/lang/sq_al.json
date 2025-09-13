@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtro sipas emrit",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtro sipas NBT Tag",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Rreth Rrotull",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Zgjidh të parin",
   "immersive_machinery.tunnel_digger.drill_on": "Bore mbi",
   "immersive_machinery.tunnel_digger.drill_off": "Bore jashtë",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% shpejtësia e gërmimit",
