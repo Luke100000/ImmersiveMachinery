@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "பெயரால் வடிகட்டவும்",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "NBT குறிச்சொல்லால் வடிகட்டவும்",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "சுற்று ராபின்",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "முதலாவது தேர்வு செய்",
   "immersive_machinery.tunnel_digger.drill_on": "துளை",
   "immersive_machinery.tunnel_digger.drill_off": "துளை",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% துளையிடும் வேகம்",
