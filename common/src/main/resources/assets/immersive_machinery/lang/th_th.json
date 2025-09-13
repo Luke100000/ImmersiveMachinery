@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "กรองตามชื่อ",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "กรองตามแท็ก NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "โรบินรอบ",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "เลือกแรก",
   "immersive_machinery.tunnel_digger.drill_on": "เจาะอยู่",
   "immersive_machinery.tunnel_digger.drill_off": "ปิดเจาะ",
   "immersive_aircraft.upgrade.drillingspeed": "ความเร็วการเจาะ %s%%",
