@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Ֆիլտրել ըստ անվան",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Ֆիլտրել ըստ NBT նշագրման",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Մտահոգված ռոբին",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Անցեք առաջինը",
   "immersive_machinery.tunnel_digger.drill_on": "Փորում է",
   "immersive_machinery.tunnel_digger.drill_off": "Փորումը անջատված է",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% փորումների արագություն",
