@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtra per nomen",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtra per NBT Tag",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Rotundus Rubrum",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Elige primum",
   "immersive_machinery.tunnel_digger.drill_on": "Fodina on",
   "immersive_machinery.tunnel_digger.drill_off": "Fodina off",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% velocitas effodienda",
