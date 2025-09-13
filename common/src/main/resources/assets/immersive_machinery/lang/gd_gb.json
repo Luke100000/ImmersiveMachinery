@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filteadh le ainm",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filteadh le NBT Tag",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Pick an toiseach",
   "immersive_machinery.tunnel_digger.drill_on": "Drilear air",
   "immersive_machinery.tunnel_digger.drill_off": "Drilear dheth",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% astar drile",
