@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Филтер по име",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Филтер по NBT Таг",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Рунда Роби",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Избери прв",
   "immersive_machinery.tunnel_digger.drill_on": "Дрил вкл",
   "immersive_machinery.tunnel_digger.drill_off": "Дрил искл",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% брзина на дупчење",
