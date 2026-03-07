@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrer par nom",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtrer par étiquette NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Tourniquet",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Choisissez le premier",
   "immersive_machinery.tunnel_digger.drill_on": "Forer",
   "immersive_machinery.tunnel_digger.drill_off": "Arrêter de forer",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% de vitesse de forage",

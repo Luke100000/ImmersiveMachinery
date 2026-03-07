@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Gwylio trwy enw",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Gwylio trwy Tag NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Dewis cyntaf",
   "immersive_machinery.tunnel_digger.drill_on": "Tynnydd ymlaen",
   "immersive_machinery.tunnel_digger.drill_off": "Tynnydd i ffwrdd",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% cyflymder tynnu",

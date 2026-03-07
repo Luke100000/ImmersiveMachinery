@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Kākau e nānā",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Kākau e nānā i ka NBT Tag",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Ke ʻIke ʻĀkau",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "E koho i ke koho mua",
   "immersive_machinery.tunnel_digger.drill_on": "Ke ʻIke",
   "immersive_machinery.tunnel_digger.drill_off": "Ke ʻaʻohe ʻIke",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% ke ʻano ʻana",

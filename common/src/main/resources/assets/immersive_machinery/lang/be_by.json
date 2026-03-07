@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Фільтр па імені",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Фільтр па NBT-тэгу",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Раунд Робін",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Выберыце першы",
   "immersive_machinery.tunnel_digger.drill_on": "Бур на",
   "immersive_machinery.tunnel_digger.drill_off": "Бур выключаны",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% хуткасць бурэння",

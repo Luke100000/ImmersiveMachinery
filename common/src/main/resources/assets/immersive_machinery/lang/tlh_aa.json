@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "name ghunIn",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "NBT tag ghunIn",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "poS",
   "immersive_machinery.tunnel_digger.drill_on": "drill nI'",
   "immersive_machinery.tunnel_digger.drill_off": "drill ghom",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% drilling veloc",

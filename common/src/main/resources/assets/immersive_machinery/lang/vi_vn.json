@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Lọc theo tên",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Lọc theo Tag NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Chọn đầu tiên",
   "immersive_machinery.tunnel_digger.drill_on": "Máy khoan bật",
   "immersive_machinery.tunnel_digger.drill_off": "Máy khoan tắt",
   "immersive_aircraft.upgrade.drillingspeed": "\"%s%% tốc độ khoan\"",

@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Ad ilə filtrlə",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "NBT Tag ilə filtrlə",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Dairəvi Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Birinci seç",
   "immersive_machinery.tunnel_digger.drill_on": "Çayını işlət",
   "immersive_machinery.tunnel_digger.drill_off": "Çayı söndür",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% qazma sürəti",
