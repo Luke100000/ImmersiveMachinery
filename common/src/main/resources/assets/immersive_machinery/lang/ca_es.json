@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrar per nom",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtrar per etiqueta NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Ronda Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Trieu el primer",
   "immersive_machinery.tunnel_digger.drill_on": "Forat activat",
   "immersive_machinery.tunnel_digger.drill_off": "Forat desactivat",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% velocitat d'excavació",

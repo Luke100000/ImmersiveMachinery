@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "فیلتر بر اساس نام",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "فیلتر بر اساس تگ NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "دور رابین",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "برداشت اول",
   "immersive_machinery.tunnel_digger.drill_on": "دریل روشن",
   "immersive_machinery.tunnel_digger.drill_off": "دریل خاموش",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% سرعت حفاری",

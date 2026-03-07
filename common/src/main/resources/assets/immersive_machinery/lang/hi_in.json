@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "नाम से फ़िल्टर करें",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "NBT टैग से फ़िल्टर करें",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "राउंड रॉबिन",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "पहला चुनें",
   "immersive_machinery.tunnel_digger.drill_on": "ड्रिल ऑन",
   "immersive_machinery.tunnel_digger.drill_off": "ड्रिल ऑफ",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% ड्रिलिंग गति",

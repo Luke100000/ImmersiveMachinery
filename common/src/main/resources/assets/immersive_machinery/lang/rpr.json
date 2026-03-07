@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Фильтровать по названию",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Фильтровать по тегу NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Круговой порядок",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Выбрать первенство",
   "immersive_machinery.tunnel_digger.drill_on": "Бур включен",
   "immersive_machinery.tunnel_digger.drill_off": "Бур выключен",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% скорость бурения",

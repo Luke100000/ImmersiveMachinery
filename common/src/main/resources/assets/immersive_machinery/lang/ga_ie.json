@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Scag le h-ainm",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Scag le h-Tag NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Tóg an chéad",
   "immersive_machinery.tunnel_digger.drill_on": "Dríl ar",
   "immersive_machinery.tunnel_digger.drill_off": "Dríl as",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% luas dríleála",

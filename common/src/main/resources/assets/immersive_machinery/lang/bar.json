@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Nach Name filtern",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Nach NBT-Tag filtern",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Nimm erschte",
   "immersive_machinery.tunnel_digger.drill_on": "Bohrer an",
   "immersive_machinery.tunnel_digger.drill_off": "Bohrer aus",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% Bohrgeschwindigkeit",

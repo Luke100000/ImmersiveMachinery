@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtriraj po imenu",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtriraj po NBT Tagu",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Kružna Runda",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Odaberi prvi",
   "immersive_machinery.tunnel_digger.drill_on": "Bušilica uključena",
   "immersive_machinery.tunnel_digger.drill_off": "Bušilica isključena",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% brzina bušenja",

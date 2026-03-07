@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Saring berdasarkan nama",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Saring berdasarkan tag NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Round Robin",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Ambil yang pertama",
   "immersive_machinery.tunnel_digger.drill_on": "Gerudi pada",
   "immersive_machinery.tunnel_digger.drill_off": "Gerudi mati",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% kelajuan penggergajian",

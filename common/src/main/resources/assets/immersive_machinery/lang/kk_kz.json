@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Аты бойынша сүзгі",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "NBT тег бойынша сүзгі",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Дөңгелек Рубин",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Біріншіні таңдаңыз",
   "immersive_machinery.tunnel_digger.drill_on": "Бұрғылау қосулы",
   "immersive_machinery.tunnel_digger.drill_off": "Бұрғылау сөндірілген",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% бұрғылау жылдамдығы",

@@ -33,7 +33,7 @@
   "gui.immersive_machinery.bamboo_bee.filter.name": "Filtrar por nome",
   "gui.immersive_machinery.bamboo_bee.filter.tag": "Filtrar por etiqueta NBT",
   "gui.immersive_machinery.bamboo_bee.order.round_robin": "Rodillo Redondo",
-  "gui.immersive_machinery.bamboo_bee.order.first": "Pick first",
+  "gui.immersive_machinery.bamboo_bee.order.first": "Elixe primeiro",
   "immersive_machinery.tunnel_digger.drill_on": "Broca activada",
   "immersive_machinery.tunnel_digger.drill_off": "Broca desactivada",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% velocidade de perforación",
