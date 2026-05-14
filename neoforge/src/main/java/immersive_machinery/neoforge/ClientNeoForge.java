@@ -14,7 +14,7 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 public final class ClientNeoForge {
     @SubscribeEvent
     public static void setup(FMLClientSetupEvent event) {
-        Renderer.bootstrap();
+        event.enqueueWork(Renderer::bootstrap);
         Client.init();
     }
 
