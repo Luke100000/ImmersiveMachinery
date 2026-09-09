@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Máy khoan bật",
   "immersive_machinery.tunnel_digger.drill_off": "Máy khoan tắt",
   "immersive_aircraft.upgrade.drillingspeed": "\"%s%% tốc độ khoan\"",
-  "immersive_aircraft.slot.im_shards": "Mảnh Amethyst để khoan nhanh hơn",
-  "immersive_aircraft.slot.im_filter": "Bộ lọc vật phẩm"
+  "gui.immersive_machinery.slot.im_shards": "Mảnh Amethyst để khoan nhanh hơn",
+  "gui.immersive_machinery.slot.im_filter": "Bộ lọc vật phẩm"
 }
