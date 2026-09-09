@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Aufbohren",
   "immersive_machinery.tunnel_digger.drill_off": "Ausbohren",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% Bohrgeschwindigkeit",
-  "immersive_aircraft.slot.im_shards": "Amethystsplitter für schnelleres Bohren",
-  "immersive_aircraft.slot.im_filter": "Artikel Filter"
+  "gui.immersive_machinery.slot.im_shards": "Amethystsplitter für schnelleres Bohren",
+  "gui.immersive_machinery.slot.im_filter": "Artikel Filter"
 }
