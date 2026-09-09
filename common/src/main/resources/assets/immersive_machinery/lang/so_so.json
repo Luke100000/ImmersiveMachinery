@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Qodista Socota",
   "immersive_machinery.tunnel_digger.drill_off": "Qodista Dhamays",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% xawaare qodista",
-  "immersive_aircraft.slot.im_shards": "Amethyst Dhagaxyadan si qodista u dhakhso badan",
-  "immersive_aircraft.slot.im_filter": "Filterka Alaabta"
+  "gui.immersive_machinery.slot.im_shards": "Amethyst Dhagaxyadan si qodista u dhakhso badan",
+  "gui.immersive_machinery.slot.im_filter": "Filterka Alaabta"
 }
