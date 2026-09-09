@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "ilo pali pona",
   "immersive_machinery.tunnel_digger.drill_off": "ilo pali ala",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% tawa wile",
-  "immersive_aircraft.slot.im_shards": "palisa amethyst tan tawa moku wile li suli",
-  "immersive_aircraft.slot.im_filter": "liko moku"
+  "gui.immersive_machinery.slot.im_shards": "palisa amethyst tan tawa moku wile li suli",
+  "gui.immersive_machinery.slot.im_filter": "liko moku"
 }
