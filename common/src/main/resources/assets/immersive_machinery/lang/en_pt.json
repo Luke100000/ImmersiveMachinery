@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Drill on",
   "immersive_machinery.tunnel_digger.drill_off": "Drill off",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% drillin' speed",
-  "immersive_aircraft.slot.im_shards": "Amethyst Shards fer faster drillin'",
-  "immersive_aircraft.slot.im_filter": "Item Filter"
+  "gui.immersive_machinery.slot.im_shards": "Amethyst Shards fer faster drillin'",
+  "gui.immersive_machinery.slot.im_filter": "Item Filter"
 }
