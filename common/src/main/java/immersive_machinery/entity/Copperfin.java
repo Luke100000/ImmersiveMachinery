@@ -89,11 +89,6 @@ public class Copperfin extends MachineEntity {
     }
 
     @Override
-    public double getEyeY() {
-        return super.getEyeY();
-    }
-
-    @Override
     protected void addPassenger(Entity passenger) {
         super.addPassenger(passenger);
 
