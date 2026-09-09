@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Bor på",
   "immersive_machinery.tunnel_digger.drill_off": "Bor av",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% borehastighet",
-  "immersive_aircraft.slot.im_shards": "Ametystskjær for raskere boring",
-  "immersive_aircraft.slot.im_filter": "Varefilter"
+  "gui.immersive_machinery.slot.im_shards": "Ametystskjær for raskere boring",
+  "gui.immersive_machinery.slot.im_filter": "Varefilter"
 }
