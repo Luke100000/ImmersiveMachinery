@@ -310,9 +310,11 @@ public class RedstoneSheep extends NavigatingMachine {
     protected void addAdditionalSaveData(@NotNull CompoundTag tag) {
         super.addAdditionalSaveData(tag);
 
-        tag.putInt("HomeX", this.home.getX());
-        tag.putInt("HomeY", this.home.getY());
-        tag.putInt("HomeZ", this.home.getZ());
+        if (this.home != null) {
+            tag.putInt("HomeX", this.home.getX());
+            tag.putInt("HomeY", this.home.getY());
+            tag.putInt("HomeZ", this.home.getZ());
+        }
     }
 
     @Override

@@ -1,6 +1,7 @@
 # 0.2.1
 
 * Fixed slot translation keys
+* Fixed crash
 
 # 0.2.0
 
