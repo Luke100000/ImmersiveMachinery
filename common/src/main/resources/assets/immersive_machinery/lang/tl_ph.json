@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Drill on",
   "immersive_machinery.tunnel_digger.drill_off": "Drill off",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% na bilis ng pagbutas",
-  "immersive_aircraft.slot.im_shards": "Amethyst Shards para sa mas mabilis na pagbutas",
-  "immersive_aircraft.slot.im_filter": "Item Filter"
+  "gui.immersive_machinery.slot.im_shards": "Amethyst Shards para sa mas mabilis na pagbutas",
+  "gui.immersive_machinery.slot.im_filter": "Item Filter"
 }
