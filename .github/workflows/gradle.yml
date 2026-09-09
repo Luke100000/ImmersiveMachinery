@@ -14,12 +14,13 @@ jobs:
       MAVEN_TOKEN: ${{ secrets.MAVEN_TOKEN }}
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Fetch Tags
         run: git fetch --unshallow --tags
       - name: Set up JDK 21
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
+          distribution: temurin
           java-version: 21
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -29,19 +30,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      MODRINTH_ID: ${{ vars.MODRINTH_ID }}
       MODRINTH_TOKEN: ${{ secrets.MR_API_TOKEN }}
+      CURSEFORGE_ID: ${{ vars.CURSEFORGE_ID }}
       CURSEFORGE_TOKEN: ${{ secrets.CF_API_TOKEN }}
       MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
       MAVEN_TOKEN: ${{ secrets.MAVEN_TOKEN }}
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Fetch Tags
         run: git fetch --unshallow --tags
       - name: Set up JDK 21
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
+          distribution: temurin
           java-version: 21
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -63,12 +67,12 @@ jobs:
       - name: "Rename NeoForge files"
         run: mv "neoforge/build/libs/immersive_machinery-${{steps.tag.outputs.tag}}.jar" "neoforge/build/libs/immersive_machinery-${{steps.tag.outputs.tag}}-neoforge.jar"
       - name: "Upload Fabric"
-        uses: Kir-Antipov/mc-publish@v3.3.0
+        uses: Kira-NT/mc-publish@v3
         if: ${{ success() && startsWith(github.ref, 'refs/tags/') }}
         with:
-          modrinth-id: kGP3J2TW
+          modrinth-id: ${{ env.MODRINTH_ID }}
           modrinth-token: ${{ env.MODRINTH_TOKEN }}
-          curseforge-id: 1068736
+          curseforge-id: ${{ env.CURSEFORGE_ID }}
           curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
 
           name: "[Fabric ${{steps.split.outputs._1}}] Immersive Machinery - ${{steps.split.outputs._0}}"
@@ -77,6 +81,7 @@ jobs:
           files: "fabric/build/libs/immersive_machinery-${{steps.tag.outputs.tag}}-fabric.jar"
           loaders: |
             fabric
+          environment: client | server
           game-versions: |
             ${{steps.split.outputs._1}}
           java: |
@@ -86,12 +91,12 @@ jobs:
 
           fail-mode: skip
       - name: "Upload NeoForge"
-        uses: Kir-Antipov/mc-publish@v3.3.0
+        uses: Kira-NT/mc-publish@v3
         if: ${{ success() && startsWith(github.ref, 'refs/tags/') }}
         with:
-          modrinth-id: kGP3J2TW
+          modrinth-id: ${{ env.MODRINTH_ID }}
           modrinth-token: ${{ env.MODRINTH_TOKEN }}
-          curseforge-id: 1068736
+          curseforge-id: ${{ env.CURSEFORGE_ID }}
           curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
 
           name: "[NeoForge ${{steps.split.outputs._1}}] Immersive Machinery - ${{steps.split.outputs._0}}"
@@ -100,6 +105,7 @@ jobs:
           files: "neoforge/build/libs/immersive_machinery-${{steps.tag.outputs.tag}}-neoforge.jar"
           loaders: |
             neoforge
+          environment: client | server
           game-versions: |
             ${{steps.split.outputs._1}}
           java: |

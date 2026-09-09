@@ -1,3 +1,9 @@
+# 0.2.1
+
+* Fixed slot translation keys
+* Fixed crash
+* Redstone Sheep can now collect item drops
+
 # 0.2.0
 
 * Made tunnel digger faster
