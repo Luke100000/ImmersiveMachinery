@@ -5,6 +5,7 @@ import immersive_machinery.Common;
 import immersive_machinery.Renderer;
 import immersive_machinery.client.KeyBindings;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -15,8 +16,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public final class ClientForge {
     @SubscribeEvent
     public static void setup(FMLClientSetupEvent event) {
+        event.enqueueWork(Client::init);
+    }
+
+    @SubscribeEvent
+    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         Renderer.bootstrap();
-        Client.init();
     }
 
     @SubscribeEvent
