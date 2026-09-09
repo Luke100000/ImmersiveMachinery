@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Бур на",
   "immersive_machinery.tunnel_digger.drill_off": "Бур выключаны",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% хуткасць бурэння",
-  "immersive_aircraft.slot.im_shards": "Аметысавыя Штрыкі для хутчэйшага бурэння",
-  "immersive_aircraft.slot.im_filter": "Фільтр прадметаў"
+  "gui.immersive_machinery.slot.im_shards": "Аметысавыя Штрыкі для хутчэйшага бурэння",
+  "gui.immersive_machinery.slot.im_filter": "Фільтр прадметаў"
 }
