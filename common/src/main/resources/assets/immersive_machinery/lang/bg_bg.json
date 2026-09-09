@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Пробиване на",
   "immersive_machinery.tunnel_digger.drill_off": "Изключване на пробиване",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% скорост на пробиване",
-  "immersive_aircraft.slot.im_shards": "Аметистови парчета за по-бързо пробиване",
-  "immersive_aircraft.slot.im_filter": "Филтър за артикули"
+  "gui.immersive_machinery.slot.im_shards": "Аметистови парчета за по-бързо пробиване",
+  "gui.immersive_machinery.slot.im_filter": "Филтър за артикули"
 }
