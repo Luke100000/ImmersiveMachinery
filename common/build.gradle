@@ -11,8 +11,6 @@ dependencies {
     // Do NOT use other classes from fabric loader
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
 
-    modApi "com.terraformersmc:modmenu:${mod_menu_version}"
-
     modImplementation("net.conczin:immersive_aircraft:${immersive_aircraft_version}+common")
 }
 

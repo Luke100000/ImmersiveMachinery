@@ -21,9 +21,6 @@
     ],
     "client": [
       "immersive_machinery.fabric.ClientFabric"
-    ],
-    "modmenu": [
-      "immersive_machinery.config.ModMenuIntegration"
     ]
   },
   "mixins": [
