@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "ドリル",
   "immersive_machinery.tunnel_digger.drill_off": "ドリルオフ",
   "immersive_aircraft.upgrade.drillingspeed": "%s掘削速度",
-  "immersive_aircraft.slot.im_shards": "アメジストの破片で穴あけスピードアップ",
-  "immersive_aircraft.slot.im_filter": "アイテムフィルター"
+  "gui.immersive_machinery.slot.im_shards": "アメジストの破片で穴あけスピードアップ",
+  "gui.immersive_machinery.slot.im_filter": "アイテムフィルター"
 }
