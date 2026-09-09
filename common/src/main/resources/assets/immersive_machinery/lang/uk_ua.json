@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Свердліть далі.",
   "immersive_machinery.tunnel_digger.drill_off": "Відсвердлюй.",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% швидкість свердління",
-  "immersive_aircraft.slot.im_shards": "Аметистові осколки для швидшого свердління",
-  "immersive_aircraft.slot.im_filter": "Фільтр товарів"
+  "gui.immersive_machinery.slot.im_shards": "Аметистові осколки для швидшого свердління",
+  "gui.immersive_machinery.slot.im_filter": "Фільтр товарів"
 }
