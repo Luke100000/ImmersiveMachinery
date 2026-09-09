@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Bore på",
   "immersive_machinery.tunnel_digger.drill_off": "Bore av",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% borkjapphet",
-  "immersive_aircraft.slot.im_shards": "Amethystbitar for raskare boring",
-  "immersive_aircraft.slot.im_filter": "Varefilter"
+  "gui.immersive_machinery.slot.im_shards": "Amethystbitar for raskare boring",
+  "gui.immersive_machinery.slot.im_filter": "Varefilter"
 }
