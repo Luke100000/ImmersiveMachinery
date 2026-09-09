@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Ke ʻIke",
   "immersive_machinery.tunnel_digger.drill_off": "Ke ʻaʻohe ʻIke",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% ke ʻano ʻana",
-  "immersive_aircraft.slot.im_shards": "Nā ʻŌpū Amethyst no ke ʻano ʻākau",
-  "immersive_aircraft.slot.im_filter": "Nā Kulu Kuleana"
+  "gui.immersive_machinery.slot.im_shards": "Nā ʻŌpū Amethyst no ke ʻano ʻākau",
+  "gui.immersive_machinery.slot.im_filter": "Nā Kulu Kuleana"
 }
