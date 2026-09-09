@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Ngwá ọrụ na-arụ ọrụ",
   "immersive_machinery.tunnel_digger.drill_off": "Ngwá ọrụ kwụsịrị",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% ọsọ mma ọkọ",
-  "immersive_aircraft.slot.im_shards": "Amethyst Shards maka ngwa ngwa nke mma ọkọ",
-  "immersive_aircraft.slot.im_filter": "Nchekwa Akụkụ"
+  "gui.immersive_machinery.slot.im_shards": "Amethyst Shards maka ngwa ngwa nke mma ọkọ",
+  "gui.immersive_machinery.slot.im_filter": "Nchekwa Akụkụ"
 }

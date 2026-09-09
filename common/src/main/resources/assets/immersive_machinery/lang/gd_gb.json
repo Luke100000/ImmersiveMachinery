@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Drilear air",
   "immersive_machinery.tunnel_digger.drill_off": "Drilear dheth",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% astar drile",
-  "immersive_aircraft.slot.im_shards": "Creagan Amethyst airson drile a luathachadh",
-  "immersive_aircraft.slot.im_filter": "Filtear nithean"
+  "gui.immersive_machinery.slot.im_shards": "Creagan Amethyst airson drile a luathachadh",
+  "gui.immersive_machinery.slot.im_filter": "Filtear nithean"
 }

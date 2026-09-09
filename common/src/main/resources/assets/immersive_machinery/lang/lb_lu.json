@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Bohrer u",
   "immersive_machinery.tunnel_digger.drill_off": "Bohrer aus",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% Bohrgeschwindegkeet",
-  "immersive_aircraft.slot.im_shards": "Amethyst Schëlder fir méi séier Bohrungen",
-  "immersive_aircraft.slot.im_filter": "Artikelfilter"
+  "gui.immersive_machinery.slot.im_shards": "Amethyst Schëlder fir méi séier Bohrungen",
+  "gui.immersive_machinery.slot.im_filter": "Artikelfilter"
 }

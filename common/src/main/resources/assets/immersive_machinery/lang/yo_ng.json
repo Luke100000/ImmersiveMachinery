@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Drill lori",
   "immersive_machinery.tunnel_digger.drill_off": "Drill pa",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% iyara drilling",
-  "immersive_aircraft.slot.im_shards": "Amethyst Shards fun drilling ti o yara",
-  "immersive_aircraft.slot.im_filter": "Ìfilọ́ọ̀tẹ́"
+  "gui.immersive_machinery.slot.im_shards": "Amethyst Shards fun drilling ti o yara",
+  "gui.immersive_machinery.slot.im_filter": "Ìfilọ́ọ̀tẹ́"
 }

@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "ड्रिल ऑन",
   "immersive_machinery.tunnel_digger.drill_off": "ड्रिल ऑफ",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% ड्रिलिंग गति",
-  "immersive_aircraft.slot.im_shards": "तेज़ ड्रिलिंग के लिए अमेथिस्ट शार्ड्स",
-  "immersive_aircraft.slot.im_filter": "आइटम फ़िल्टर"
+  "gui.immersive_machinery.slot.im_shards": "तेज़ ड्रिलिंग के लिए अमेथिस्ट शार्ड्स",
+  "gui.immersive_machinery.slot.im_filter": "आइटम फ़िल्टर"
 }

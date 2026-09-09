@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Perce sur",
   "immersive_machinery.tunnel_digger.drill_off": "Perçage",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% Vitesse de forage",
-  "immersive_aircraft.slot.im_shards": "Éclats d'améthyste pour un forage plus rapide",
-  "immersive_aircraft.slot.im_filter": "Filtre de l'article"
+  "gui.immersive_machinery.slot.im_shards": "Éclats d'améthyste pour un forage plus rapide",
+  "gui.immersive_machinery.slot.im_filter": "Filtre de l'article"
 }

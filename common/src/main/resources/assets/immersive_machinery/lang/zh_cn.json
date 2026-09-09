@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "开启钻头",
   "immersive_machinery.tunnel_digger.drill_off": "关闭钻头",
   "immersive_aircraft.upgrade.drillingspeed": "%s%%钻孔速度",
-  "immersive_aircraft.slot.im_shards": "紫水晶碎片可加快钻孔速度",
-  "immersive_aircraft.slot.im_filter": "物品过滤器"
+  "gui.immersive_machinery.slot.im_shards": "紫水晶碎片可加快钻孔速度",
+  "gui.immersive_machinery.slot.im_filter": "物品过滤器"
 }

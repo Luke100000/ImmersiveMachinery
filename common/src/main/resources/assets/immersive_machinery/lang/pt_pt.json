@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Perfura",
   "immersive_machinery.tunnel_digger.drill_off": "Perfura",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% velocidade de perfuração",
-  "immersive_aircraft.slot.im_shards": "Fragmentos de ametista para uma perfuração mais rápida",
-  "immersive_aircraft.slot.im_filter": "Filtro de artigos"
+  "gui.immersive_machinery.slot.im_shards": "Fragmentos de ametista para uma perfuração mais rápida",
+  "gui.immersive_machinery.slot.im_filter": "Filtro de artigos"
 }

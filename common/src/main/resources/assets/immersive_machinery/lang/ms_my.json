@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Gerudi pada",
   "immersive_machinery.tunnel_digger.drill_off": "Gerudi mati",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% kelajuan penggergajian",
-  "immersive_aircraft.slot.im_shards": "Serpihan Ametis untuk penggergajian lebih cepat",
-  "immersive_aircraft.slot.im_filter": "Pemfilter Item"
+  "gui.immersive_machinery.slot.im_shards": "Serpihan Ametis untuk penggergajian lebih cepat",
+  "gui.immersive_machinery.slot.im_filter": "Pemfilter Item"
 }

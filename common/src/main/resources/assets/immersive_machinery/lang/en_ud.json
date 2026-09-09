@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "˙noʍloS",
   "immersive_machinery.tunnel_digger.drill_off": "˥ʞɹoSʇ",
   "immersive_aircraft.upgrade.drillingspeed": "u ʍʇʍu| d lǝƃl q %s",
-  "immersive_aircraft.slot.im_shards": "˙ɹǝʇʍǝ ʇɔᴉʍʇǝb sɯlɹ ɹɔɔ,uɯʍ",
-  "immersive_aircraft.slot.im_filter": "˙ɹouɐu s ʍɹouʍx"
+  "gui.immersive_machinery.slot.im_shards": "˙ɹǝʇʍǝ ʇɔᴉʍʇǝb sɯlɹ ɹɔɔ,uɯʍ",
+  "gui.immersive_machinery.slot.im_filter": "˙ɹouɐu s ʍɹouʍx"
 }

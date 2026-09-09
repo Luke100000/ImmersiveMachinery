@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Бурҙы әкбүз тәңгәл",
   "immersive_machinery.tunnel_digger.drill_off": "Бурҙы өҙа",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% бурлау тиҙлеге",
-  "immersive_aircraft.slot.im_shards": "Тизерәтә өр-ямғаштар",
-  "immersive_aircraft.slot.im_filter": "Товар фильтр"
+  "gui.immersive_machinery.slot.im_shards": "Тизерәтә өр-ямғаштар",
+  "gui.immersive_machinery.slot.im_filter": "Товар фильтр"
 }

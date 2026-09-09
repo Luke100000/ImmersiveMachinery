@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "דריל אויף",
   "immersive_machinery.tunnel_digger.drill_off": "דריל אַוועק",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% דרילינג שנעל",
-  "immersive_aircraft.slot.im_shards": "אַמעטהיסט שייַנא פֿאַר מער שנэлדיקן דרילינג",
-  "immersive_aircraft.slot.im_filter": "אָרט פֿילטער"
+  "gui.immersive_machinery.slot.im_shards": "אַמעטהיסט שייַנא פֿאַר מער שנэлדיקן דרילינג",
+  "gui.immersive_machinery.slot.im_filter": "אָרט פֿילטער"
 }
