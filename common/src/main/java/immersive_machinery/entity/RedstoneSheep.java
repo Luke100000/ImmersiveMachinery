@@ -16,12 +16,15 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -202,18 +205,21 @@ public class RedstoneSheep extends NavigatingMachine {
         BlockState state = level().getBlockState(pos);
         if (level() instanceof ServerLevel serverLevel) {
             // Collect drops
-            Block.getDrops(state, serverLevel, pos, null).forEach(stack -> {
-                ItemStack remainder = addItem(stack);
-                if (!remainder.isEmpty()) {
-                    Block.popResource(serverLevel, pos, remainder);
-                }
-            });
+            BlockEntity blockEntity = serverLevel.getBlockEntity(pos);
+            Block.getDrops(state, serverLevel, pos, blockEntity).forEach(stack -> addHarvestDrop(serverLevel, pos, stack));
+
+            AABB harvestArea = new AABB(pos).inflate(1.0, 2.0, 1.0);
+            Set<Integer> existingItemIds = new HashSet<>();
+            for (ItemEntity itemEntity : serverLevel.getEntitiesOfClass(ItemEntity.class, harvestArea)) {
+                existingItemIds.add(itemEntity.getId());
+            }
 
             // Harvest or set age to 0 if possible
             getAgeProperty(state).ifPresentOrElse(
                     age -> serverLevel.setBlockAndUpdate(pos, state.setValue(age, 0)),
                     () -> serverLevel.destroyBlock(pos, false)
             );
+            collectNewItemEntities(serverLevel, harvestArea, existingItemIds);
 
             // Burn fuel
             consumeFuel(Config.getInstance().fuelTicksPerHarvest);
@@ -223,6 +229,28 @@ public class RedstoneSheep extends NavigatingMachine {
 
             // Make sound
             serverLevel.playSound(null, pos, SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.BLOCKS, 1.0f, 1.2f);
+        }
+    }
+
+    private void addHarvestDrop(ServerLevel level, BlockPos pos, ItemStack stack) {
+        ItemStack remainder = addItem(stack);
+        if (!remainder.isEmpty()) {
+            Block.popResource(level, pos, remainder);
+        }
+    }
+
+    private void collectNewItemEntities(ServerLevel level, AABB area, Set<Integer> existingIds) {
+        for (ItemEntity itemEntity : level.getEntitiesOfClass(ItemEntity.class, area)) {
+            if (existingIds.contains(itemEntity.getId())) {
+                continue;
+            }
+
+            ItemStack remainder = addItem(itemEntity.getItem());
+            if (remainder.isEmpty()) {
+                itemEntity.discard();
+            } else {
+                itemEntity.setItem(remainder);
+            }
         }
     }
 

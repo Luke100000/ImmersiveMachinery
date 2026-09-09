@@ -2,6 +2,7 @@
 
 * Fixed slot translation keys
 * Fixed crash
+* Redstone Sheep can now collect item drops
 
 # 0.2.0
 
