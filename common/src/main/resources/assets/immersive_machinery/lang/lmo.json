@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Trapano acceso",
   "immersive_machinery.tunnel_digger.drill_off": "Trapano spengh",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% velocità de trapano",
-  "immersive_aircraft.slot.im_shards": "Scaglie de Amethyst per fa trapana piò svelta",
-  "immersive_aircraft.slot.im_filter": "Filtru de Ogetti"
+  "gui.immersive_machinery.slot.im_shards": "Scaglie de Amethyst per fa trapana piò svelta",
+  "gui.immersive_machinery.slot.im_filter": "Filtru de Ogetti"
 }
