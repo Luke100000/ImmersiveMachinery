@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Бұрғылау қосулы",
   "immersive_machinery.tunnel_digger.drill_off": "Бұрғылау сөндірілген",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% бұрғылау жылдамдығы",
-  "immersive_aircraft.slot.im_shards": "Бұрғылауды тездету үшін амфолистік қиыршық тастар",
-  "immersive_aircraft.slot.im_filter": "Зат сүзгісі"
+  "gui.immersive_machinery.slot.im_shards": "Бұрғылауды тездету үшін амфолистік қиыршық тастар",
+  "gui.immersive_machinery.slot.im_filter": "Зат сүзгісі"
 }
