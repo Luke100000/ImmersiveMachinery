@@ -43,4 +43,4 @@ forge*changelog.txt
 .xdp-*
 *.kate-swp
 
-/page/
+.sources
