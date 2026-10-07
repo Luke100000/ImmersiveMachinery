@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Forat activat",
   "immersive_machinery.tunnel_digger.drill_off": "Forat desactivat",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% velocitat d'excavació",
-  "immersive_aircraft.slot.im_shards": "Fragments d'ametista per a perforacions més ràpides",
-  "immersive_aircraft.slot.im_filter": "Filtre d'objectes"
+  "gui.immersive_machinery.slot.im_shards": "Fragments d'ametista per a perforacions més ràpides",
+  "gui.immersive_machinery.slot.im_filter": "Filtre d'objectes"
 }

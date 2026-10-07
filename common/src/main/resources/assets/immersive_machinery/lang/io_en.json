@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Drilo en",
   "immersive_machinery.tunnel_digger.drill_off": "Drilo fora",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% dugal veloce",
-  "immersive_aircraft.slot.im_shards": "Amethyst Shardes por pli veloce dugal",
-  "immersive_aircraft.slot.im_filter": "Item Filtre"
+  "gui.immersive_machinery.slot.im_shards": "Amethyst Shardes por pli veloce dugal",
+  "gui.immersive_machinery.slot.im_filter": "Item Filtre"
 }

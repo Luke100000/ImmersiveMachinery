@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Тишү эшләп",
   "immersive_machinery.tunnel_digger.drill_off": "Тишү туктатылды",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% тишү тизлеге",
-  "immersive_aircraft.slot.im_shards": "Тизрәк тишү өчен аметист кисәкләре",
-  "immersive_aircraft.slot.im_filter": "Предмет Фильтры"
+  "gui.immersive_machinery.slot.im_shards": "Тизрәк тишү өчен аметист кисәкләре",
+  "gui.immersive_machinery.slot.im_filter": "Предмет Фильтры"
 }

@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "حفر على",
   "immersive_machinery.tunnel_digger.drill_off": "حفر",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% سرعة الحفر",
-  "immersive_aircraft.slot.im_shards": "شظايا الأميثست للحفر أسرع",
-  "immersive_aircraft.slot.im_filter": "مرشح العناصر"
+  "gui.immersive_machinery.slot.im_shards": "شظايا الأميثست للحفر أسرع",
+  "gui.immersive_machinery.slot.im_filter": "مرشح العناصر"
 }

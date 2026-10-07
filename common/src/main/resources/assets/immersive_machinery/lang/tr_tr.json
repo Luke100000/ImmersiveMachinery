@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Matkap açık",
   "immersive_machinery.tunnel_digger.drill_off": "Matkap kapalı",
   "immersive_aircraft.upgrade.drillingspeed": "%s% delme hızı",
-  "immersive_aircraft.slot.im_shards": "Daha hızlı delme için Ametist Parçaları",
-  "immersive_aircraft.slot.im_filter": "Ürün Süzgeci"
+  "gui.immersive_machinery.slot.im_shards": "Daha hızlı delme için Ametist Parçaları",
+  "gui.immersive_machinery.slot.im_filter": "Ürün Süzgeci"
 }

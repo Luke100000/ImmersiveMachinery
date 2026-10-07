@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "Perforadora activada",
   "immersive_machinery.tunnel_digger.drill_off": "Perforadora desactivada",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% velocidá de perforación",
-  "immersive_aircraft.slot.im_shards": "Cristales d'Amatista pa perforar más rápido",
-  "immersive_aircraft.slot.im_filter": "Filtru d'itens"
+  "gui.immersive_machinery.slot.im_shards": "Cristales d'Amatista pa perforar más rápido",
+  "gui.immersive_machinery.slot.im_filter": "Filtru d'itens"
 }

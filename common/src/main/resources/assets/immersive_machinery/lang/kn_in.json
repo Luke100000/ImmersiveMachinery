@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "ಕನ್ನಡದ ಮೇಲೆ ಹೊಡೆದು",
   "immersive_machinery.tunnel_digger.drill_off": "ಕನ್ನಡವನ್ನು ನಿಲ್ಲಿಸಿ",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% ಹೊಡೆದು ವೇಗ",
-  "immersive_aircraft.slot.im_shards": "ತೀವ್ರ ಶಾರ್ಡ್ಗಳನ್ನು ತಕ್ಷಣದ ಹೊಡೆದಿಡ",
-  "immersive_aircraft.slot.im_filter": "ಐಟಂ ಫಿಲ್ಟರ್"
+  "gui.immersive_machinery.slot.im_shards": "ತೀವ್ರ ಶಾರ್ಡ್ಗಳನ್ನು ತಕ್ಷಣದ ಹೊಡೆದಿಡ",
+  "gui.immersive_machinery.slot.im_filter": "ಐಟಂ ಫಿಲ್ಟರ್"
 }

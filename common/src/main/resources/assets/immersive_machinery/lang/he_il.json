@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "מקדח פועל",
   "immersive_machinery.tunnel_digger.drill_off": "מקדח כבוי",
   "immersive_aircraft.upgrade.drillingspeed": "מהירות חפירה %s%%",
-  "immersive_aircraft.slot.im_shards": "חתיכות אמטיסט לחפירה מהירה יותר",
-  "immersive_aircraft.slot.im_filter": "סנן פריטים"
+  "gui.immersive_machinery.slot.im_shards": "חתיכות אמטיסט לחפירה מהירה יותר",
+  "gui.immersive_machinery.slot.im_filter": "סנן פריטים"
 }

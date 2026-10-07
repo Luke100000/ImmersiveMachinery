@@ -37,6 +37,6 @@
   "immersive_machinery.tunnel_digger.drill_on": "開啟鑽頭",
   "immersive_machinery.tunnel_digger.drill_off": "關閉鑽頭",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% 鑽掘速度",
-  "immersive_aircraft.slot.im_shards": "用於更快鑽掘的紫水晶碎片",
-  "immersive_aircraft.slot.im_filter": "項目篩選器"
+  "gui.immersive_machinery.slot.im_shards": "用於更快鑽掘的紫水晶碎片",
+  "gui.immersive_machinery.slot.im_filter": "項目篩選器"
 }
