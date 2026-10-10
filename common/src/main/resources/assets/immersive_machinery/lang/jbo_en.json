@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "sanga luj",
   "immersive_machinery.tunnel_digger.drill_off": "sanga pu",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% sanga tanu",
+  "key.immersive_machinery.action": "Machine Action",
   "gui.immersive_machinery.slot.im_shards": "ku la amethyst pu ta'e sanga",
   "gui.immersive_machinery.slot.im_filter": "se se selka"
 }
