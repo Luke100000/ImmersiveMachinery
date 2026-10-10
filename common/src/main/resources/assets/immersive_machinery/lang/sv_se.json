@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Borra på",
   "immersive_machinery.tunnel_digger.drill_off": "Borra av",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% borrningshastighet",
+  "key.immersive_machinery.action": "Maskinens åtgärd",
   "gui.immersive_machinery.slot.im_shards": "Ametistskärvor för snabbare borrning",
   "gui.immersive_machinery.slot.im_filter": "Artikel Filter"
 }
