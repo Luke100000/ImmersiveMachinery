@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Fosaĵo aktiva",
   "immersive_machinery.tunnel_digger.drill_off": "Fosaĵo malaktive",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% fosi rapido",
+  "key.immersive_machinery.action": "Maŝina ago",
   "gui.immersive_machinery.slot.im_shards": "Amethystaj Krajnoj por pli rapida fosaĵo",
   "gui.immersive_machinery.slot.im_filter": "Objekto Filtro"
 }
