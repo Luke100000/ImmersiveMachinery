@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Rašši on",
   "immersive_machinery.tunnel_digger.drill_off": "Rašši av",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% raššihitmus",
+  "key.immersive_machinery.action": "Machine Action",
   "gui.immersive_machinery.slot.im_shards": "Amethyst frakká raššanimu",
   "gui.immersive_machinery.slot.im_filter": "Oarma filtara"
 }
