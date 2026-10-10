@@ -29,7 +29,7 @@ public class TunnelDiggerScreen extends VehicleScreen {
         super.init();
 
         // Drill button
-        MutableComponent text = Component.translatable("gui.immersive_machinery.tunnel_digger.drill", KeyBindings.HORN.getTranslatedKeyMessage());
+        MutableComponent text = Component.translatable("gui.immersive_machinery.tunnel_digger.drill", KeyBindings.ACTION.getTranslatedKeyMessage());
         ImageButton help = new LegacyImageButton(getX() + 160, getY() + 5,
                 10, 10,
                 64, 0, 10, TEXTURE, 128, 128,

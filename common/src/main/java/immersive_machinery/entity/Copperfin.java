@@ -47,7 +47,7 @@ public class Copperfin extends MachineEntity {
 
         // Sonar
         sonarCooldown--;
-        if (level().isClientSide() && KeyBindings.HORN.consumeClick() && sonarCooldown < 0) {
+        if (level().isClientSide() && KeyBindings.ACTION.consumeClick() && sonarCooldown < 0) {
             requestSonar();
         }
 

@@ -10,10 +10,10 @@ import java.util.List;
 public class KeyBindings {
     public static final List<KeyMapping> list = new LinkedList<>();
 
-    public static final KeyMapping HORN;
+    public static final KeyMapping ACTION;
 
     static {
-        HORN = newKey("horn", GLFW.GLFW_KEY_H);
+        ACTION = newKey("action", GLFW.GLFW_KEY_H);
     }
 
     private static KeyMapping newKey(String name, int code) {

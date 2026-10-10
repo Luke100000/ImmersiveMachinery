@@ -1,3 +1,7 @@
+# 0.2.3
+
+* Renamed "Horn" to "Action" and added translation key
+
 # 0.2.2
 
 * Synced translations

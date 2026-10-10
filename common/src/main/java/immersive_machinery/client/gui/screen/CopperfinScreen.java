@@ -29,7 +29,7 @@ public class CopperfinScreen extends VehicleScreen {
         super.init();
 
         // Sonar button
-        MutableComponent text = Component.translatable("gui.immersive_machinery.copperfin.sonar", KeyBindings.HORN.getTranslatedKeyMessage());
+        MutableComponent text = Component.translatable("gui.immersive_machinery.copperfin.sonar", KeyBindings.ACTION.getTranslatedKeyMessage());
         ImageButton help = new LegacyImageButton(getX() + 160, getY() + 5,
                 10, 10,
                 64, 0, 10, TEXTURE, 128, 128,

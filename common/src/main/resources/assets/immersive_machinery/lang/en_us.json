@@ -51,6 +51,8 @@
 
   "immersive_aircraft.upgrade.drillingspeed": "%s%% drilling speed",
 
+  "key.immersive_machinery.action": "Machine Action",
+
   "gui.immersive_machinery.slot.im_shards": "Amethyst Shards for faster drilling",
   "gui.immersive_machinery.slot.im_filter": "Item Filter"
 }

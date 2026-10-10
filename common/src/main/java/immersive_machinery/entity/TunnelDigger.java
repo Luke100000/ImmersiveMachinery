@@ -179,7 +179,7 @@ public class TunnelDigger extends MachineEntity {
         }
 
         // Turn off drill
-        if (KeyBindings.HORN.consumeClick()) {
+        if (KeyBindings.ACTION.consumeClick()) {
             toggleDrill();
         }
     }
