@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Өрмийн",
   "immersive_machinery.tunnel_digger.drill_off": "Өрмийг унтраах",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% өрөмдлөгийн хурд",
+  "key.immersive_machinery.action": "Машины үйлдэл",
   "gui.immersive_machinery.slot.im_shards": "Хурдтай өрөмдөхөд амфитеус чулуу",
   "gui.immersive_machinery.slot.im_filter": "Загвар шүүр"
 }
