@@ -3,6 +3,7 @@ package immersive_machinery.client.render.entity.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import immersive_aircraft.client.render.entity.renderer.utils.DeferredRenderBuffer;
 import immersive_aircraft.client.render.entity.renderer.utils.ModelPartRenderHandler;
 import immersive_aircraft.entity.VehicleEntity;
 import immersive_machinery.Common;
@@ -11,7 +12,6 @@ import immersive_machinery.entity.Copperfin;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -37,7 +37,7 @@ public class CopperfinRenderer<T extends Copperfin> extends MachineryRenderer<T>
         return transform;
     }
 
-    public void renderWaterMask(T entity, float yaw, float tickDelta, PoseStack matrixStack, MultiBufferSource source, int light) {
+    public void renderWaterMask(T entity, float yaw, float tickDelta, PoseStack matrixStack, DeferredRenderBuffer source, int light) {
         Matrix3f transform = getVehicleNormalTransform(entity, yaw, tickDelta);
 
         float z = 0.04f;
@@ -105,7 +105,7 @@ public class CopperfinRenderer<T extends Copperfin> extends MachineryRenderer<T>
 
         // Only render the water mask when partly underwater
         boolean renderTop = f0 < maxHeight || f1 < maxHeight || f2 < maxHeight || f3 < maxHeight;
-        boolean cameraInFluid = Minecraft.getInstance().gameRenderer.getMainCamera().getFluidInCamera() != FogType.NONE;
+        boolean cameraInFluid = Minecraft.getInstance().gameRenderer.mainCamera().getFluidInCamera() != FogType.NONE;
 
         for (int j = renderTop ? 0 : 2; j < ((firstPerson || !cameraInFluid) ? 7 : 2); ++j) {
             VertexConsumer buffer = j < 2 ? source.getBuffer(RenderTypes.waterMask()) : source.getBuffer(RenderTypes.entityTranslucent(Common.locate("textures/white.png")));
@@ -125,7 +125,7 @@ public class CopperfinRenderer<T extends Copperfin> extends MachineryRenderer<T>
     }
 
     @Override
-    public void renderLocal(T entity, float yaw, float tickDelta, PoseStack matrixStack, PoseStack.Pose peek, MultiBufferSource vertexConsumerProvider, int light) {
+    public void renderLocal(T entity, float yaw, float tickDelta, PoseStack matrixStack, PoseStack.Pose peek, DeferredRenderBuffer vertexConsumerProvider, int light) {
         super.renderLocal(entity, yaw, tickDelta, matrixStack, peek, vertexConsumerProvider, light);
 
         if (Config.getInstance().waterRenderingFixForCopperfin) {

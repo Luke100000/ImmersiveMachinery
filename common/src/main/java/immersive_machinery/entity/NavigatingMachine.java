@@ -35,7 +35,7 @@ public abstract class NavigatingMachine extends MachineEntity {
 
     public boolean moveTo(BlockPos pos, double distance) {
         navigator.moveTo(pos);
-        Vec3 center = pos.getCenter();
+        Vec3 center = Vec3.atCenterOf(pos);
         return Math.max(
                 Math.max(
                         Math.abs(center.x() - getX()),

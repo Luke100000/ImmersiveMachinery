@@ -7,7 +7,7 @@ import immersive_aircraft.entity.VehicleEntity;
 import immersive_aircraft.item.upgrade.VehicleStat;
 import immersive_machinery.client.render.entity.renderer.PathDebugRenderer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -45,7 +45,7 @@ public class PilotNavigator {
 
     public PilotNavigator(InventoryVehicleEntity vehicle, boolean isFlying, int accuracy) {
         this.vehicle = vehicle;
-        this.pilot = new Bee(EntityType.BEE, vehicle.level());
+        this.pilot = new Bee(EntityTypes.BEE, vehicle.level());
 
         // Increase follow range
         AttributeInstance instance = pilot.getAttributes().getInstance(Attributes.FOLLOW_RANGE);

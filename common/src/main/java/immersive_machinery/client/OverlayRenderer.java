@@ -9,7 +9,7 @@ public class OverlayRenderer {
 
     public static void renderOverlay(GuiGraphicsExtractor context, float tickDelta) {
         Minecraft client = Minecraft.getInstance();
-        if (!client.options.hideGui && client.gameMode != null && client.player != null && client.player.getRootVehicle() instanceof MachineEntity machinery) {
+        if (!client.gui.hud.isHidden() && client.gameMode != null && client.player != null && client.player.getRootVehicle() instanceof MachineEntity machinery) {
             INSTANCE.renderMachineryGui(client, context, tickDelta, machinery);
         }
     }

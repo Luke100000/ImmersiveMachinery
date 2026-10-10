@@ -46,7 +46,7 @@ public class Client {
                 assert handler != null;
                 S screen = screenFactory.apply(castedVehicle, handler, client.player);
                 client.player.containerMenu = screen.getMenu();
-                client.setScreen(screen);
+                client.gui.setScreen(screen);
             }
         });
     }

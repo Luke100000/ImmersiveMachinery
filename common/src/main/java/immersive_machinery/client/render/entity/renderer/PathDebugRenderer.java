@@ -32,7 +32,7 @@ public class PathDebugRenderer {
         double y = Mth.lerp(tickDelta, entity.yOld, entity.getY());
         double z = Mth.lerp(tickDelta, entity.zOld, entity.getZ());
 
-        try (Gizmos.TemporaryCollection ignored = client.levelRenderer.collectPerFrameGizmos()) {
+        try (Gizmos.TemporaryCollection ignored = client.levelRenderer.collectPerFrameRenderThreadGizmos()) {
             BlockPos target = path.getTarget();
             if (distanceToCamera(target, x, y, z) <= 80.0) {
                 renderCube(target, 0x8000FF00);

@@ -19,7 +19,7 @@ public class ClientNetworkManager implements NetworkManager {
             bambooBeeConfigurationUpdate.read(entity);
         }
 
-        if (client.screen instanceof BambooBeeScreen screen) {
+        if (client.gui.screen() instanceof BambooBeeScreen screen) {
             screen.updateConfigurations();
         }
     }
