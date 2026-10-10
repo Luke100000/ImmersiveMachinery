@@ -2,7 +2,7 @@ package immersive_machinery.entity.inventory;
 
 import com.google.gson.JsonObject;
 import immersive_aircraft.entity.inventory.slots.SlotDescription;
-import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class TooltippedSlotDescription extends SlotDescription {
         super(type, index, x, y, json);
     }
 
-    public TooltippedSlotDescription(String type, RegistryFriendlyByteBuf byteBuf) {
+    public TooltippedSlotDescription(String type, FriendlyByteBuf byteBuf) {
         super(type, byteBuf);
     }
 

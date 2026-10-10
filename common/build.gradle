@@ -1,26 +1,28 @@
-architectury {
-    common(rootProject.enabled_platforms.split(","))
+plugins {
+    id "net.neoforged.moddev"
 }
 
-loom {
-    accessWidenerPath = file("src/main/resources/immersive_machinery.accessWidener")
+neoForge {
+    neoFormVersion = rootProject.neo_form_version
 }
 
 dependencies {
-    // We depend on fabric loader here to use the fabric @Environment annotations
-    // Do NOT use other classes from fabric loader
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-
-    modImplementation("net.conczin:immersive_aircraft:${immersive_aircraft_version}+common")
+    compileOnly("net.conczin:immersive_aircraft:${immersive_aircraft_version}+fabric") { transitive = false }
+    compileOnly "org.spongepowered:mixin:0.8.7"
 }
 
-publishing {
-    publications {
-        mavenCommon(MavenPublication) {
-            artifactId = rootProject.archives_base_name
-            groupId = rootProject.group_id
-            version = version + "+common"
-            from components.java
-        }
+configurations {
+    commonJava {
+        canBeResolved = false
+        canBeConsumed = true
     }
+    commonResources {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+}
+
+artifacts {
+    commonJava sourceSets.main.java.sourceDirectories.singleFile
+    commonResources sourceSets.main.resources.sourceDirectories.singleFile
 }

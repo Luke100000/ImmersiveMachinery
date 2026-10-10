@@ -6,31 +6,11 @@
     "BEB"
   ],
   "key": {
-    "P": [
-      {
-        "item": "immersive_aircraft:propeller"
-      }
-    ],
-    "B": [
-      {
-        "item": "minecraft:copper_ingot"
-      }
-    ],
-    "G": [
-      {
-        "item": "minecraft:glass"
-      }
-    ],
-    "C": [
-      {
-        "item": "minecraft:conduit"
-      }
-    ],
-    "E": [
-      {
-        "item": "immersive_aircraft:engine"
-      }
-    ]
+    "P": "immersive_aircraft:propeller",
+    "B": "minecraft:copper_ingot",
+    "G": "minecraft:glass",
+    "C": "minecraft:conduit",
+    "E": "immersive_aircraft:engine"
   },
   "result": {
     "id": "immersive_machinery:copperfin"

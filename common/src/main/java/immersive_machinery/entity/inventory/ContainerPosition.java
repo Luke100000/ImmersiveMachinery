@@ -6,7 +6,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TagParser;
 
 public final class ContainerPosition {
-    public static Codec<ContainerPosition> CODEC = Codec.withAlternative(CompoundTag.CODEC, TagParser.AS_CODEC)
+    public static Codec<ContainerPosition> CODEC = Codec.withAlternative(CompoundTag.CODEC, TagParser.FLATTENED_CODEC)
             .xmap(ContainerPosition::new, ContainerPosition::toTag);
 
     private final BlockPos pos;
@@ -20,9 +20,9 @@ public final class ContainerPosition {
     }
 
     public ContainerPosition(CompoundTag tag) {
-        pos = BlockPos.of(tag.getLong("pos"));
-        name = tag.getString("name");
-        input = tag.getBoolean("input");
+        pos = BlockPos.of(tag.getLongOr("pos", 0L));
+        name = tag.getStringOr("name", "");
+        input = tag.getBooleanOr("input", false);
     }
 
     public CompoundTag toTag() {

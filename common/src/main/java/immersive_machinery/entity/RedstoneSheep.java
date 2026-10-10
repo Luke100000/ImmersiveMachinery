@@ -9,7 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -25,6 +24,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -36,6 +37,7 @@ public class RedstoneSheep extends NavigatingMachine {
     private BlockPos home;
     private BlockPos task;
     private int reloadingTicks;
+    private List<ItemStack> reloadingInventory = List.of();
     private int rescanningTicks;
     private int tasksHarvested;
 
@@ -86,13 +88,25 @@ public class RedstoneSheep extends NavigatingMachine {
             setYRot(Utils.lerpAngle(getYRot(), (float) (Math.floor(getYRot() / 90.0f + 0.5f) * 90.0f), 5.0f));
         }
 
-        if (level().isClientSide) {
+        if (level().isClientSide()) {
             return;
         }
 
         // Time to return home
         if (isFuelLow() || isInventoryFull()) {
             reloadingTicks = 60;
+        }
+
+        // SimpleContainer no longer notifies listeners when loading or unloading changes its slots.
+        if (reloadingTicks > 0) {
+            List<ItemStack> contents = getInventory().getItems();
+            if (contents.size() != reloadingInventory.size() || !java.util.stream.IntStream.range(0, contents.size())
+                    .allMatch(i -> ItemStack.matches(contents.get(i), reloadingInventory.get(i)))) {
+                reloadingTicks = 60;
+                reloadingInventory = contents.stream().map(ItemStack::copy).toList();
+            }
+        } else {
+            reloadingInventory = List.of();
         }
 
         rescanningTicks--;
@@ -333,7 +347,7 @@ public class RedstoneSheep extends NavigatingMachine {
     }
 
     @Override
-    protected void addAdditionalSaveData(@NotNull CompoundTag tag) {
+    protected void addAdditionalSaveData(@NotNull ValueOutput tag) {
         super.addAdditionalSaveData(tag);
 
         if (this.home != null) {
@@ -344,17 +358,10 @@ public class RedstoneSheep extends NavigatingMachine {
     }
 
     @Override
-    protected void readAdditionalSaveData(@NotNull CompoundTag tag) {
+    protected void readAdditionalSaveData(@NotNull ValueInput tag) {
         super.readAdditionalSaveData(tag);
 
-        this.home = new BlockPos(tag.getInt("HomeX"), tag.getInt("HomeY"), tag.getInt("HomeZ"));
-    }
-
-    @Override
-    public void containerChanged(Container sender) {
-        if (reloadingTicks > 0) {
-            reloadingTicks = 60;
-        }
+        this.home = new BlockPos(tag.getIntOr("HomeX", 0), tag.getIntOr("HomeY", 0), tag.getIntOr("HomeZ", 0));
     }
 
     @Override

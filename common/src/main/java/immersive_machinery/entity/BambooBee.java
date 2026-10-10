@@ -12,7 +12,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.TagParser;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -25,6 +24,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -64,10 +65,10 @@ public class BambooBee extends NavigatingMachine {
         super.tick();
 
         // Rotate to direction
-        if (level().isClientSide) {
-            double dx = x - secondLastX;
-            double dy = y - secondLastY;
-            double dz = z - secondLastZ;
+        if (level().isClientSide()) {
+            double dx = getX() - secondLastX;
+            double dy = getY() - secondLastY;
+            double dz = getZ() - secondLastZ;
             double d2 = dx * dx + dy * dy + dz * dz;
             if (d2 > 0.0f && d2 < 10.0f) {
                 float yRot = getYRot();
@@ -77,7 +78,7 @@ public class BambooBee extends NavigatingMachine {
 
                 // Smoke particles
                 if (level().getGameTime() % 4 == 0) {
-                    level().addParticle(ParticleTypes.SMOKE, x, y + 0.4, z, 0.0, 0.0, 0.0);
+                    level().addParticle(ParticleTypes.SMOKE, getX(), getY() + 0.4, getZ(), 0.0, 0.0, 0.0);
                 }
             } else {
                 setXRot(Utils.lerpAngle(getXRot(), 0.0f, 5.0f));
@@ -184,7 +185,7 @@ public class BambooBee extends NavigatingMachine {
                 .append(Component.translatable(message));
         level().players().stream()
                 .filter(player -> player.distanceToSqr(this) < 64)
-                .forEach(player -> player.displayClientMessage(error, false));
+                .forEach(player -> player.sendSystemMessage(error));
     }
 
     private List<ContainerPosition> getPositions(boolean input) {
@@ -270,15 +271,18 @@ public class BambooBee extends NavigatingMachine {
     }
 
     @Override
-    protected void addAdditionalSaveData(@NotNull CompoundTag tag) {
-        super.addAdditionalSaveData(tag);
-        writeConfiguration(tag);
+    protected void addAdditionalSaveData(@NotNull ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        output.store("ContainerPositions", ContainerPosition.CODEC.listOf(), containerPositions);
+        output.store("Configuration", Configuration.CODEC, configuration);
     }
 
     @Override
-    protected void readAdditionalSaveData(@NotNull CompoundTag tag) {
-        super.readAdditionalSaveData(tag);
-        readConfiguration(tag);
+    protected void readAdditionalSaveData(@NotNull ValueInput input) {
+        super.readAdditionalSaveData(input);
+        containerPositions.clear();
+        containerPositions.addAll(input.read("ContainerPositions", ContainerPosition.CODEC.listOf()).orElseGet(List::of));
+        configuration = input.read("Configuration", Configuration.CODEC).orElseGet(Configuration::new);
     }
 
     @Override
@@ -297,34 +301,6 @@ public class BambooBee extends NavigatingMachine {
         containerPositions.addAll(stack.getOrDefault(BambooBeeItem.CONTAINER_POSITIONS, new LinkedList<>()));
 
         configuration = stack.getOrDefault(BambooBeeItem.CONFIGURATION, new Configuration());
-    }
-
-    private void readConfiguration(CompoundTag tag) {
-        // Read container positions
-        if (tag.contains("ContainerPositions")) {
-            ListTag list = tag.getList("ContainerPositions", 10);
-            for (int i = 0; i < list.size(); i++) {
-                CompoundTag containerTag = list.getCompound(i);
-                containerPositions.add(new ContainerPosition(containerTag));
-            }
-        }
-
-        if (tag.contains("Configuration")) {
-            CompoundTag configTag = tag.getCompound("Configuration");
-            configuration = new Configuration(configTag);
-        } else {
-            configuration = new Configuration();
-        }
-    }
-
-    private void writeConfiguration(CompoundTag tag) {
-        // Save container positions
-        ListTag list = new ListTag();
-        for (ContainerPosition position : containerPositions) {
-            list.add(position.toTag());
-        }
-        tag.put("ContainerPositions", list);
-        tag.put("Configuration", configuration.toTag());
     }
 
     @Override
@@ -351,7 +327,7 @@ public class BambooBee extends NavigatingMachine {
     }
 
     public static class Configuration {
-        public static Codec<Configuration> CODEC = Codec.withAlternative(CompoundTag.CODEC, TagParser.AS_CODEC)
+        public static Codec<Configuration> CODEC = Codec.withAlternative(CompoundTag.CODEC, TagParser.FLATTENED_CODEC)
                 .xmap(Configuration::new, Configuration::toTag);
 
         public boolean blacklist;
@@ -365,9 +341,9 @@ public class BambooBee extends NavigatingMachine {
 
         public Configuration(CompoundTag tag) {
             if (tag.contains("Order")) {
-                blacklist = tag.getBoolean("Blacklist");
-                compareTag = tag.getBoolean("CompareTag");
-                order = Order.valueOf(tag.getString("Order"));
+                blacklist = tag.getBooleanOr("Blacklist", false);
+                compareTag = tag.getBooleanOr("CompareTag", false);
+                order = Order.valueOf(tag.getStringOr("Order", "ROUND_ROBIN"));
             }
         }
 

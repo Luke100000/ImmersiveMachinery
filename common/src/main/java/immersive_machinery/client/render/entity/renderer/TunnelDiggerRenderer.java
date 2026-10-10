@@ -1,13 +1,14 @@
 package immersive_machinery.client.render.entity.renderer;
 
 import immersive_aircraft.client.render.entity.renderer.utils.ModelPartRenderHandler;
+import immersive_aircraft.entity.VehicleEntity;
 import immersive_machinery.Common;
 import immersive_machinery.entity.TunnelDigger;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class TunnelDiggerRenderer<T extends TunnelDigger> extends MachineryRenderer<T> {
-    private static final ResourceLocation ID = Common.locate("tunnel_digger");
+    private static final Identifier ID = Common.locate("tunnel_digger");
 
     private final ModelPartRenderHandler<T> model = new ModelPartRenderHandler<T>()
             .add(
@@ -32,7 +33,7 @@ public class TunnelDiggerRenderer<T extends TunnelDigger> extends MachineryRende
                     }
             );
 
-    protected ResourceLocation getModelId() {
+    protected Identifier getModelId() {
         return ID;
     }
 
@@ -43,7 +44,7 @@ public class TunnelDiggerRenderer<T extends TunnelDigger> extends MachineryRende
     }
 
     @Override
-    protected ModelPartRenderHandler<T> getModel(T entity) {
+    protected ModelPartRenderHandler<T> getModel(VehicleEntity entity) {
         return model;
     }
 }

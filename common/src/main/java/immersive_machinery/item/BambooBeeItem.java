@@ -13,6 +13,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 public class BambooBeeItem extends MachineryItem {
     public static final DataComponentType<List<ContainerPosition>> CONTAINER_POSITIONS = Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, "container_positions", DataComponentType.<List<ContainerPosition>>builder().persistent(ContainerPosition.CODEC.listOf()).build());
@@ -30,20 +32,20 @@ public class BambooBeeItem extends MachineryItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltips, TooltipFlag flags) {
-        super.appendHoverText(stack, ctx, tooltips, flags);
+    public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltips, TooltipFlag flags) {
+        super.appendHoverText(stack, ctx, display, tooltips, flags);
 
         List<ContainerPosition> containerPositions = stack.get(CONTAINER_POSITIONS);
 
         if (containerPositions == null || containerPositions.isEmpty()) {
-            tooltips.add(Component.translatable("gui.immersive_machinery.bamboo_bee.tooltip.help1"));
-            tooltips.add(Component.translatable("gui.immersive_machinery.bamboo_bee.tooltip.help2"));
+            tooltips.accept(Component.translatable("gui.immersive_machinery.bamboo_bee.tooltip.help1"));
+            tooltips.accept(Component.translatable("gui.immersive_machinery.bamboo_bee.tooltip.help2"));
         } else {
-            tooltips.add(Component.translatable("gui.immersive_machinery.bamboo_bee.tooltip.header", containerPositions.size()));
+            tooltips.accept(Component.translatable("gui.immersive_machinery.bamboo_bee.tooltip.header", containerPositions.size()));
 
             for (ContainerPosition containerPosition : containerPositions) {
                 String key = "gui.immersive_machinery.bamboo_bee.tooltip." + (containerPosition.input() ? "input" : "output");
-                tooltips.add(
+                tooltips.accept(
                         Component.translatable(key, Component.translatable(containerPosition.name())).withStyle(containerPosition.input() ? ChatFormatting.GREEN : ChatFormatting.AQUA)
                 );
             }

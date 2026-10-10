@@ -4,7 +4,7 @@ import immersive_machinery.Client;
 import immersive_machinery.Renderer;
 import immersive_machinery.client.KeyBindings;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 
 public final class ClientFabric implements ClientModInitializer {
     @Override
@@ -12,6 +12,6 @@ public final class ClientFabric implements ClientModInitializer {
         Renderer.bootstrap();
         Client.init();
 
-        KeyBindings.list.forEach(KeyBindingHelper::registerKeyBinding);
+        KeyBindings.list.forEach(KeyMappingHelper::registerKeyMapping);
     }
 }

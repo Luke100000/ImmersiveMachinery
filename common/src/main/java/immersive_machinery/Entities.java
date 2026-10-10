@@ -6,7 +6,8 @@ import immersive_machinery.entity.Copperfin;
 import immersive_machinery.entity.RedstoneSheep;
 import immersive_machinery.entity.TunnelDigger;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -48,7 +49,7 @@ public interface Entities {
     }
 
     static <T extends Entity> Supplier<EntityType<T>> register(String name, EntityType.Builder<T> builder) {
-        ResourceLocation id = Common.locate(name);
-        return Registration.register(BuiltInRegistries.ENTITY_TYPE, id, () -> builder.build(id.toString()));
+        Identifier id = Common.locate(name);
+        return Registration.register(BuiltInRegistries.ENTITY_TYPE, id, () -> builder.build(ResourceKey.create(BuiltInRegistries.ENTITY_TYPE.key(), id)));
     }
 }

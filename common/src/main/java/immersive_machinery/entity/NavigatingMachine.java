@@ -20,7 +20,7 @@ public abstract class NavigatingMachine extends MachineEntity {
         super.tick();
 
         // Update navigator and movement controller
-        if (!level().isClientSide) {
+        if (!level().isClientSide()) {
             this.navigator.tick();
         }
     }

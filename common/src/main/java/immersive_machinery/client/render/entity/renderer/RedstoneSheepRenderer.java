@@ -2,16 +2,17 @@ package immersive_machinery.client.render.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import immersive_aircraft.client.render.entity.renderer.utils.ModelPartRenderHandler;
+import immersive_aircraft.entity.VehicleEntity;
 import immersive_machinery.Common;
 import immersive_machinery.entity.RedstoneSheep;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class RedstoneSheepRenderer<T extends RedstoneSheep> extends MachineryRenderer<T> {
-    private static final ResourceLocation ID = Common.locate("redstone_sheep");
+    private static final Identifier ID = Common.locate("redstone_sheep");
 
-    protected ResourceLocation getModelId() {
+    protected Identifier getModelId() {
         return ID;
     }
 
@@ -34,14 +35,13 @@ public class RedstoneSheepRenderer<T extends RedstoneSheep> extends MachineryRen
     }
 
     @Override
-    public void render(T entity, float yaw, float tickDelta, PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int light) {
-        PathDebugRenderer.INSTANCE.render(matrixStack, vertexConsumerProvider, entity, tickDelta);
-
-        super.render(entity, yaw, tickDelta, matrixStack, vertexConsumerProvider, light);
+    public void extractRenderState(T entity, VehicleRenderState<T> state, float tickDelta) {
+        super.extractRenderState(entity, state, tickDelta);
+        PathDebugRenderer.INSTANCE.render(entity, tickDelta);
     }
 
     @Override
-    protected ModelPartRenderHandler<T> getModel(T entity) {
+    protected ModelPartRenderHandler<T> getModel(VehicleEntity entity) {
         return model;
     }
 }

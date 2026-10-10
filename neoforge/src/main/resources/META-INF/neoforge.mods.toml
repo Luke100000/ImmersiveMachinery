@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[1,)"
+loaderVersion = "[4,)"
 issueTrackerURL = "https://github.com/Luke100000/ImmersiveMachinery/issues"
 license = "GPL-3.0-only"
 
@@ -15,21 +15,24 @@ itemIcon = "immersive_machinery:tunnel_digger"
 
 [[dependencies.immersive_machinery]]
 modId = "minecraft"
-mandatory = true
-versionRange = "[@MINECRAFT_VERSION@,)"
+type = "required"
+versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.immersive_machinery]]
 modId = "neoforge"
-mandatory = true
-versionRange = "[1,)"
+type = "required"
+versionRange = "[${neoforge_version},)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.immersive_machinery]]
 modId = "immersive_aircraft"
-mandatory = true
-versionRange = "[1.2.2,)"
+type = "required"
+versionRange = "[1.6.0,)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[mixins]]
+config = "immersive_machinery.mixins.json"

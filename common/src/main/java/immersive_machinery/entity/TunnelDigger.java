@@ -117,8 +117,8 @@ public class TunnelDigger extends MachineEntity {
         // Exhaust particles
         if (level().isClientSide()) {
             double chance = engineSpinUpStrength + getEnginePower();
-            if (level().random.nextDouble() < chance) {
-                boolean fire = level().random.nextFloat() < engineSpinUpStrength;
+            if (level().getRandom().nextDouble() < chance) {
+                boolean fire = level().getRandom().nextFloat() < engineSpinUpStrength;
                 Matrix4f transform = getVehicleTransform();
                 Vector4f pos = transformPosition(transform, 1.0f, 2.45f, -0.9375f);
                 level().addParticle(fire ? ParticleTypes.SMALL_FLAME : ParticleTypes.SMOKE, pos.x, pos.y, pos.z, 0.0, 0.1, 0.0);
@@ -187,8 +187,8 @@ public class TunnelDigger extends MachineEntity {
     public void toggleDrill() {
         drillOn = !drillOn;
         LivingEntity pilot = getControllingPassenger();
-        if (pilot != null) {
-            pilot.sendSystemMessage(Component.translatable(drillOn ? "immersive_machinery.tunnel_digger.drill_on" : "immersive_machinery.tunnel_digger.drill_off"));
+        if (pilot instanceof net.minecraft.world.entity.player.Player player) {
+            player.sendSystemMessage(Component.translatable(drillOn ? "immersive_machinery.tunnel_digger.drill_on" : "immersive_machinery.tunnel_digger.drill_off"));
         }
     }
 

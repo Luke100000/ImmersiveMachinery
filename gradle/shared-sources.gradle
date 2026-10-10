@@ -1,0 +1,30 @@
+configurations {
+    commonJava {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+    commonResources {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
+dependencies {
+    commonJava project(path: ":common", configuration: "commonJava")
+    commonResources project(path: ":common", configuration: "commonResources")
+}
+
+tasks.named("compileJava", JavaCompile) {
+    dependsOn configurations.commonJava
+    source configurations.commonJava
+}
+
+tasks.named("processResources", ProcessResources) {
+    dependsOn configurations.commonResources
+    from configurations.commonResources
+}
+
+tasks.named("sourcesJar", Jar) {
+    dependsOn configurations.commonJava, configurations.commonResources
+    from configurations.commonJava, configurations.commonResources
+}

@@ -6,31 +6,11 @@
     "   "
   ],
   "key": {
-    "R": [
-      {
-        "item": "immersive_machinery:redstone_mechanism"
-      }
-    ],
-    "C": [
-      {
-        "item": "minecraft:copper_ingot"
-      }
-    ],
-    "H": [
-      {
-        "item": "immersive_aircraft:hull"
-      }
-    ],
-    "E": [
-      {
-        "item": "immersive_aircraft:engine"
-      }
-    ],
-    "P": [
-      {
-        "item": "immersive_aircraft:propeller"
-      }
-    ]
+    "R": "immersive_machinery:redstone_mechanism",
+    "C": "minecraft:copper_ingot",
+    "H": "immersive_aircraft:hull",
+    "E": "immersive_aircraft:engine",
+    "P": "immersive_aircraft:propeller"
   },
   "result": {
     "id": "immersive_machinery:redstone_sheep"

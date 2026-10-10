@@ -10,13 +10,13 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
 public class CopperfinScreen extends VehicleScreen {
     private final Copperfin copperfin;
 
-    private static final ResourceLocation TEXTURE = Common.locate("textures/gui/container/inventory.png");
+    private static final Identifier TEXTURE = Common.locate("textures/gui/container/inventory.png");
 
     public CopperfinScreen(Copperfin copperfin, VehicleScreenHandler handler, Inventory inventory, Component title) {
         super(handler, inventory, title);

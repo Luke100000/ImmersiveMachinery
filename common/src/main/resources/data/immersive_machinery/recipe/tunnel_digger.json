@@ -6,36 +6,12 @@
     "RRR"
   ],
   "key": {
-    "I": [
-      {
-        "item": "minecraft:iron_block"
-      }
-    ],
-    "D": [
-      {
-        "item": "immersive_machinery:iron_drill"
-      }
-    ],
-    "C": [
-      {
-        "item": "minecraft:copper_ingot"
-      }
-    ],
-    "E": [
-      {
-        "item": "immersive_aircraft:engine"
-      }
-    ],
-    "G": [
-      {
-        "item": "immersive_aircraft:industrial_gears"
-      }
-    ],
-    "R": [
-      {
-        "item": "minecraft:rail"
-      }
-    ]
+    "I": "minecraft:iron_block",
+    "D": "immersive_machinery:iron_drill",
+    "C": "minecraft:copper_ingot",
+    "E": "immersive_aircraft:engine",
+    "G": "immersive_aircraft:industrial_gears",
+    "R": "minecraft:rail"
   },
   "result": {
     "id": "immersive_machinery:tunnel_digger"

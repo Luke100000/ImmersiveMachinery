@@ -132,7 +132,7 @@ public class Copperfin extends MachineEntity {
             }
         });
 
-        if (level().isClientSide) {
+        if (level().isClientSide()) {
             tickClient();
         } else {
             tickServer();

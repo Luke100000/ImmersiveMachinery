@@ -8,12 +8,12 @@ import immersive_machinery.client.gui.screen.widgets.LegacyImageButton;
 import immersive_machinery.client.gui.screen.widgets.ToggleImageButton;
 import immersive_machinery.entity.BambooBee;
 import immersive_machinery.network.c2s.BambooBeeConfigurationUpdate;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
 import java.net.URI;
@@ -22,7 +22,7 @@ import java.util.Locale;
 public class BambooBeeScreen extends VehicleScreen {
     private final BambooBee bee;
 
-    private static final ResourceLocation TEXTURE = Common.locate("textures/gui/container/inventory.png");
+    private static final Identifier TEXTURE = Common.locate("textures/gui/container/inventory.png");
 
     private static final Component TEXT_HELP = Component.translatable("gui.immersive_machinery.bamboo_bee.help");
     private static final Component TEXT_WHITELIST = Component.translatable("gui.immersive_machinery.bamboo_bee.whitelist");

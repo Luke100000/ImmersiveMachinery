@@ -1,82 +1,38 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "net.neoforged.moddev"
 }
 
-architectury {
-    platformSetupLoomIde()
-    neoForge()
-}
+apply from: rootProject.file("gradle/shared-sources.gradle")
 
-configurations {
-    common
-    shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
-    compileClasspath.extendsFrom common
-    runtimeClasspath.extendsFrom common
-    developmentNeoForge.extendsFrom common
-}
-
-repositories {
-    maven { url "https://maven.neoforged.net/releases/" }
+neoForge {
+    version = rootProject.neoforge_version
+    runs {
+        client {
+            client()
+            gameDirectory = file("run/client")
+        }
+        server {
+            server()
+            gameDirectory = file("run/server")
+            programArgument "--nogui"
+        }
+    }
+    mods {
+        "immersive_machinery" {
+            sourceSet sourceSets.main
+        }
+    }
 }
 
 dependencies {
-    neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
-
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive false }
-
-    forgeRuntimeLibrary 'org.mariuszgromada.math:MathParser.org-mXparser:5.2.1'
-    modImplementation("net.conczin:immersive_aircraft:${immersive_aircraft_version}+neoforge")
+    implementation("net.conczin:immersive_aircraft:${immersive_aircraft_version}+neoforge") { transitive = false }
 }
 
 processResources {
-    inputs.property "version", project.version
-
+    def properties = [version: project.version, minecraft_version_range: minecraft_version_range,
+                      neoforge_version: neoforge_version]
+    inputs.properties properties
     filesMatching("META-INF/neoforge.mods.toml") {
-        expand "version": project.version
-    }
-}
-
-shadowJar {
-    exclude "fabric.mod.json"
-    exclude "architectury.common.json"
-
-    configurations = [project.configurations.shadowCommon]
-    archiveClassifier = "dev-shadow"
-}
-
-remapJar {
-    input.set shadowJar.archiveFile
-    dependsOn shadowJar
-}
-
-sourcesJar {
-    def commonSources = project(":common").sourcesJar
-    dependsOn commonSources
-    from commonSources.archiveFile.map { zipTree(it) }
-}
-
-components.java {
-    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
-        skip()
-    }
-}
-
-// Update neoforge.mods.toml with the new versions automatically
-// Not using processResources because it is easier to do this manually, and see it reflected immediately
-afterEvaluate {
-    file("src/main/resources/META-INF/neoforge.mods.toml").withOutputStream {
-        it << file("neoforge.mods.toml").text
-    }
-}
-
-publishing {
-    publications {
-        mavenCommon(MavenPublication) {
-            artifactId = rootProject.archives_base_name
-            groupId = rootProject.group_id
-            version = version + "+neoforge"
-            from components.java
-        }
+        expand properties
     }
 }

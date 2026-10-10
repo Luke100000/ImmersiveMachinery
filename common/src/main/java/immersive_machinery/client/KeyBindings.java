@@ -2,6 +2,7 @@ package immersive_machinery.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
+import immersive_machinery.Common;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.LinkedList;
@@ -9,6 +10,8 @@ import java.util.List;
 
 public class KeyBindings {
     public static final List<KeyMapping> list = new LinkedList<>();
+
+    private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(Common.locate("immersive_machinery_tab"));
 
     public static final KeyMapping HORN;
 
@@ -21,7 +24,7 @@ public class KeyBindings {
                 "key.immersive_machinery." + name,
                 InputConstants.Type.KEYSYM,
                 code,
-                "itemGroup.immersive_machinery.immersive_machinery_tab"
+                CATEGORY
         );
         list.add(key);
         return key;

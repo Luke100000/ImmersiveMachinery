@@ -19,6 +19,11 @@ public abstract class MachineEntity extends EngineVehicle {
     }
 
     @Override
+    protected double getDefaultGravity() {
+        return 0.04;
+    }
+
+    @Override
     public void tick() {
         // rolling interpolation
         prevRoll = roll;

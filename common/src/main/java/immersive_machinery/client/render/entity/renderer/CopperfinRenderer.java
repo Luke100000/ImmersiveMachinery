@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import immersive_aircraft.client.render.entity.renderer.utils.ModelPartRenderHandler;
+import immersive_aircraft.entity.VehicleEntity;
 import immersive_machinery.Common;
 import immersive_machinery.config.Config;
 import immersive_machinery.entity.Copperfin;
@@ -11,10 +12,11 @@ import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.level.material.FogType;
 import org.joml.Matrix3f;
 import org.joml.Vector3f;
@@ -23,7 +25,7 @@ import org.joml.Vector4f;
 import static org.joml.Math.fma;
 
 public class CopperfinRenderer<T extends Copperfin> extends MachineryRenderer<T> {
-    private static final ResourceLocation ID = Common.locate("copperfin");
+    private static final Identifier ID = Common.locate("copperfin");
 
     private final ModelPartRenderHandler<T> model = new ModelPartRenderHandler<>();
 
@@ -91,6 +93,7 @@ public class CopperfinRenderer<T extends Copperfin> extends MachineryRenderer<T>
         Vector3f[] normals = {
                 new Vector3f(0.0f, -1.0f, 0.0f),
                 new Vector3f(0.0f, 1.0f, 0.0f),
+                new Vector3f(0.0f, -1.0f, 0.0f),
                 new Vector3f(0.0f, 0.0f, -1.0f),
                 new Vector3f(1.0f, 0.0f, 0.0f),
                 new Vector3f(0.0f, 0.0f, 1.0f),
@@ -98,24 +101,25 @@ public class CopperfinRenderer<T extends Copperfin> extends MachineryRenderer<T>
         };
 
         // Tint the water texture
-        int averageWaterColor = BiomeColors.getAverageWaterColor(entity.level(), entity.getOnPos());
+        int waterColor = ARGB.color(0x70, BiomeColors.getAverageWaterColor(Minecraft.getInstance().level, entity.getOnPos()));
 
         // Only render the water mask when partly underwater
         boolean renderTop = f0 < maxHeight || f1 < maxHeight || f2 < maxHeight || f3 < maxHeight;
         boolean cameraInFluid = Minecraft.getInstance().gameRenderer.getMainCamera().getFluidInCamera() != FogType.NONE;
 
         for (int j = renderTop ? 0 : 2; j < ((firstPerson || !cameraInFluid) ? 7 : 2); ++j) {
-            VertexConsumer buffer = j < 2 ? source.getBuffer(RenderType.waterMask()) : source.getBuffer(RenderType.entityTranslucent(Common.locate("textures/white.png")));
+            VertexConsumer buffer = j < 2 ? source.getBuffer(RenderTypes.waterMask()) : source.getBuffer(RenderTypes.entityTranslucent(Common.locate("textures/white.png")));
+            Vector3f normal = normals[j];
+
             for (int i = 0; i < 4; ++i) {
                 Vector3f v = faces[j][i];
-                Vector3f n = normals[i];
                 Vector4f v2 = matrixStack.last().pose().transform(new Vector4f(v.x, v.y + (j == 0 ? -z * 2 : 0.0f), v.z, 1.0f));
                 buffer.addVertex(v2.x, v2.y, v2.z);
-                buffer.setColor(averageWaterColor | 0x70000000);
+                buffer.setColor(waterColor);
                 buffer.setUv(0.5f, 0.5f);
                 buffer.setOverlay(OverlayTexture.NO_OVERLAY);
                 buffer.setLight(light);
-                buffer.setNormal(matrixStack.last(), n.x, n.y, n.z);
+                buffer.setNormal(matrixStack.last(), normal.x, normal.y, normal.z);
             }
         }
     }
@@ -129,7 +133,7 @@ public class CopperfinRenderer<T extends Copperfin> extends MachineryRenderer<T>
         }
     }
 
-    protected ResourceLocation getModelId() {
+    protected Identifier getModelId() {
         return ID;
     }
 
@@ -140,7 +144,7 @@ public class CopperfinRenderer<T extends Copperfin> extends MachineryRenderer<T>
     }
 
     @Override
-    protected ModelPartRenderHandler<T> getModel(T entity) {
+    protected ModelPartRenderHandler<T> getModel(VehicleEntity entity) {
         return model;
     }
 }

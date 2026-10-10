@@ -6,16 +6,8 @@
     "   "
   ],
   "key": {
-    "R": [
-      {
-        "item": "immersive_machinery:redstone_mechanism"
-      }
-    ],
-    "Q": [
-      {
-        "item": "immersive_aircraft:quadrocopter"
-      }
-    ]
+    "R": "immersive_machinery:redstone_mechanism",
+    "Q": "immersive_aircraft:quadrocopter"
   },
   "result": {
     "id": "immersive_machinery:bamboo_bee"
