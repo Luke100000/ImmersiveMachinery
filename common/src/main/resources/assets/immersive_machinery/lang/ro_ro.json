@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Perforare pe",
   "immersive_machinery.tunnel_digger.drill_off": "Drill off",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% viteza de găurire",
+  "key.immersive_machinery.action": "Machine Action",
   "gui.immersive_machinery.slot.im_shards": "Cioburi de ametist pentru găurire mai rapidă",
   "gui.immersive_machinery.slot.im_filter": "Articolul Filtru"
 }
