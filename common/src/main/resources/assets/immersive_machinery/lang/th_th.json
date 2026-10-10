@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "เจาะอยู่",
   "immersive_machinery.tunnel_digger.drill_off": "ปิดเจาะ",
   "immersive_aircraft.upgrade.drillingspeed": "ความเร็วการเจาะ %s%%",
+  "key.immersive_machinery.action": "การทำงานของเครื่อง",
   "gui.immersive_machinery.slot.im_shards": "Amethyst Shards สำหรับการเจาะที่เร็วกว่า",
   "gui.immersive_machinery.slot.im_filter": "ตัวกรองสินค้า"
 }
