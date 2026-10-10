@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Drillur á",
   "immersive_machinery.tunnel_digger.drill_off": "Drillur av",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% drillivspøtt",
+  "key.immersive_machinery.action": "Machine Action",
   "gui.immersive_machinery.slot.im_shards": "Amethyst bita til skjótari drilling",
   "gui.immersive_machinery.slot.im_filter": "Ting filtr"
 }
