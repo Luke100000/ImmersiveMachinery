@@ -13,10 +13,10 @@ public class KeyBindings {
 
     private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(Common.locate("immersive_machinery_tab"));
 
-    public static final KeyMapping HORN;
+    public static final KeyMapping ACTION;
 
     static {
-        HORN = newKey("horn", GLFW.GLFW_KEY_H);
+        ACTION = newKey("action", GLFW.GLFW_KEY_H);
     }
 
     private static KeyMapping newKey(String name, int code) {
