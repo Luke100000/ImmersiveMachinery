@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Փորում է",
   "immersive_machinery.tunnel_digger.drill_off": "Փորումը անջատված է",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% փորումների արագություն",
+  "key.immersive_machinery.action": "Մեքենայական գործողություն",
   "gui.immersive_machinery.slot.im_shards": "Ամեթիստի կտորներ ավելի արագ փորելու համար",
   "gui.immersive_machinery.slot.im_filter": "Արտադրանքի ֆիլտր"
 }
