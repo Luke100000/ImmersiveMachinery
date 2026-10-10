@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Drill on",
   "immersive_machinery.tunnel_digger.drill_off": "Τρυπάνι μακριά",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% ταχύτητα διάτρησης",
+  "key.immersive_machinery.action": "Δράση Μηχανής",
   "gui.immersive_machinery.slot.im_shards": "Θραύσματα αμέθυστου για ταχύτερη διάτρηση",
   "gui.immersive_machinery.slot.im_filter": "Φίλτρο αντικειμένου"
 }
