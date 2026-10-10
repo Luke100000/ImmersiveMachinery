@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Tynnydd ymlaen",
   "immersive_machinery.tunnel_digger.drill_off": "Tynnydd i ffwrdd",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% cyflymder tynnu",
+  "key.immersive_machinery.action": "Gweithrediad y Peiriant",
   "gui.immersive_machinery.slot.im_shards": "Sianel Amethyst ar gyfer tynnu cyflymach",
   "gui.immersive_machinery.slot.im_filter": "Ffilter eitem"
 }

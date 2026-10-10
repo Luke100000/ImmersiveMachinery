@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Taladrar",
   "immersive_machinery.tunnel_digger.drill_off": "Taladro apagado",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% velocidad de perforación",
+  "key.immersive_machinery.action": "Acción de máquina",
   "gui.immersive_machinery.slot.im_shards": "Fragmentos de amatista para perforar más rápido",
   "gui.immersive_machinery.slot.im_filter": "Filtro de artículos"
 }

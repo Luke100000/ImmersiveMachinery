@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Dril e karg",
   "immersive_machinery.tunnel_digger.drill_off": "Dril o kuit",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% diouligad soñj",
+  "key.immersive_machinery.action": "Oberiantiz ar mekanik",
   "gui.immersive_machinery.slot.im_shards": "Gouloù Amethyst evit meneg soñj gwell",
   "gui.immersive_machinery.slot.im_filter": "Follenn Item"
 }

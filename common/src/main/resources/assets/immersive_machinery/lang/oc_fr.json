@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Perforador activat",
   "immersive_machinery.tunnel_digger.drill_off": "Perforador desactivat",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% de velocitat de perforacion",
+  "key.immersive_machinery.action": "Accion de la maquina",
   "gui.immersive_machinery.slot.im_shards": "Rochas d'ametista per una perforacion mai rapida",
   "gui.immersive_machinery.slot.im_filter": "Filtre d'articles"
 }
