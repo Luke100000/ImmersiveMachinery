@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "Vrtanje na",
   "immersive_machinery.tunnel_digger.drill_off": "Izključitev vrtanja",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% hitrost vrtanja",
+  "key.immersive_machinery.action": "Delovanje stroja",
   "gui.immersive_machinery.slot.im_shards": "Ametistove črepinje za hitrejše vrtanje",
   "gui.immersive_machinery.slot.im_filter": "Filter elementov"
 }
