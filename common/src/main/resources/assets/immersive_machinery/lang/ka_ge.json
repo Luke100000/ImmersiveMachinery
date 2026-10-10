@@ -37,6 +37,7 @@
   "immersive_machinery.tunnel_digger.drill_on": "ბურღვა ჩართულ",
   "immersive_machinery.tunnel_digger.drill_off": "ბურღვა გამართული",
   "immersive_aircraft.upgrade.drillingspeed": "%s%% ბურღვის სიჩქარე",
+  "key.immersive_machinery.action": "მექანიზმის მოქმედება",
   "gui.immersive_machinery.slot.im_shards": "ამეთისტის ფიცრები უფრო სწრაფი ბურღვისათვის",
   "gui.immersive_machinery.slot.im_filter": "ნივთების ფილტრი"
 }
